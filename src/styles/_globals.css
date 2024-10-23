@@ -1,0 +1,21 @@
+/* _globals.css */
+
+/* Definición de variables de color */
+:root {
+    --color-lightest: #f3faf9;
+    --color-lighter: #d7f0ed;
+    --color-light: #aee1db;
+    --color-medium-light: #7dcac4;
+    --color-medium: #53aeaa;
+    --color-medium-dark: #399390;
+    --color-dark: #2c7575;
+    --color-darker: #265f5f;
+    --color-darkest: #224d4d;
+    --color-almost-black: #204141;
+    --color-black: #0e2325;
+}
+
+/* Configuración de Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
