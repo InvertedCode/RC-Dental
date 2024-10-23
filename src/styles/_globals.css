@@ -15,6 +15,23 @@
     --color-black: #0e2325;
 }
 
+@font-face {
+    font-family: "Nunito";
+    src: url("/fonts/nunito.woff") format("woff"),
+        url("/fonts/nunito.ttf") format("truetype"),
+        url("fonts/nunito-italic.woff") format("woff"),
+        url("fonts/nunito-italic.ttf") format("truetype");
+    font-display: swap;
+}
+
+html {
+    background: #13151a;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+}
+
 /* Configuración de Tailwind CSS */
 @tailwind base;
 @tailwind components;
