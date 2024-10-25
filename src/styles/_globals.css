@@ -25,7 +25,7 @@
 }
 
 html {
-    background: #13151a;
+    background: var(--color-lightest);
 }
 
 body {
