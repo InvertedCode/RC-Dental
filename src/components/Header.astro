@@ -1,54 +1,92 @@
+---
+import { Image } from "astro:assets";
+
+import Logo from '../../public/assets/logo.png';
+import PhoneIcon from "./BannerIcons/PhoneIcon.astro";
+import LocationIcon from "./BannerIcons/LocationIcon.astro";
+import ClockIcon from "./BannerIcons/ClockIcon.astro";
+---
+
 <header>
-    <div class="banner">
-        <p>+57 312 2376546</p>
-        <p>Laureles - Suramericana /Medellín Colombia  </p>
-        <p>Lun - Vie 8am - 5pm / Sab 8am - 1pm</p>
+    <div class="banner flex justify-end bg-colors-medium text-colors-lightest align-center py-1 px-10">
+        <marquee class="marquee" direction="" scrollamount="5">
+        <p class="banner__items inline-flex items-center">
+            <PhoneIcon />
+            +57 312 2376546
+        </p>
+        <p class="banner__items inline-flex items-center">
+            <LocationIcon />
+            Laureles - Suramericana /Medellín Colombia
+        </p>
+        <p class="banner__items inline-flex items-center">
+            <ClockIcon />
+            Lun - Vie 8am - 5pm / Sab 8am - 1pm
+        </p>
+        </marquee>
     </div>
     <div>
-        <nav class="navbar">
-            <div class="logorc">
-                <a href="/">RC DENTAL CONSULTORIO ODONTOLÓGICO</a>
+        <nav class="navbar flex justify-between bg-colors-dark text-colors-light">
+            <div class="container__logo">
+                <a href="/" class="navbar-brand">
+                <img class="logo" src={Logo.src} alt="Logo" class="logo"></a>
+                <p class="text-colors-lightest">RC DENTAL CONSULTORIO ODONTOLÓGICO</p>
             </div>
-            <div class="navpages">
-                <a href="/nosotros">Nosotros</a>
-                <a href="/servicios">Servicios</a>
-                <a href="/testimonios">Testimonios</a>
-                <a href="/contacto">Contacto</a>
-            </div>
+
+            <ul class="navpages flex">
+                <li class="nav-item">
+                    <a href="/about" class="nav-link">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/services" class="nav-link">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/testimonials" class="nav-link">Testimonios</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/contact" class="nav-link">Contactos</a>
+                </li>
+            </ul>
         </nav>
     </div>
 </header>
 
-
 <style>
-    .banner {
+    .marquee {
+        width: 800px;
         display: flex;
-        justify-content: end;
         align-items: center;
-        gap: 20px;
-        background: var(--color-medium);
-        padding: 5px 20px;
+        flex-direction: row;
     }
-    .banner p {
-        color: white;
-        font-size: 12px;
+
+    .banner__items {
+        font-size: 14px;
+        font-weight: 700;
+        margin-right: 20px;
+        gap: 8px;
     }
-    .logorc {
-        font-size: 16px;
-    }
+
     .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: var(--color-dark);
-        width: 100%;
-        height: 62px;
-        color: var(--color-lighter);
+        font-size: 16px;
+        height: 56px;
+        padding: 40px;
     }
+
     .navpages {
         display: flex;
-        gap: 20px;
-        padding-right: 20px;
-        color: var(--color-light);
+        align-items: center;
+        padding-right: 110px;
+        font-size: 18px;
+        gap: 80px;
+    }
+
+    .container__logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 103px;
+        height: 36px;
+        margin-right: 10px;
     }
 </style>
