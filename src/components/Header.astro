@@ -7,25 +7,25 @@ import LocationIcon from "./BannerIcons/LocationIcon.astro";
 import ClockIcon from "./BannerIcons/ClockIcon.astro";
 ---
 
-<header class="fixed w-full">
-    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1/1 px-10">
-        <marquee class="flex items-center w-[800px] mt-1" scrollamount="3">
-        <p class="inline-flex items-center text-sm font-semibold mr-2 gap-2">
-            <PhoneIcon /> +57 312 2376546 
+<header class="fixed w-full z-50">
+    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-10" >
+    <div class="flex items-center animate-scroll w-max gap-10">
+        <p class="inline-flex items-center text-sm font-semibold gap-2">
+            <PhoneIcon /> +57 312 2376546
         </p>
-        <p class="inline-flex items-center text-sm font-semibold mr-2 gap-2">
+        <p class="inline-flex items-center text-sm font-semibold gap-2">
             <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
         </p>
-        <p class=" inline-flex items-center text-sm font-semibold gap-2">
+        <p class="inline-flex items-center text-sm font-semibold gap-2">
             <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 1pm
         </p>
-        </marquee>
     </div>
+</div>
     <div>
         <nav class="flex justify-between bg-colors-dark text-colors-light p-10 h-[56px]">
             <div class="flex items-center">
                 <a href="/" class="cursor-pointer">
-                    <Image src={Logo} alt="Logo" class="logo w-[103px] h-[36px] mr-2" />
+                    <Image src={Logo} alt="Logo" class="logo w-[103px] h-[36px] mr-2" loading="eager" />
                     <!-- <img class="logo w-[103px] h-[36px] mr-2" src={Logo.src} alt="Logo" loading="lazy" /> -->
                 </a>
                 <a href="/" class="cursor-pointer text-colors-lightest">
