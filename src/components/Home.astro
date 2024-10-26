@@ -2,56 +2,57 @@
 import { Image } from "astro:assets";
 import ArrowDown from "./Arrows/ArrowDown.astro";
 import ButtonReserve from "./Buttons/ButtonReserve.astro";
-import ImmageDoctor from "../../public/assets/doctors.png";
+import ImageDoctor from "../../public/assets/doctors.png";
 import ImageSede from "../../public/assets/logo_sedes.png";
 ---
+<section class="w-full h-[100vh]">
+	<div class="home">
+		<!-- Contenedor del texto principal -->
+		<div class="absolute top-[32%] left-[11%] w-[439px] h-[260px]" >
+			<h1 class="text-colors-black font-bold text-[40px] leading-[60px]">
+				Una Excelente <span class="text-colors-dark">Experiencia</span> Odontológica
+			</h1>
+		</div>
 
-<div class="home">
-    <!-- Contenedor del texto principal -->
-    <div class="absolute top-[30%] left-[10%] w-[439px] h-[260px]" >
-        <h1 class="text-colors-black font-bold text-5xl leading-[60px]">
-            Una Excelente <span class="text-colors-dark">Experiencia</span> Odontológica
-        </h1>
-    </div>
+		<!-- Contenedor del slogan -->
+		<div class="absolute top-[65%] left-[13%] w-[195px] h-[90px] text-xl text-center text-colors-black font-bold flex items-center justify-center flex-col">
+			<p>
+				La sonrisa de tus sueños está a un clic
+			</p>
+			<div  class="mt-5">
+				<ArrowDown />
+			</div>
+		</div>
 
-    <!-- Contenedor del slogan -->
-    <div class="absolute top-[65%] left-[13%] w-[195px] h-[90px] text-xl text-center text-colors-black font-bold flex items-center justify-center flex-col">
-        <p>
-            La sonrisa de tus sueños está a un clic
-        </p>
-        <div  class="mt-5">
-            <ArrowDown />
-        </div>
-    </div>
+		<!-- Contenedor del botón de reserva -->
+		<div class="absolute top-[80%] left-[11.5%] mt-2">
+			<ButtonReserve />
+		</div>
 
-    <!-- Contenedor del botón de reserva -->
-    <div class="absolute top-[80%] left-[11.5%] mt-2">
-        <ButtonReserve />
-    </div>
+		<!-- Contenedor de la elipse degradada -->
+		<div class="absolute top-[30%] right-[64px] w-[450px] h-[450px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark" ></div>
+	
+		<!-- Contenedor de la imagen de doctor -->
+		<div class="absolute top-[20%] left-[48.5%] w-[500px] rounded-[20%]">
+			<Image src={ImageDoctor} alt="Logo" class="absolute top-[22%] left-[66%] rounded-[37px] object-cover w-[350px] h-[490px]" alt="Logo" loading={"eager"}/>
+		</div>
+	
+		<!-- Contenedor de la descripción del doctor -->
+		<div class="absolute top-[79%] right-[18%] flex items-center justify-center gap-2 rounded-[15px] p-0 pr-4 bg-colors-light shadow-[4px_6px_4px_rgba(0,0,0,0.25)]">
+			<div class="w-[50px] h-[50px] m-3 flex items-center">
+				<Image src={ImageSede} alt="logo-sede" class="w-[50px] h-[50px] object-cover" loading="eager" />
+			</div>
+			<div class="flex items-end flex-col text-colors-darkest font-extrabold">
+				<p>DR. Juan Carlos Ramirez</p>
+				<p>Sede: Manizales</p>
+			</div>
+		</div>
 
-    <!-- Contenedor de la elipse degradada -->
-    <div class="absolute top-[35%] right-[125px] w-[450px] h-[450px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark" ></div>
-    
-    <!-- Contenedor de la imagen de doctor -->
-    <div class="absolute top-[22%] left-[66%] w-[500px] rounded-[20%]"></div>
-        <Image src={ImmageDoctor} alt="Logo" class="absolute top-[22%] left-[66%] rounded-[37px] object-cover w-[350px] h-[500px]" alt="Logo" loading={"eager"}/>
-    </div>
-
-    <!-- Contenedor de la descripción del doctor -->
-    <div class="absolute top-[82%] right-[25%] flex items-center justify-center gap-2 rounded-[15px] p-0 pr-4 bg-colors-light shadow-[4px_6px_4px_rgba(0,0,0,0.25)]">
-        <div class="w-[50px] h-[50px] m-2">
-            <Image src={ImageSede} alt="logo-sede" class="w-[50px] h-[50px] object-cover" loading="eager" />
-        </div>
-        <div class="flex items-end flex-col text-colors-darkest font-extrabold">
-            <p>DR. Juan Carlos Ramirez</p>
-            <p>Sede: Manizales</p>
-        </div>
-    </div>
-
-    <!-- SVG en la parte inferior (decorativo) -->
-    <div class="absolute bottom-0 -z-10">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1530" height="455" viewBox="0 0 1440 455" fill="none">
-            <path d="M1607 285.99C1607 653.5 961.5 571.5 573 571.5C143.093 571.5 -134 640 -134 248.454C-134 -270.417 198.793 184.465 628.7 184.465C1058.61 184.465 1607 -9.50006 1607 285.99Z" fill="#D7F0ED"/>
-        </svg>
-    </div>
-</div>
+		<!-- SVG en la parte inferior (decorativo) -->
+		<div class="absolute bottom-0 -z-10 w-full">
+			<svg xmlns="http://www.w3.org/2000/svg" width="1530" height="450" viewBox="0 0 1440 455" fill="none">
+				<path d="M1607 285.99C1607 653.5 961.5 571.5 573 571.5C143.093 571.5 -134 640 -134 248.454C-134 -270.417 198.793 184.465 628.7 184.465C1058.61 184.465 1607 -9.50006 1607 285.99Z" fill="#D7F0ED"/>
+			</svg>
+		</div>
+	</div>
+</section>
