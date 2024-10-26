@@ -19,7 +19,16 @@ export default {
 					'almost-black': 'var(--color-almost-black)',
 					'black': 'var(--color-black)',
 				},
-			}
+			},
+			keyframes: {
+				scroll: {
+					'0%': { transform: 'translateX(100%)' },
+					'100%': { transform: 'translateX(-200%)' },
+				},
+			},
+			animation: {
+				scroll: 'scroll 50s linear infinite',
+			},
 		},
 	},
 	plugins: [typography],
