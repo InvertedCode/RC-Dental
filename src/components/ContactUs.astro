@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import ImageLeft from '../../public/assets/Contact_Left.svg'
+import ImageRight from '../../public/assets/Contact_Right.svg'
+import ImageBottom from '../../public/assets/Contact_Bottom.svg'
+---
+
+<section class="flex flex-col">
+    <div class="flex w-full">
+        <div class="flex items-center">
+            <div class="pl-3">
+                <Image src={ImageLeft} alt="circulos decoracion a la izquierda"/>
+            </div>
+        </div>
+        <div class="flex-grow text-center">
+            <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2">Sedes y Contactos</h1>
+        </div>
+    </div>
+
+    <div class="flex justify-end z-10 top-[100px]">
+        <Image src={ImageRight} alt="Imagen decoracion pantalla derecha"/>
+    </div>
+
+    <!-- Contenedor de sedes -->
+    <div class="flex flex-col">
+        <div class="flex flex-row justify-center gap-10">
+            <!-- Contenedor Sede Medellin -->
+            <article>
+                <div>
+                    <h3 class="text-[24px] font-bold leading-[65px] text-colors-darkest text-center">Medellín</h3>
+                </div>
+                <div class="flex flex-col prose">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0657697283664!2d-75.5801814957362!3d6.255065886325888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e442904753e938d%3A0x64cc75e2ba76456a!2sRC%20DENTAL!5e0!3m2!1ses-419!2sco!4v1730175769720!5m2!1ses-419!2sco"
+                    title="Mapa de la sede RC Dental en Medellin"
+                    width="400"
+                    height="300" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"
+                    class="mb-3">
+                    </iframe>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Calle 49 b #64b-54 oficina 202 Ed. San Pablo</span>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Suramericana Medellín</span>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Tel: +57 3122376546</span>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Email: rcdentalmedellin@gmail.com</span>
+                </div>
+            </article>
+        
+            <!-- Contenedor Sede Manizales -->
+            <article>
+                <div>
+                    <h3 class="text-[24px] font-bold leading-[65px] text-colors-darkest text-center">Manizales</h3>
+                </div>
+                <div class="flex flex-col prose">
+                    <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3974.2972511638786!2d-75.48764842629846!3d5.055484438482449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e47657933e0cfdd%3A0x679d6c0968249385!2sParque%20M%C3%A9dico%20Manizales!5e0!3m2!1ses-419!2sco!4v1730175866436!5m2!1ses-419!2sco"
+                    title="Mapa de la sede RC Dental en Manizales"
+                    width="400"
+                    height="300"
+                    class="mb-3">
+                    </iframe>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Ed. Parque médico, consultorio 501</span>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Tel: +57 3218502134</span>
+                    <span class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">Email: jcrortodoncia@hotmail.com</span>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    
+    <div class="-z-10 mt-[-340px] w-full">
+        <Image src={ImageBottom} alt="Imagen decoracion pantalla inferior"/>
+    </div>
+</section>

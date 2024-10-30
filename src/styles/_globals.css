@@ -26,6 +26,7 @@
 
 html {
     background: var(--color-lightest);
+    /*font-size: 62.5%; /* Esto convierte 1rem en 10px */
 }
 
 body {
