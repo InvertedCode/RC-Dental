@@ -8,7 +8,7 @@ import ClockIcon from "./BannerIcons/ClockIcon.astro";
 ---
 
 <header class="fixed w-full z-50">
-    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-10" >
+    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-4" >
     <div class="flex items-center animate-scroll w-max gap-10">
         <p class="inline-flex items-center text-sm font-semibold gap-2">
             <PhoneIcon /> +57 312 2376546
@@ -22,18 +22,17 @@ import ClockIcon from "./BannerIcons/ClockIcon.astro";
     </div>
 </div>
     <div>
-        <nav class="flex justify-between bg-colors-dark text-colors-light p-10 h-[56px]">
+        <nav class="flex justify-between bg-colors-dark text-colors-light p-6 h-[56px]">
             <div class="flex items-center">
                 <a href="/" class="cursor-pointer">
-                    <Image src={Logo} alt="Logo" class="logo w-[103px] h-[36px] mr-2" loading="eager" />
-                    <!-- <img class="logo w-[103px] h-[36px] mr-2" src={Logo.src} alt="Logo" loading="lazy" /> -->
+                    <Image src={Logo} alt="Logo" class="logo w-[100px] h-[32px] mr-2" loading="eager" />
                 </a>
                 <a href="/" class="cursor-pointer text-colors-lightest">
                     <p>RC DENTAL CONSULTORIO ODONTOLÓGICO</p>
                 </a>
             </div>
 
-            <ul class="flex items-center pr-28 text-lg gap-20">
+            <ul class="flex items-center pr-28 text-base gap-20">
                 <li class="nav-item">
                     <a href="/about" class="cursor-pointer">Sobre Nosotros</a>
                 </li>
