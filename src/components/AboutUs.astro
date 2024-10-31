@@ -2,18 +2,14 @@
 import { Image } from "astro:assets";
 import ImageReception from "../../public/assets/Recepcion_rc.png";
 import ImageLeft from "../../public/assets/About_Left.svg"
-import ImageLeftMobile from "../../public/assets/Ellipse_izquierda_mobile.svg"
 import ImageRight from "../../public/assets/About_Right.svg"
 ---
 
-<section class="flex flex-col items-center justify-center gap-3 relative overflow-hidden">
+<section class="flex flex-col items-center justify-center gap-3 relative overflow-hidden h-[110vh]">
   <!-- Contenedor de titulo -->
   <div class="flex flex-col items-center justify-center">
     <h1
-      class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2"
-    >
-      Sobre nosotros
-    </h1>
+      class="text-[32px] font-bold leading-[65px] text-colors-darkest text-center mt-[120px]">Sobre nosotros</h1>
   </div>
 
   <div class="flex flex-row justify-between w-full">
@@ -24,18 +20,20 @@ import ImageRight from "../../public/assets/About_Right.svg"
     <!-- Contenedor texto e imagen recepcion -->
     <div class="flex flex-col gap-10 items-center w-1/2">
       <div class="prose">
-        <p
-          class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black"
-        >
+        <p class="text-[18px] text-pretty font-normal leading-[28px] text-colors-almost-black">
           Con más de 12 años de trayectoria, en Rc Dental nos dedicamos
           apasionadamente al cuidado integral de la salud bucal. Especializados en
           ortodoncia y odontología general, hemos establecido un sólido compromiso
-          con la excelencia y la atención personalizada.</p>
-        <p class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">En Rc dental, nos enorgullece crear sonrisas radiantes y funcionales que
-            no solo transforman la estética, sino que también mejoran la calidad de
-            vida. Confía en nosotros para cuidar de tu sonrisa con dedicación,
-            experiencia y un compromiso inquebrantable con tu bienestar dental.</p>
+          con la excelencia y la atención personalizada.
+        </p>
+        <p class="text-[18px] text-pretty font-normal leading-[32px] text-colors-almost-black">
+          En Rc dental, nos enorgullece crear sonrisas radiantes y funcionales que
+          no solo transforman la estética, sino que también mejoran la calidad de
+          vida. Confía en nosotros para cuidar de tu sonrisa con dedicación,
+          experiencia y un compromiso inquebrantable con tu bienestar dental.
+        </p>
       </div>
+
       <!-- Contenedor de la imagen de la recepción -->
       <div class="w-[500px] h-auto mb-10">
         <Image src={ImageReception} alt="Recepcion" class="rounded-2xl" />
@@ -47,55 +45,4 @@ import ImageRight from "../../public/assets/About_Right.svg"
       <Image src={ImageRight} alt="circulo de la derecha"/>
     </div>
   </div>
-  
-
-  <!-- <div class="flex flex-row">
-    <Image src={ImageLeft} alt="circulo de la izquierda" class="hidden sm:block" />
-    <Image src={ImageLeftMobile} alt="circulo de la izquierda en móvil" class="block sm:hidden" />
-  </div> -->
-  
 </section>
-
-
-<!-- Elipse grande izquierda -->
-  <!--<div
-    class="absolute top-[253px] left-[-165px] w-[414px] h-[414px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-  >
-  </div> -->
-
-  <!-- Elipses pequeñas izquierda -->
-  <!--<div
-    class="absolute top-[670px] left-[79px] w-[29px] h-[29px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-  >
-  </div>
-  <div
-    class="absolute top-[670px] left-[30px] w-[32px] h-[32px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-  >
-  </div>
-  <div
-    class="absolute top-[700px] left-[60px] w-[23px] h-[23px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-  >
-  </div> -->
-
-  <!-- Elipse grande derecha -->
-  <!--<div
-    class="absolute bottom-[-190px] right-[-112px] w-[414px] h-[414px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-  >
-  </div>
-  <div class="absolute top-[530px] right-[50px]"> -->
-    <!-- Elipses pequeñas derecha -->
-    <!--<div class="relative">
-      <div
-        class="absolute left-[-30px] top-[-5px] w-[29px] h-[29px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-      >
-      </div>
-      <div
-        class="w-[32px] h-[32px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-      >
-      </div>
-      <div
-        class="absolute top-[-25px] right-[15px] w-[23px] h-[23px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"
-      >
-      </div>
-    </div>
-  </div> -->
