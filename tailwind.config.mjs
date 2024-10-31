@@ -25,26 +25,22 @@ export default {
 					'0%': { transform: 'translateX(100%)' },
 					'100%': { transform: 'translateX(-200%)' },
 				},
+				carouselScroll: {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-100%)' },
+				},
 			},
 			animation: {
 				scroll: 'scroll 50s linear infinite',
+				carouselScroll: 'carouselScroll 130s linear infinite',
 			},
+			transitionProperty: {
+				'transform-opacity': 'transform, opacity',
+			},
+			transitionTimingFunction: {
+				'in-out-ease': 'ease-in-out',
+				},
 		},
 	},
 	plugins: [typography],
 }
-
-// module.exports = {
-// 	theme: {
-// 	  screens: {
-// 		'tablet': '640px',
-// 		// => @media (min-width: 640px) { ... }
-  
-// 		'laptop': '1024px',
-// 		// => @media (min-width: 1024px) { ... }
-  
-// 		'desktop': '1280px',
-// 		// => @media (min-width: 1280px) { ... }
-// 	  },
-// 	}
-//   }
