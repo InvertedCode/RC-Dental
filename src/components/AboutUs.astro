@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import ImageReception from "../../public/assets/recepcion_rc.png";
+import ImageReception from "../../public/assets/Recepcion_rc.png";
 import ImageLeft from "../../public/assets/About_Left.svg"
 import ImageLeftMobile from "../../public/assets/Ellipse_izquierda_mobile.svg"
 import ImageRight from "../../public/assets/About_Right.svg"
@@ -18,7 +18,7 @@ import ImageRight from "../../public/assets/About_Right.svg"
 
   <div class="flex flex-row justify-between w-full">
     <!-- Contenedor elipse centro izquierda -->
-    <div class="flex items-center justify-start">
+    <div class="flex items-center justify-start w-[200px] h-auto">
       <Image src={ImageLeft} alt="circulo de la izquierda" class="hidden sm:block" />
     </div>
     <!-- Contenedor texto e imagen recepcion -->
@@ -43,7 +43,7 @@ import ImageRight from "../../public/assets/About_Right.svg"
     </div>
 
     <!-- Contenedor elipse inferior derecha -->
-    <div class="flex items-end">
+    <div class="flex items-end w-[200px] h-auto">
       <Image src={ImageRight} alt="circulo de la derecha"/>
     </div>
   </div>
