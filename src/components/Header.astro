@@ -7,8 +7,8 @@ import LocationIcon from "./BannerIcons/LocationIcon.astro";
 import ClockIcon from "./BannerIcons/ClockIcon.astro";
 ---
 
-<header class="w-full z-50">
-    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-10" >
+<header class="fixed w-full z-50">
+    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-4" >
     <div class="flex items-center animate-scroll w-max gap-10">
         <p class="inline-flex items-center text-xs font-semibold gap-2">
             <PhoneIcon /> +57 312 2376546
@@ -25,8 +25,7 @@ import ClockIcon from "./BannerIcons/ClockIcon.astro";
         <nav class="flex justify-between bg-colors-dark text-colors-light p-6 h-[56px]">
             <div class="flex items-center">
                 <a href="/" class="cursor-pointer">
-                    <Image src={Logo} alt="Logo" class="logo w-[103px] h-[36px] mr-2" loading="eager" />
-                    <!-- <img class="logo w-[103px] h-[36px] mr-2" src={Logo.src} alt="Logo" loading="lazy" /> -->
+                    <Image src={Logo} alt="Logo" class="logo w-[100px] h-[32px] mr-2" loading="eager" />
                 </a>
                 <a href="/" class="cursor-pointer text-colors-lightest">
                     <p class="text-sm">RC DENTAL CONSULTORIO ODONTOLÓGICO</p>
