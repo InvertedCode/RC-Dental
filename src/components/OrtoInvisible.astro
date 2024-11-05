@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import ImageOrtoInvisible from "../../public/assets/OrtoInvisibleImg.png"
+import ButtonBack from "./Buttons/ButtonBack.astro";
+import ButtonNext from "./Buttons/ButtonNext.astro";
+import ButtonBackServices from "./Buttons/ButtonService.astro";
+import ButtonVideo from "./Buttons/ButtonVideo.astro";
+---
+
+<section class="flex flex-col">
+
+    <!-- Contenedor título y botones -->
+    <div class="flex justify-between p-3 mt-[90px]">
+        <ButtonBack />
+        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Ortodoncia Invisible</h1>
+        <ButtonNext />
+    </div>
+
+    <!-- Contenedor texto e imagen -->
+    <div class="flex justify-between items-center overflow-hidden">
+
+        <!-- Contenedor descripcion servicio -->
+        <div class="prose pl-7">
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Corrección Dental Discreta:</h3>
+                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">La ortodoncia invisible utiliza alineadores transparentes y removibles para alinear los dientes de manera efectiva sin afectar la apariencia de tu sonrisa.</p>
+            </article>
+        
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Diseño Personalizado y Comodidad:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Cada alineador se ajusta a medida y se cambia regularmente para mover gradualmente los dientes a su posición ideal.</p>
+            </article>
+    
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Ventajas Clave:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Los alineadores permiten una mayor higiene dental al poder retirarse para comer y cepillarse, siendo una alternativa estética y cómoda a los brackets.</p>
+            </article>
+    
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Ideal para Adultos y Adolescentes:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Perfecto para quienes buscan una solución moderna y discreta para lograr una sonrisa alineada y saludable.</p>
+            </article>
+    
+            <div class="flex justify-end">
+                <ButtonVideo />
+            </div>
+            <div class="h-[50px] w-auto ml-[10px]">
+                <ButtonBackServices />
+            </div>
+        </div>
+    
+        <!-- Contenedor imagen de ortodoncia invisible -->
+        <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-70px]">
+            <Image src={ImageOrtoInvisible} alt="Ilustración de Ortodoncia Invisible" />
+        </div>
+
+    </div>
+
+    <!-- SVG en la parte inferior (decorativo) -->
+    <div class="flex justify-end mt-[-200px] -z-10 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="281" viewBox="0 0 1440 281" fill="none">
+            <path d="M1468.5 172.5C1468.5 335.5 1468.5 335.5 854 335.5C140.5 335.5 -8.87416 388.888 -30.9998 245C-108.5 -259 424.914 172.5 832.5 172.5C1240.09 172.5 1468.5 30.5628 1468.5 172.5Z" fill="#D7F0ED"/>
+            </svg>
+    </div>
+
+</section>
