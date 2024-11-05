@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import ImageRehabOral from "../../public/assets/RehabilitacionOralImg.png"
+import ButtonBack from "./Buttons/ButtonBack.astro";
+import ButtonNext from "./Buttons/ButtonNext.astro";
+import ButtonBackServices from "./Buttons/ButtonService.astro";
+import ButtonVideo from "./Buttons/ButtonVideo.astro";
+---
+
+<section class="flex flex-col">
+
+    <!-- Contenedor título y botones -->
+    <div class="flex justify-between p-3 mt-[90px]">
+        <ButtonBack />
+        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Rehabilitación Oral</h1>
+        <ButtonNext />
+    </div>
+
+    <!-- Contenedor texto e imagen -->
+    <div class="flex justify-between items-center overflow-hidden">
+
+        <!-- Contenedor descripcion servicio -->
+        <div class="prose pl-7">
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Función y Estética Restauradas:</h3>
+                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">La rehabilitación oral restaura la función y la estética dental mediante la reconstrucción de dientes dañados o perdidos con implantes, coronas, puentes, prótesis y carillas.</p>
+            </article>
+        
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Tratamientos Personalizados:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Ofrecemos planes a medida, combinando técnicas avanzadas y materiales de alta calidad para asegurar resultados duraderos y naturales.</p>
+            </article>
+    
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Recupera tu Sonrisa y Confianza:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Nuestro objetivo es devolver la funcionalidad y la confianza a tu sonrisa con soluciones integrales adaptadas a tus necesidades.</p>
+            </article>
+    
+            <div class="flex justify-end">
+                <ButtonVideo />
+            </div>
+            <div class="h-[50px] w-auto ml-[10px]">
+                <ButtonBackServices />
+            </div>
+        </div>
+    
+        <!-- Contenedor imagen de ortodoncia invisible -->
+        <div class="rounded-full overflow-hidden w-[400px] h-[400px] relative right-[-70px]">
+            <Image src={ImageRehabOral} alt="Ilustración del Servicio de Rehabilitación Oral" />
+        </div>
+
+    </div>
+
+
+    <!-- SVG en la parte inferior (decorativo) -->
+     <div class="flex justify-end mt-[-640px] -z-10 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="865" viewBox="0 0 1180 865" fill="none">
+            <path d="M1223.38 544.406C1234.88 855.091 1234.88 851.068 898.938 881.441C-4.1385 963.089 -280.357 770.513 317.039 646.409C914.436 522.306 666.978 310.224 999.921 70.5173C1332.86 -169.19 1212.7 255.834 1223.38 544.406Z" fill="#D7F0ED"/>
+            </svg>
+     </div>
+
+</section>
