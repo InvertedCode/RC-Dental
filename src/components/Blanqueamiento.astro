@@ -6,3 +6,61 @@ import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
 ---
+
+<section class="flex flex-col relative min-h-screen overflow-hidden">
+
+    <!-- Elipse grande centrada -->
+    <div class="absolute w-[950px] h-[950px] rounded-full bg-gradient-to-b from-colors-lightest via-colors-lighter to-colors-light right-[-300px] top-1/2 -translate-y-1/2 -z-10"></div>
+
+
+    <!-- Contenedor título y botones -->
+    <div class="flex justify-between p-3 mt-[90px] relative z-10">
+        <ButtonBack />
+        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Blanqueamiento</h1>
+        <ButtonNext />
+    </div>
+
+    <!-- Contenedor texto e imagen -->
+    <div class="flex justify-between items-center overflow-hidden relative z-10">
+
+        <!-- Contenedor descripcion servicio -->
+        <div class="prose pl-7">
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Blanqueamiento Dental:</h3>
+                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">El blanqueamiento dental aclara el color de los dientes, eliminando manchas y decoloraciones, ya sea en consultorio o en casa bajo supervisión profesional.</p>
+            </article>
+        
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Opciones Seguras y Efectivas:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Ofrecemos tratamientos personalizados utilizando geles blanqueadores con peróxido de hidrógeno o carbamida, que eliminan las manchas al penetrar el esmalte.</p>
+            </article>
+    
+            <article>
+                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Resultados Visibles y Seguros:</h3>
+                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Obtén una sonrisa más brillante y rejuvenecida de forma segura y controlada, mejorando tu confianza y estética dental.</p>
+            </article>
+        </div>
+
+        <!-- Contenedor decoracion e imagen -->
+        <div class="relative w-1/2 flex justify-end z-10">
+            <!-- Contenedor imagen de implantes -->
+            <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-40px]">
+                <Image src={ImageBlanqueamiento} alt="Ilustración del Servicio de Blanqueamiento" />
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="flex justify-center relative z-10">
+        <ButtonVideo />
+    </div>
+    <div class="h-[50px] w-auto ml-[50px] relative z-10">
+        <ButtonBackServices />
+    </div>
+
+    <!-- Elipse en la parte inferior (decorativo) -->
+    <div class="flex justify-start mt-[-120px] ml-[-50px] -z-10 w-full">
+        <div class="w-[150px] h-[150px] rounded-full bg-gradient-to-b from-colors-lightest via-colors-lighter to-colors-light"></div>
+    </div>
+
+</section>
