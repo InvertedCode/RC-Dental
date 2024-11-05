@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
-import ImageEndodoncia from "../../public/assets/EndodonciaImg.png"
+import ImageOdontologia from "../../public/assets/OdontoGeneralImg.png"
+import ImageOdontologia2 from "../../public/assets/OdontoGeneralImg_2.png"
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
@@ -12,7 +13,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
     <!-- Contenedor título y botones -->
     <div class="flex justify-between p-3 mt-[90px]">
         <ButtonBack />
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Endodoncia</h1>
+        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Odontología General</h1>
         <ButtonNext />
     </div>
 
@@ -42,9 +43,14 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
             </article>
         </div>
     
-        <!-- Contenedor imagen de implantes -->
-        <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-40px]">
-            <Image src={ImageEndodoncia} alt="Ilustración del Servicio de Endodoncia" />
+        <!-- Contenedor imagenes de Odontología General -->
+        <div>
+            <div class="rounded-full overflow-hidden w-[360px] h-[360px] relative right-[-40px] -z-1">
+                <Image src={ImageOdontologia} alt="Ilustración del Servicio de Odontología general" />
+            </div>
+            <div class="rounded-full overflow-hidden w-[360px] h-[360px] relative right-[-40px] top-[-80px]">
+                <Image src={ImageOdontologia2} alt="Ilustración del Servicio de Odontología general" />
+            </div>
         </div>
 
     </div>
@@ -57,9 +63,9 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
     </div>
 
     <!-- SVG en la parte inferior (decorativo) -->
-    <div class="flex justify-end mt-[-340px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="345" viewBox="0 0 1440 345" fill="none">
-            <path d="M1494 320.5C1494 409 1494 409 745 409C320.569 409 -43 424.605 -43 320.5C-43 131.5 278 72 713 200.5C1161 32.4998 1494 -200 1494 320.5Z" fill="#D7F0ED"/>
+    <div class="flex justify-end mt-[-900px] -z-10 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="905" viewBox="0 0 1440 905" fill="none">
+            <path d="M1499 503.5C1499 952 1499 954.5 1267 954.5C-22.0007 954.5 -689 890 216.499 770.5C1122 651 1142 51.9999 1391.5 1.99992C1484 -16.5371 1499 221.282 1499 503.5Z" fill="#D7F0ED"/>
             </svg>
     </div>
 
