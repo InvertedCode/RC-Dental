@@ -17,61 +17,59 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
     referrerpolicy="no-referrer"
 />
 
-<section class="fixed w-full z-50">
-    <header>
-        <nav class="flex flex-col bg-white">
-            <!-- Top Bar with Contact Info -->
-            <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-4">
-                <div class="flex items-center animate-scroll w-max gap-10">
-                    <p class="inline-flex items-center text-sm font-semibold gap-2">
-                        <PhoneIcon /> +57 312 2376546
-                    </p>
-                    <p class="inline-flex items-center text-sm font-semibold gap-2">
-                        <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
-                    </p>
-                    <p class="inline-flex items-center text-sm font-semibold gap-2">
-                        <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 1pm
-                    </p>
-                </div>
+<header class="fixed w-full z-50">
+    <nav class="flex flex-col">
+        <!-- Top Bar with Contact Info -->
+        <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-4">
+            <div class="flex items-center animate-scroll md:animate-scrollMobile w-max gap-10 whitespace-nowrap">
+                <p class="flex items-center text-xs md:text-base font-semibold gap-2">
+                    <PhoneIcon /> +57 312 2376546
+                </p>
+                <p class="inline-flex items-center text-xs md:text-base font-semibold gap-2">
+                    <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
+                </p>
+                <p class="inline-flex items-center text-xs md:text-base font-semibold gap-2">
+                    <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 1pm
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <div class="flex items-center justify-between bg-colors-dark text-colors-light p-4">
+            <!-- Logo and Title -->
+            <div class="flex items-center gap-2">
+                <a href="/" class="cursor-pointer">
+                    <Image src={Logo} alt="Logo" class="w-24 h-8 md:w-24 md:" loading="eager" />
+                </a>
+                <a href="/" class="cursor-pointer font-semibold text-sm md:text-base">
+                    RC DENTAL CONSULTORIO ODONTOLÓGICO
+                </a>
             </div>
 
-            <!-- Main Navigation -->
-            <div class="flex items-center justify-between bg-colors-dark text-colors-light p-4">
-                <!-- Logo and Title -->
-                <div class="flex items-center gap-2">
-                    <a href="/" class="cursor-pointer">
-                        <Image src={Logo} alt="Logo" class="w-24 h-8" loading="eager" />
-                    </a>
-                    <a href="/" class="cursor-pointer font-semibold">
-                        RC DENTAL CONSULTORIO ODONTOLÓGICO
-                    </a>
-                </div>
+            <!-- Hamburger Icon for Mobile -->
+            <button class="block md:hidden" id="hamburger_button">
+                <Image src={Hamburger} alt="Menu" class="w-8 h-8" id="hamburger" loading="eager" />
+                <Image src={Cross} alt="Close" class="w-8 h-8 hidden" id="cross" loading="eager" />
+            </button>
 
-                <!-- Hamburger Icon for Mobile -->
-                <button class="block md:hidden" id="hamburger_button">
-                    <Image src={Hamburger} alt="Menu" class="w-8 h-8" id="hamburger" loading="eager" />
-                    <Image src={Cross} alt="Close" class="w-8 h-8 hidden" id="cross" loading="eager" />
-                </button>
+            <!-- Links for Desktop and Mobile -->
+            <ul class="hidden md:flex items-center gap-8 text-base font-semibold pr-28" id="links-container">
+                <li><a href="/about" class="hover:text-colors-lighter">Sobre Nosotros</a></li>
+                <li><a href="/services" class="hover:text-colors-lighter">Servicios</a></li>
+                <li><a href="/testimonials" class="hover:text-colors-lighter">Testimonios</a></li>
+                <li><a href="/contact" class="hover:text-colors-lighter">Contactos</a></li>
+            </ul>
+        </div>
 
-                <!-- Links for Desktop and Mobile -->
-                <ul class="hidden md:flex items-center gap-8 text-base font-semibold pr-28" id="links-container">
-                    <li><a href="/about" class="hover:text-colors-lighter">Sobre Nosotros</a></li>
-                    <li><a href="/services" class="hover:text-colors-lighter">Servicios</a></li>
-                    <li><a href="/testimonials" class="hover:text-colors-lighter">Testimonios</a></li>
-                    <li><a href="/contact" class="hover:text-colors-lighter">Contactos</a></li>
-                </ul>
-            </div>
-
-            <!-- Links for Mobile View (Hidden initially) -->
-            <div class="flex flex-col items-center bg-colors-dark text-white md:hidden opacity-0 transition-opacity duration-500" id="mobile-menu">
-                <a href="/about" class="py-2">Sobre Nosotros</a>
-                <a href="/services" class="py-2">Servicios</a>
-                <a href="/testimonials" class="py-2">Testimonios</a>
-                <a href="/contact" class="py-2">Contactos</a>
-            </div>
-        </nav>
-    </header>
-</section>
+        <!-- Links for Mobile View (Hidden initially) -->
+        <div class="flex flex-col items-center bg-colors-dark text-white md:hidden opacity-0 transition-opacity duration-500" id="mobile-menu">
+            <a href="/about" class="py-2">Sobre Nosotros</a>
+            <a href="/services" class="py-2">Servicios</a>
+            <a href="/testimonials" class="py-2">Testimonios</a>
+            <a href="/contact" class="py-2">Contactos</a>
+        </div>
+    </nav>
+</header>
 
 <script>
     function initializeMenu() {

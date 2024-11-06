@@ -49,12 +49,17 @@ export default {
                         transform: 'translateX(-100%)',
                     }
                 },
+                scrollMobile: {
+                    '0%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
             },
             animation: {
                 scroll: 'scroll 50s linear infinite',
                 carouselScroll: 'carouselScroll 130s linear infinite',
                 fadeInLeft: 'fadeInLeft 0.5s forwards',
                 fadeOutLeft: 'fadeOutLeft 0.5s forwards',
+                scrollMobile: 'scrollMobile 20s linear infinite',
             },
             transitionProperty: {
                 'transform-opacity': 'transform, opacity',
