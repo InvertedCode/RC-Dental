@@ -10,57 +10,64 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 <section class="flex flex-col">
 
     <!-- Contenedor título y botones -->
-    <div class="flex justify-between p-3 mt-[90px]">
+    <div class="flex justify-between pr-10 pl-10 mt-[110px]">
         <ButtonBack pathBack="http://localhost:4321/ortodoncia"/>
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Ortodoncia Invisible</h1>
+        <h1 class="text-3xl font-bold text-colors-darkest text-center mt-2 mb-5">Ortodoncia Invisible</h1>
         <ButtonNext pathNext="http://localhost:4321/rehaboral"/>
     </div>
 
     <!-- Contenedor texto e imagen -->
-    <div class="flex justify-between items-center overflow-hidden">
+    <div class="relative flex justify-between content-center overflow-hidden">
 
-        <!-- Contenedor descripcion servicio -->
-        <div class="prose pl-7">
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Corrección Dental Discreta:</h3>
-                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">La ortodoncia invisible utiliza alineadores transparentes y removibles para alinear los dientes de manera efectiva sin afectar la apariencia de tu sonrisa.</p>
-            </article>
+        <!-- SVG en la parte inferior (decorativo) -->
+        <div class="absolute inset-0 flex items-end -z-10 w-full">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="281" viewBox="0 0 1440 281" fill="none">
+                <path d="M1468.5 172.5C1468.5 335.5 1468.5 335.5 854 335.5C140.5 335.5 -8.87416 388.888 -30.9998 245C-108.5 -259 424.914 172.5 832.5 172.5C1240.09 172.5 1468.5 30.5628 1468.5 172.5Z" fill="#D7F0ED"/>
+                </svg>
+                
+        </div>
+
+        <div>
+            <!-- Contenedor descripcion servicio -->
+            <div class="prose pl-24">
+                <article>
+                    <h3 class="text-[18px] font-bold m-0 text-colors-darkest">Tu Sonrisa Perfecta:</h3>
+                    <p class="text-[14px] text-pretty m-0 font-normal text-colors-almost-black mb-4">Corregimos irregularidades dentales y faciales, mejorando la estética y salud bucal mediante brackets y alineadores transparentes.</p>
+                </article>
+            
+                <article>
+                    <h3 class="text-[18px] font-bold m-0 text-colors-darkest">Beneficios Clave:</h3>
+                    <p class="text-[14px] text-pretty font-normal text-colors-almost-black mb-4">Una sonrisa alineada facilita la higiene dental, previene caries, mejora la mordida y reduce el desgaste dental.</p>
+                </article>
         
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Diseño Personalizado y Comodidad:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Cada alineador se ajusta a medida y se cambia regularmente para mover gradualmente los dientes a su posición ideal.</p>
-            </article>
+                <article>
+                    <h3 class="text-[18px] font-bold m-0 text-colors-darkest">Tratamientos a Medida:</h3>
+                    <p class="text-[14px] text-pretty font-normal text-colors-almost-black mb-4">Ofrecemos opciones como brackets tradicionales, cerámicos, linguales, y alineadores como Invisalign, con tecnología avanzada y resultados duraderos.</p>
+                </article>
+        
+                <article>
+                    <h3 class="text-[18px] font-bold m-0 text-colors-darkest">Transforma tu Sonrisa:</h3>
+                    <p class="text-[14px] text-pretty font-normal text-colors-almost-black">Conoce nuestros tratamientos de ortodoncia y empieza hoy el camino hacia una sonrisa saludable y atractiva.</p>
+                </article>
     
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Ventajas Clave:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Los alineadores permiten una mayor higiene dental al poder retirarse para comer y cepillarse, siendo una alternativa estética y cómoda a los brackets.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Ideal para Adultos y Adolescentes:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Perfecto para quienes buscan una solución moderna y discreta para lograr una sonrisa alineada y saludable.</p>
-            </article>
-    
-            <div class="flex justify-end">
-                <ButtonVideo />
             </div>
-            <div class="h-[50px] w-auto ml-[10px]">
+
+            <!-- Contenedor boton de regreso a Servicios -->
+            <div class="h-[50px] w-auto ml-[30px]">
                 <ButtonBackServices />
             </div>
         </div>
-    
-        <!-- Contenedor imagen de ortodoncia invisible -->
-        <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-70px]">
-            <Image src={ImageOrtoInvisible} alt="Ilustración de Ortodoncia Invisible" />
+        
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex justify-center items-end mb-[70px]">
+            <ButtonVideo />
         </div>
 
-    </div>
-
-    <!-- SVG en la parte inferior (decorativo) -->
-    <div class="flex justify-end mt-[-200px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="281" viewBox="0 0 1440 281" fill="none">
-            <path d="M1468.5 172.5C1468.5 335.5 1468.5 335.5 854 335.5C140.5 335.5 -8.87416 388.888 -30.9998 245C-108.5 -259 424.914 172.5 832.5 172.5C1240.09 172.5 1468.5 30.5628 1468.5 172.5Z" fill="#D7F0ED"/>
-            </svg>
+        <!-- Contenedor imagen de ortodoncia -->
+        <div class="rounded-full overflow-hidden w-[400px] h-[400px] relative right-[-50px]">
+            <Image src={ImageOrtoInvisible} alt="Ilustración del servicio Ortodoncia invisible" />
+        </div>
+        
     </div>
 
 </section>
