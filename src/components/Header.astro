@@ -17,31 +17,31 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
     referrerpolicy="no-referrer"
 />
 
-<header class="fixed w-full z-50">
-    <nav class="flex flex-col">
+<header class="fixed w-full h-[10vh] z-50">
+    <nav class="flex flex-col h-[100%]">
         <!-- Top Bar with Contact Info -->
-        <div class="flex justify-end bg-colors-medium text-colors-lightest items-center py-1 px-4">
+        <div class="flex justify-end bg-colors-medium text-colors-lightest items-center h-[40%]">
             <div class="flex items-center animate-scroll md:animate-scrollMobile w-max gap-10 whitespace-nowrap">
-                <p class="flex items-center text-xs md:text-base font-semibold gap-2">
+                <p class="flex items-center text-sm font-semibold gap-2">
                     <PhoneIcon /> +57 312 2376546
                 </p>
-                <p class="inline-flex items-center text-xs md:text-base font-semibold gap-2">
+                <p class="inline-flex items-center text-sm font-semibold gap-2">
                     <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
                 </p>
-                <p class="inline-flex items-center text-xs md:text-base font-semibold gap-2">
+                <p class="inline-flex items-center text-sm font-semibold gap-2">
                     <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 1pm
                 </p>
             </div>
         </div>
 
         <!-- Main Navigation -->
-        <div class="flex items-center justify-between bg-colors-dark text-colors-light p-4">
+        <div class="flex justify-between bg-colors-dark text-colors-light h-[60%] px-3">
             <!-- Logo and Title -->
             <div class="flex items-center gap-2">
                 <a href="/" class="cursor-pointer">
-                    <Image src={Logo} alt="Logo" class="w-24 h-8 md:w-24 md:" loading="eager" />
+                    <Image src={Logo} alt="Logo" class="w-24 h-8 md:w-24" loading="eager" />
                 </a>
-                <a href="/" class="cursor-pointer font-semibold text-sm md:text-base">
+                <a href="/" class="cursor-pointer font-semibold text-sm">
                     RC DENTAL CONSULTORIO ODONTOLÓGICO
                 </a>
             </div>
@@ -53,7 +53,7 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
             </button>
 
             <!-- Links for Desktop and Mobile -->
-            <ul class="hidden md:flex items-center gap-8 text-base font-semibold pr-28" id="links-container">
+            <ul class="hidden md:flex items-center gap-8 text-base font-semibold" id="links-container">
                 <li><a href="/about" class="hover:text-colors-lighter">Sobre Nosotros</a></li>
                 <li><a href="/services" class="hover:text-colors-lighter">Servicios</a></li>
                 <li><a href="/testimonials" class="hover:text-colors-lighter">Testimonios</a></li>
