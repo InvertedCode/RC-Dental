@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import ImageOrtoInvisible from "../../public/assets/OrtoInvisibleImg.png";
+import ButtonBack from "./Buttons/ButtonBack.astro";
+import ButtonNext from "./Buttons/ButtonNext.astro";
+import ButtonBackServices from "./Buttons/ButtonService.astro";
+import ButtonVideo from "./Buttons/ButtonVideo.astro";
+---
+
+<section class="w-full h-[88vh] flex flex-col">
+  <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
+    <!-- Contenedor título y botones 10% -->
+    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
+      <ButtonBack pathBack="http://localhost:4321/ortodoncia" />
+      <h1 class="text-3xl font-bold text-colors-darkest text-center">
+        Ortodoncia Invisible
+      </h1>
+      <ButtonNext pathNext="http://localhost:4321/rehaboral" />
+    </div>
+
+    <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
+    <div class="flex flex-col h-[90%]">
+      <!-- Contenedor texto, botones e imagen de servicio -->
+      <div class="flex justify-between items-center">
+        <!-- Contenedor descripcion servicio -->
+        <div class="prose flex flex-col justify-between gap-3 pl-14">
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Corrección Dental Discreta:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              La ortodoncia invisible utiliza alineadores transparentes y
+              removibles para alinear los dientes de manera efectiva sin afectar
+              la apariencia de tu sonrisa.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Diseño Personalizado y Comodidad:
+            </h3>
+            <p
+              class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
+            >
+              Cada alineador se ajusta a medida y se cambia regularmente para
+              mover gradualmente los dientes a su posición ideal.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Ventajas Clave:
+            </h3>
+            <p
+              class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
+            >
+              Los alineadores permiten una mayor higiene dental al poder
+              retirarse para comer y cepillarse, siendo una alternativa estética
+              y cómoda a los brackets.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Ideal para Adultos y Adolescentes:
+            </h3>
+            <p class="text-sm text-pretty font-normal text-colors-almost-black">
+              Perfecto para quienes buscan una solución moderna y discreta para
+              lograr una sonrisa alineada y saludable.
+            </p>
+          </article>
+
+          <div>
+            <ButtonBackServices />
+          </div>
+        </div>
+
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex h-[40%] items-end">
+          <ButtonVideo />
+        </div>
+
+        <!-- Contenedor imagen de ortodoncia invisible -->
+        <div class="relative overflow-hidden">
+          <Image
+            src={ImageOrtoInvisible}
+            alt="Ilustración del servicio Ortodoncia invisible"
+            class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
+          />
+        </div>
+      </div>
+
+      <!-- SVG en la parte inferior (decorativo) -->
+      <div class="flex items-end -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2560"
+          height="345"
+          viewBox="0 0 1440 345"
+          fill="none"
+          class="absolute bottom-[-2vh] right-0"
+        >
+          <path
+            d="M2560 172.144C2560 335.303 2560 335.303 852.848 335.303C171.103 335.303 28.3773 388.743 7.23637 244.715C-66.8146 -259.779 442.859 172.143 832.305 172.143C1221.75 172.143 2560 30.0673 2560 172.144Z"
+            fill="#D7F0ED"></path>
+        </svg>
+      </div>
+    </div>
+  </article>
+</section>

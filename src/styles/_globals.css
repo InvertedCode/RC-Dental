@@ -32,6 +32,39 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+/* Personalizar la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 14px; /* Ancho de la barra de desplazamiento */
+    background: var(--color-medium);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-black); /* Color de fondo de la pista de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-medium-dark); /* Color del pulgar de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-lighter); /* Color del pulgar de la barra de desplazamiento al pasar el cursor */
+}
+
+/* Personalizar las flechas de desplazamiento */
+::-webkit-scrollbar-button {
+    background: var(--color-medium-dark); /* Color de las flechas de desplazamiento */
+    height: 16px; /* Altura de las flechas */
+    width: 16px; /* Ancho de las flechas */
+}
+
+::-webkit-scrollbar-button:vertical:decrement {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--color-lightest)"><path d="M7 14l5-5 5 5z"/></svg>') no-repeat center center;
+}
+
+::-webkit-scrollbar-button:vertical:increment {
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--color-lightest)"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat center center;
+}
+
 /* Configuración de Tailwind CSS */
 @tailwind base;
 @tailwind components;

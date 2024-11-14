@@ -19,8 +19,55 @@ export default {
 					'almost-black': 'var(--color-almost-black)',
 					'black': 'var(--color-black)',
 				},
-			}
-		},
-	},
-	plugins: [typography],
+			},
+			keyframes: {
+                scroll: {
+                    '0%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(-200%)' },
+                },
+                carouselScroll: {
+                    '0%': { transform: 'translateX(0)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+                fadeInLeft: {
+                    from: {
+                        opacity: 0,
+                        transform: 'translateX(-100%)',
+                    },
+                    to: {
+                        opacity: 1,
+                        transform: 'translateX(0)',	
+                    }
+                },
+                fadeOutLeft: {
+                    from: {
+                        opacity: 1,
+                        transform: 'translateX(0)',
+                    },
+                    to: {
+                        opacity: 0,
+                        transform: 'translateX(-100%)',
+                    }
+                },
+                scrollMobile: {
+                    '0%': { transform: 'translateX(100%)' },
+                    '100%': { transform: 'translateX(-100%)' },
+                },
+            },
+            animation: {
+                scroll: 'scroll 50s linear infinite',
+                carouselScroll: 'carouselScroll 130s linear infinite',
+                fadeInLeft: 'fadeInLeft 0.5s forwards',
+                fadeOutLeft: 'fadeOutLeft 0.5s forwards',
+                scrollMobile: 'scrollMobile 20s linear infinite',
+            },
+            transitionProperty: {
+                'transform-opacity': 'transform, opacity',
+            },
+            transitionTimingFunction: {
+                'in-out-ease': 'ease-in-out',
+            },
+        },
+    },
+    plugins: [typography],
 }
