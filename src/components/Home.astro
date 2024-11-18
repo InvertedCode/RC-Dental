@@ -7,13 +7,13 @@ import ImageSede from "../../public/assets/logo_sedes.png";
 ---
 
 <section class="w-full h-screen flex flex-col items-center">
-    <div class="container-description flex flex-col transform translate-y-1/2 translate-x-[-60%]">
-		<h1 class="title text-colors-black font-bold text-5xl leading-tight w-[500px] mb-20">
+    <div class="container-description flex flex-col transform translate-y-[40%] translate-x-[-6%]">
+		<h1 class="title text-colors-black font-bold text-5xl leading-tight w-[50%] mb-20">
 			Una Excelente <span class="text-colors-dark">Experiencia</span> Odontológica
 		</h1>
-		
+
 		<!-- Contenedor del slogan -->
-		<div class="container-slogan text-[16px] text-colors-black font-bold w-[50%] text-center ml-10">
+		<div class="container-slogan text-[16px] text-colors-black font-bold w-[25%] ml-10">
 			<p class="text-slogan">La sonrisa de tus sueños está a un clic de distancia</p>
 			<div class="container-arrow flex justify-center mt-3">
 				<ArrowDown />
@@ -21,13 +21,13 @@ import ImageSede from "../../public/assets/logo_sedes.png";
 		</div>
 
 		<!-- Contenedor del botón de reserva -->
-		<div class="container-reserve mt-4 ml-[9%]">
+		<div class="container-reserve mt-[3%] ml-[4%]">
 			<ButtonReserve class="button-reserve w-[60%] h-12"/>
 		</div>
 	</div>
 
 	<!-- Contenedor de la elipse degradada -->
-	<div class="container-ellipse mt-[-12%] ml-[58%]">
+	<div class="container-ellipse mt-[-18%] ml-[58%]">
 		<div class="w-[420px] h-[420px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"></div>
 	</div>
 
@@ -54,8 +54,8 @@ import ImageSede from "../../public/assets/logo_sedes.png";
 		</svg>
 	</div>
 
-	<div class="container-ellipse-mobile justify-center mt-[-20%] -z-10 w-full flex sm:hidden">
-		<svg xmlns="http://www.w3.org/2000/svg" width="383" height="282" viewBox="0 0 383 282" fill="none">
+	<div class="container-ellipse-mobile -z-10 w-full flex sm:hidden">
+		<svg xmlns="http://www.w3.org/2000/svg" width="full" height="310" viewBox="0 0 383 282" fill="none">
 			<path d="M474 217.5C474 306.142 396.389 289 302.5 289C208.612 289 -1.49922 350 0.000170217 250C1.49956 150 298.112 0.5 392 0.5C485.889 0.5 474 128.858 474 217.5Z" fill="#D7F0ED"/>
 		</svg>
 	</div>
@@ -73,7 +73,7 @@ import ImageSede from "../../public/assets/logo_sedes.png";
     .container-description {
 		display: flex;
         align-items: center;
-		margin: 110% 0 0 0;
+		margin: 90% 0 0 0;
 		transform: translateY(0) translateX(0);
 	}
     
@@ -81,13 +81,13 @@ import ImageSede from "../../public/assets/logo_sedes.png";
         font-size: 1.3rem;
         line-height: 2rem;
         width: 50%;
-        margin: 1.875rem;
-		margin-right: 6rem;
+        margin: 0 6rem 0  0 ;
     }
 
 	.container-slogan {
 		text-align: start;
-		margin: 0 0 0 30%;
+		margin: 10% 0 0 30%;
+		width: 50%;
 	}
 
 	.text-slogan {
@@ -107,8 +107,7 @@ import ImageSede from "../../public/assets/logo_sedes.png";
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: -76vh 0 0 0;
-		width: 100%;
+		margin: -80vh 0 0 0;
     }
 
 	.container-ellipse > div {
