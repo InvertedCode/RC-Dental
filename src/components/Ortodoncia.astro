@@ -1,66 +1,107 @@
 ---
 import { Image } from "astro:assets";
-import ImageOrtodoncia from "../../public/assets/OrtodonciaImg.png"
+import ImageOrtodoncia from "../../public/assets/OrtodonciaImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
 ---
 
-<section class="flex flex-col">
-
-    <!-- Contenedor título y botones -->
-    <div class="flex justify-between p-3 mt-[90px]">
-        <ButtonBack pathBack="http://localhost:4321/"/>
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Ortodoncia</h1>
-        <ButtonNext pathNext="http://localhost:4321/ortoinvisible" />
+<section class="w-full h-[88vh] flex flex-col">
+  <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
+    <!-- Contenedor título y botones 10% -->
+    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
+      <ButtonBack pathBack="http://localhost:4321/services" />
+      <h1 class="text-3xl font-bold text-colors-darkest text-center">
+        Ortodoncia
+      </h1>
+      <ButtonNext pathNext="http://localhost:4321/ortoinvisible" />
     </div>
 
-    <!-- Contenedor texto e imagen -->
-    <div class="flex justify-between items-center overflow-hidden">
-
+    <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
+    <div class="flex flex-col h-[90%]">
+      <!-- Contenedor texto, botones e imagen de servicio -->
+      <div class="flex justify-between items-center">
         <!-- Contenedor descripcion servicio -->
-        <div class="prose pl-7">
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Tu Sonrisa Perfecta:</h3>
-                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">Corregimos irregularidades dentales y faciales, mejorando la estética y salud bucal mediante brackets y alineadores transparentes.</p>
-            </article>
-        
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Beneficios Clave:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Una sonrisa alineada facilita la higiene dental, previene caries, mejora la mordida y reduce el desgaste dental.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Tratamientos a Medida:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Ofrecemos opciones como brackets tradicionales, cerámicos, linguales, y alineadores como Invisalign, con tecnología avanzada y resultados duraderos.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Transforma tu Sonrisa:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Conoce nuestros tratamientos de ortodoncia y empieza hoy el camino hacia una sonrisa saludable y atractiva.</p>
-            </article>
-    
-            <div class="flex justify-end">
-                <ButtonVideo />
-            </div>
-            <div class="h-[50px] w-auto ml-[10px]">
-                <ButtonBackServices />
-            </div>
+        <div class="prose flex flex-col justify-between gap-3 pl-14">
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Tu Sonrisa Perfecta:
+            </h3>
+            <p class="text-sm text-pretty font-normal text-colors-almost-black">
+              Corregimos irregularidades dentales y faciales, mejorando la
+              estética y salud bucal mediante brackets y alineadores
+              transparentes.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Beneficios Clave:
+            </h3>
+            <p class="text-sm text-pretty font-normal text-colors-almost-black">
+              Una sonrisa alineada facilita la higiene dental, previene caries,
+              mejora la mordida y reduce el desgaste dental.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Tratamientos a Medida:
+            </h3>
+            <p class="text-sm text-pretty font-normal text-colors-almost-black">
+              Ofrecemos opciones como brackets tradicionales, cerámicos,
+              linguales, y alineadores como Invisalign, con tecnología avanzada
+              y resultados duraderos.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Transforma tu Sonrisa:
+            </h3>
+            <p class="text-sm text-pretty font-normal text-colors-almost-black">
+              Conoce nuestros tratamientos de ortodoncia y empieza hoy el camino
+              hacia una sonrisa saludable y atractiva.
+            </p>
+          </article>
+
+          <div>
+            <ButtonBackServices />
+          </div>
         </div>
-    
+
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex h-[40%] items-end">
+          <ButtonVideo />
+        </div>
+
         <!-- Contenedor imagen de ortodoncia -->
-        <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-70px]">
-            <Image src={ImageOrtodoncia} alt="Ilustración de Ortodoncia" />
+        <div class="relative overflow-hidden">
+          <Image
+            src={ImageOrtodoncia}
+            alt="Ilustración del servicio Ortodoncia"
+            class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
+          />
         </div>
+      </div>
+
+      <!-- SVG en la parte inferior (decorativo) -->
+      <div class="flex items-end -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="full"
+          height="610"
+          fill="none"
+          class="absolute bottom-[-12vh] right-[-32vw]"
+          ><path
+            fill="#D7F0ED"
+            d="M1309 370.364c0 251.263-103.07 215.815-598.569 215.815-552.751 0-901.084 126.674-598.568-215.815 82.857-93.807 228.568-7.484 598.568-215.815C996.931-6.767 1309-167.088 1309 370.364Z"
+          ></path></svg
+        >
+      </div>
 
     </div>
 
-    <!-- SVG en la parte inferior (decorativo) -->
-     <div class="flex justify-end mt-[-340px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1283" height="502" viewBox="0 0 1283 502" fill="none">
-            <path d="M1309.57 370.484C1309.57 621.746 1206.5 586.298 711 586.298C158.249 586.298 -190.084 712.973 112.431 370.484C195.289 276.677 341 363 711 154.669C997.5 -6.64714 1309.57 -166.968 1309.57 370.484Z" fill="#D7F0ED"/>
-            </svg>
-     </div>
-
+  </article>
 </section>

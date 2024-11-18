@@ -1,72 +1,127 @@
 ---
 import { Image } from "astro:assets";
-import ImageOdontologia from "../../public/assets/OdontoGeneralImg.png"
-import ImageOdontologia2 from "../../public/assets/OdontoGeneralImg_2.png"
+import ImageOdontologia from "../../public/assets/OdontoGeneralImg.png";
+import ImageOdontologia2 from "../../public/assets/OdontoGeneralImg_2.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
 ---
 
-<section class="flex flex-col">
+<section class="w-full h-[88vh] flex flex-col">
+  <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
 
-    <!-- Contenedor título y botones -->
-    <div class="flex justify-between p-3 mt-[90px]">
-        <ButtonBack pathBack="http://localhost:4321/endodoncia"/>
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Odontología General</h1>
-        <ButtonNext pathNext="http://localhost:4321/blanqueamiento"/>
+    <!-- Contenedor título y botones 10% -->
+    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
+      <ButtonBack pathBack="http://localhost:4321/endodoncia" />
+      <h1 class="text-3xl font-bold text-colors-darkest text-center">
+        Odontología General
+      </h1>
+      <ButtonNext pathNext="http://localhost:4321/blanqueamiento" />
     </div>
 
-    <!-- Contenedor texto e imagen -->
-    <div class="flex justify-between items-center overflow-hidden">
+    <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
+    <div class="flex flex-col h-[90%]">
 
-        <!-- Contenedor descripcion servicio -->
-        <div class="prose pl-7">
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Cuidado Integral de tu Salud Bucal:</h3>
-                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">Nos encargamos de la prevención, diagnóstico y tratamiento de diversas condiciones dentales, incluyendo limpiezas, resinas, extracciones y tratamientos de encías.</p>
-            </article>
+      <!-- Contenedor texto, botones e imagen de servicio -->
+      <div class="flex justify-between items-center">
         
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Prevención y Diagnóstico Avanzado:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Con revisiones periódicas y tecnología moderna, garantizamos diagnósticos precisos y tratamientos efectivos para mantener una sonrisa saludable.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Atención Personalizada y de Calidad:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Nuestro enfoque es ofrecer atención personalizada, promoviendo hábitos saludables y cuidados duraderos.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Confía en Nosotros:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Te ayudamos a mantener tu salud bucal y prevenir futuros problemas.</p>
-            </article>
+        <!-- Contenedor descripcion servicio -->
+        <div class="prose flex flex-col justify-between gap-3 pl-14">
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Cuidado Integral de tu Salud Bucal:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Nos encargamos de la prevención, diagnóstico y tratamiento de
+              diversas condiciones dentales, incluyendo limpiezas, resinas,
+              extracciones y tratamientos de encías.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Prevención y Diagnóstico Avanzado:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Con revisiones periódicas y tecnología moderna, garantizamos
+              diagnósticos precisos y tratamientos efectivos para mantener una
+              sonrisa saludable.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Atención Personalizada y de Calidad:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Nuestro enfoque es ofrecer atención personalizada, promoviendo
+              hábitos saludables y cuidados duraderos.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Confía en Nosotros:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Te ayudamos a mantener tu salud bucal y prevenir futuros
+              problemas.
+            </p>
+          </article>
+
+          <div>
+            <ButtonBackServices />
+          </div>
         </div>
-    
-        <!-- Contenedor imagenes de Odontología General -->
-        <div>
-            <div class="rounded-full overflow-hidden w-[360px] h-[360px] relative right-[-40px] -z-1">
-                <Image src={ImageOdontologia} alt="Ilustración del Servicio de Odontología general" />
-            </div>
-            <div class="rounded-full overflow-hidden w-[360px] h-[360px] relative right-[-40px] top-[-80px]">
-                <Image src={ImageOdontologia2} alt="Ilustración del Servicio de Odontología general" />
-            </div>
+
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex h-[40%] items-end">
+          <ButtonVideo />
         </div>
 
-    </div>
+        <!-- Contenedor imagen de odontologia general -->
+        <div class="relative overflow-hidden">
+          <div class="z-1">
+            <Image
+              src={ImageOdontologia}
+              alt="Ilustración del Servicio de Odontología general"
+              class="rounded-full w-[100%] h-[17vw] transform translate-x-[10%]"
+            />
+          </div>
+          <div class="">
+            <Image
+              src={ImageOdontologia2}
+              alt="Ilustración del Servicio de Odontología general"
+              class="rounded-full w-[100%] h-[17vw] transform translate-x-[10%] translate-y-[-15%]"
+            />
+          </div>
+        </div>
+      </div>
 
-    <div class="flex justify-center">
-        <ButtonVideo />
+      <!-- SVG en la parte inferior (decorativo) -->
+      <div class="flex items-end -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1440"
+          height="954"
+          viewBox="0 0 1440 954"
+          fill="none"
+          class="absolute bottom-[-10vh] right-[-4vw]"
+        >
+          <path
+            d="M1440 502.771C1440 951.499 1440 954 1243.47 954C151.519 954 -413.516 889.467 353.559 769.906C1120.63 650.346 1137.58 51.0415 1348.94 1.01607C1427.3 -17.5304 1440 220.41 1440 502.771Z"
+            fill="#D7F0ED"></path>
+        </svg>
+      </div>
     </div>
-    <div class="h-[50px] w-auto ml-[50px]">
-        <ButtonBackServices />
-    </div>
-
-    <!-- SVG en la parte inferior (decorativo) -->
-    <div class="flex justify-end mt-[-900px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="905" viewBox="0 0 1440 905" fill="none">
-            <path d="M1499 503.5C1499 952 1499 954.5 1267 954.5C-22.0007 954.5 -689 890 216.499 770.5C1122 651 1142 51.9999 1391.5 1.99992C1484 -16.5371 1499 221.282 1499 503.5Z" fill="#D7F0ED"/>
-            </svg>
-    </div>
-
+  </article>
 </section>

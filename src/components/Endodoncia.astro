@@ -1,66 +1,118 @@
 ---
 import { Image } from "astro:assets";
-import ImageEndodoncia from "../../public/assets/EndodonciaImg.png"
+import ImageEndodoncia from "../../public/assets/EndodonciaImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
 ---
 
-<section class="flex flex-col">
+<section class="w-full h-[88vh] flex flex-col">
+  <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
 
-    <!-- Contenedor título y botones -->
-    <div class="flex justify-between p-3 mt-[90px]">
-        <ButtonBack pathBack="http://localhost:4321/implantes"/>
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Endodoncia</h1>
-        <ButtonNext pathNext="http://localhost:4321/odontogeneral"/>
+    <!-- Contenedor título y botones 10% -->
+    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
+      <ButtonBack pathBack="http://localhost:4321/implantes" />
+      <h1 class="text-3xl font-bold text-colors-darkest text-center">
+        Endodoncia
+      </h1>
+      <ButtonNext pathNext="http://localhost:4321/odontogeneral" />
     </div>
 
-    <!-- Contenedor texto e imagen -->
-    <div class="flex justify-between items-center overflow-hidden">
+
+    <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
+    <div class="flex flex-col h-[90%]">
+
+      <!-- Contenedor texto, botones e imagen de servicio -->
+      <div class="flex justify-between items-center">
 
         <!-- Contenedor descripcion servicio -->
-        <div class="prose pl-7">
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Salvando tus Dientes Naturales:</h3>
-                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">La endodoncia trata enfermedades del nervio dental. El tratamiento principal, la terapia de conducto, elimina la pulpa dañada, limpia el conducto y lo sella con un material biocompatible.</p>
-            </article>
-        
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Tratamientos Eficientes y Sin Dolor:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Utilizamos técnicas avanzadas y equipos modernos para realizar endodoncias de manera eficiente y sin dolor, con el objetivo de salvar los dientes y aliviar el dolor dental.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Preserva la Función y Estética:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">La endodoncia no solo mantiene la funcionalidad del diente, sino también su estructura y apariencia, evitando la extracción.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Confía en Nosotros:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Te ayudamos a conservar tus dientes naturales y mantener tu salud dental.</p>
-            </article>
+        <div class="prose flex flex-col justify-between gap-3 pl-14">
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Salvando tus Dientes Naturales:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              La endodoncia trata enfermedades del nervio dental. El tratamiento
+              principal, la terapia de conducto, elimina la pulpa dañada, limpia
+              el conducto y lo sella con un material biocompatible.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Tratamientos Eficientes y Sin Dolor:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Utilizamos técnicas avanzadas y equipos modernos para realizar
+              endodoncias de manera eficiente y sin dolor, con el objetivo de
+              salvar los dientes y aliviar el dolor dental.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Preserva la Función y Estética:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              La endodoncia no solo mantiene la funcionalidad del diente, sino
+              también su estructura y apariencia, evitando la extracción.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Confía en Nosotros:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Te ayudamos a conservar tus dientes naturales y mantener tu salud
+              dental.
+            </p>
+          </article>
+
+          <div>
+            <ButtonBackServices />
+          </div>
         </div>
-    
-        <!-- Contenedor imagen de implantes -->
-        <div class="rounded-full overflow-hidden w-[500px] h-[500px] relative right-[-40px]">
-            <Image src={ImageEndodoncia} alt="Ilustración del Servicio de Endodoncia" />
+
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex h-[40%] items-end">
+          <ButtonVideo />
         </div>
 
-    </div>
+        <!-- Contenedor imagen de endodoncia -->
+        <div class="relative overflow-hidden">
+          <Image
+            src={ImageEndodoncia}
+            alt="Ilustración del Servicio de Endodoncia"
+            class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
+          />
+        </div>
+      </div>
 
-    <div class="flex justify-center">
-        <ButtonVideo />
+      <!-- SVG en la parte inferior (decorativo) -->
+      <div class="flex items-end -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2560"
+          height="409"
+          viewBox="0 0 1440 409"
+          fill="none"
+          class="absolute bottom-[-2vh] right-0"
+        >
+          <path
+            d="M2560 319.711C2560 408.17 1440 408.17 738.269 408.17C340.624 408.17 0 423.768 0 319.711C0 130.798 300.742 71.326 708.289 199.767C1128.02 31.844 2560 -200.548 2560 319.711Z"
+            fill="#D7F0ED"></path>
+        </svg>
+      </div>
     </div>
-    <div class="h-[50px] w-auto ml-[50px]">
-        <ButtonBackServices />
-    </div>
-
-    <!-- SVG en la parte inferior (decorativo) -->
-    <div class="flex justify-end mt-[-340px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="345" viewBox="0 0 1440 345" fill="none">
-            <path d="M1494 320.5C1494 409 1494 409 745 409C320.569 409 -43 424.605 -43 320.5C-43 131.5 278 72 713 200.5C1161 32.4998 1494 -200 1494 320.5Z" fill="#D7F0ED"/>
-            </svg>
-    </div>
-
+  </article>
 </section>

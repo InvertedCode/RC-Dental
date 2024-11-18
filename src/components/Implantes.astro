@@ -1,73 +1,119 @@
 ---
 import { Image } from "astro:assets";
-import ImageImplantes from "../../public/assets/ImplantesImg.png"
+import ImageImplantes from "../../public/assets/ImplantesImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
 ---
 
-<section class="flex flex-col">
+<section class="w-full h-[88vh] flex flex-col">
+  <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
 
-    <!-- Contenedor título y botones -->
-    <div class="flex justify-between p-3 mt-[90px]">
-        <ButtonBack pathBack="http://localhost:4321/rehaboral"/>
-        <h1 class="text-[36px] font-bold leading-[65px] text-colors-darkest text-center mt-2 mb-10">Implantes</h1>
-        <ButtonNext pathNext="http://localhost:4321/endodoncia"/>
+    <!-- Contenedor título y botones 10% -->
+    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
+      <ButtonBack pathBack="http://localhost:4321/rehaboral" />
+      <h1 class="text-3xl font-bold text-colors-darkest text-center">
+        Implantes
+      </h1>
+      <ButtonNext pathNext="http://localhost:4321/endodoncia" />
     </div>
 
-    <!-- Contenedor texto e imagen -->
-    <div class="flex justify-between items-center overflow-hidden">
+    
+    <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
+    <div class="flex flex-col h-[90%]">
+
+      <!-- Contenedor texto, botones e imagen de servicio -->
+      <div class="flex justify-between items-center">
 
         <!-- Contenedor descripcion servicio -->
-        <div class="prose pl-7">
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Solución Permanente para Dientes Perdidos:</h3>
-                <p class="text-[16px] text-pretty m-0 font-normal text-colors-almost-black mb-4">Los implantes dentales reemplazan dientes perdidos mediante pequeños postes de titanio que actúan como raíces artificiales, sobre los que se fijan coronas, puentes o prótesis.</p>
-            </article>
-        
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Tecnología Avanzada y Resultados Duraderos:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Utilizamos tecnología avanzada y materiales de alta calidad para asegurar una integración ósea exitosa y una función similar a la de los dientes naturales.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Mejora Funcional y Estética:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Los implantes no solo mejoran la apariencia de la sonrisa, sino que también restauran la capacidad de masticar y hablar, previniendo la pérdida ósea.</p>
-            </article>
-    
-            <article>
-                <h3 class="text-[20px] font-bold m-0 text-colors-darkest">Transforma tu Sonrisa:</h3>
-                <p class="text-[16px] text-pretty font-normal text-colors-almost-black mb-4">Descubre cómo los implantes dentales pueden mejorar tu calidad de vida.</p>
-            </article>
-    
-            <!-- <div class="flex justify-end">
-                <ButtonVideo />
-            </div> -->
-            <!-- <div class="h-[50px] w-auto ml-[10px]">
-                <ButtonBackServices />
-            </div> -->
+        <div class="prose flex flex-col justify-between gap-3 pl-14">
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Solución Permanente para Dientes Perdidos:
+            </h3>
+            <p
+              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+            >
+              Los implantes dentales reemplazan dientes perdidos mediante
+              pequeños postes de titanio que actúan como raíces artificiales,
+              sobre los que se fijan coronas, puentes o prótesis.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Tecnología Avanzada y Resultados Duraderos:
+            </h3>
+            <p
+              class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
+            >
+              Utilizamos tecnología avanzada y materiales de alta calidad para
+              asegurar una integración ósea exitosa y una función similar a la
+              de los dientes naturales.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Mejora Funcional y Estética:
+            </h3>
+            <p
+              class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
+            >
+              Los implantes no solo mejoran la apariencia de la sonrisa, sino
+              que también restauran la capacidad de masticar y hablar,
+              previniendo la pérdida ósea.
+            </p>
+          </article>
+
+          <article>
+            <h3 class="text-lg font-bold m-0 text-colors-darkest">
+              Transforma tu Sonrisa:
+            </h3>
+            <p
+              class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
+            >
+              Descubre cómo los implantes dentales pueden mejorar tu calidad de
+              vida.
+            </p>
+          </article>
+
+          <div>
+            <ButtonBackServices />
+          </div>
         </div>
-    
+
+        <!-- Contenedor del boton para ver el video -->
+        <div class="flex h-[40%] items-end">
+          <ButtonVideo />
+        </div>
+
         <!-- Contenedor imagen de implantes -->
-        <div class="rounded-full overflow-hidden w-[550px] h-[550px] relative right-[-40px]">
-            <Image src={ImageImplantes} alt="Ilustración del Servicio de Implantes" />
+        <div class="relative overflow-hidden">
+          <Image
+            src={ImageImplantes}
+            alt="Ilustración del Servicio de Implantes"
+            class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
+          />
         </div>
+      </div>
 
+      <!-- SVG en la parte inferior (decorativo) -->
+      <div class="flex items-end -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1394"
+          height="902"
+          viewBox="0 0 1394 902"
+          fill="none"
+          class="absolute bottom-[-10vh] right-[-5vw]"
+        >
+          <path
+            d="M1360.51 679.951C1334.5 902 1334.5 902 774.648 902C-209.876 902 -264.424 762.092 659.557 618.572C1583.54 475.053 1010.68 13.8065 1238.91 0.265973C1467.15 -13.2745 1382.31 493.867 1360.51 679.951Z"
+            fill="#D7F0ED"></path>
+        </svg>
+      </div>
     </div>
-
-    <div class="flex justify-center">
-        <ButtonVideo />
-    </div>
-    <div class="h-[50px] w-auto ml-[50px]">
-        <ButtonBackServices />
-    </div>
-
-    <!-- SVG en la parte inferior (decorativo) -->
-    <div class="flex justify-end mt-[-800px] -z-10 w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1177" height="868" viewBox="0 0 1177 868" fill="none">
-            <path d="M1255.1 679.951C1231.11 902 1231.11 902 714.633 902C-193.616 902 -243.938 762.092 608.458 618.572C1460.85 475.053 932.379 13.8065 1142.93 0.265973C1353.48 -13.2745 1275.21 493.867 1255.1 679.951Z" fill="#D7F0ED"/>
-            </svg>
-    </div>
-
+  </article>
 </section>
