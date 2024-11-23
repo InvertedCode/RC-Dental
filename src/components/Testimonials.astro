@@ -5,7 +5,7 @@ import ImageTwo from "../../public/assets/Image-2.png";
 import ImageThree from "../../public/assets/Image-3.png";
 
 const testimonials = [
-    {
+{
         Image: ImageOne,
         name: 'Daniel Malik',
         alt: 'testimonio 1',
@@ -28,95 +28,176 @@ const testimonials = [
         treatment: 'Blanqueamiento Dental:',
         description:
             'Tuve una experiencia fantástica con el blanqueamiento dental. El personal fue muy cuidadoso y me explicó cada paso del procedimiento. Quedé impresionado con los resultados; ¡mi sonrisa nunca había sido tan brillante! Definitivamente los recomiendo.',
-    },
-];
+    }
+]
 
-const carouselItems = [...testimonials, ...testimonials];
+const carrouselItems = [...testimonials, ...testimonials];
 ---
 
-<section class="w-[100%] h-[100vh] flex flex-col bg-colors-light justify-center items-center">
-    <div class="w-full justify-end hidden sm:flex">
-        <svg class="ml-[40%]" width="100%" height="43vh" viewBox="0 0 596 334" fill="none">
+<section class="testimonial-section w-full h-[88vh] bg-colors-light flex flex-col items-center">
+    
+    <!-- Background Circle -->
+    <aside class="background-circle w-[100%] hidden sm:flex justify-center mt-[-20] ml-[50%] z-0" aria-hidden="true">        
+        <svg width="100%" height="40vh" viewBox="0 0 596 334" fill="none">
             <path d="M0.500061 -97.0004C167.151 -97.0004 586.851 -97.0004 695.651 -97.0004C804.451 -97.0004 788.138 84.2552 784.651 192.999C774.151 520.5 493.5 180 416.651 117.5C269.895 -1.85544 0.500061 11.7997 0.500061 -97.0004Z" fill="#D7F0ED"/>
         </svg>
-    </div>
-    <div class="max-w-4xl mx-auto">
-        <div class="site w-[95%]" id="page">
-            <!-- Titulo -->
-            <div class="container-title text-center mt-[-36vh]">
-                <h1 class="text-colors-darkest font-bold text-4xl w-[70%] mx-auto">
-                    Testimonios de nuestros pacientes...
-                </h1>
-            </div>
-            <!-- Carousel -->
-            <div class="carousel-container flex justify-center mt-[10%] overflow-hidden">
-                <ul class="carousel-content flex animate-carouselScroll transition-transform-opacity duration-500 ease-in-out" id="carousel-content">
-                    {carouselItems.map((testimonial) => (
-                    <li class="carousel-item w-[80%]" >
-                        <div class="wraper ml-[2%] mr-[2%]">
-                            <div class="thumbnail flex justify-center">
-                                <Image
-                                    class="object-cover w-[10vw] h-[10vw] rounded-full"
-                                    src={testimonial.Image}
-                                    alt={testimonial.alt}
-                                    loading="eager"
-                                />
+    </aside>
+
+    <!-- Background Circle Mobile -->
+     <aside class="background-circle-mobile flex sm:hidden absolute mt-[18%] right-0 z-10" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="329" height="299" viewBox="0 0 349 319" fill="none">
+            <path d="M469.5 196.5C469.5 264.155 414.655 319 347 319C279.345 319 0 208.655 0 141C0 73.3454 242 7.03274 313 1.00003C389.5 -5.5 469.5 128.845 469.5 196.5Z" fill="#D7F0ED"/>
+          </svg>
+     </aside>
+
+    <!-- Title -->
+    <header class="container-title text-center relative mt-[-18%] z-10">
+        <h1 class="text-title text-colors-darkest font-bold text-4xl p-3 flex justify-center">
+            Testimonios de nuestros pacientes...
+        </h1>
+    </header>
+
+    <!-- Carousel Testimonials -->
+    <section class="container-testimonials w-[60%] flex flex-col justify-center items-center overflow-hidden z-20 mt-[8vh]">
+        <ul class="carousel-content flex justify-center animate-carouselScroll transition-opacity duration-500 ease_in_out" id="carousel-content">
+            {carrouselItems.map((testimonial) => (
+                <li class="carrousel-item w-[80%]">
+                    <div class="wrapper ml-[2%] mr-[2%]">
+                        <aside class="thumbnail flex justify-center mt-2">
+                            <Image
+                                class="image-testimonial object-cover w-[8vw] h-[16vh] rounded-full"
+                                src={testimonial.Image}
+                                alt={testimonial.alt}
+                                loading="eager"
+                            />
+                            <div class="absolute w-[8vw] h-[16vh] mt-[-1vh] mr-[1vh] -z-[1]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="146" height="126" viewBox="0 0 140 124" fill="none">
+                                    <path d="M124.788 72.8171C114.002 95.5693 96.0159 127.802 53.4623 123.329C18.6758 119.673 -0.486131 92.14 0.932367 61.754C3.17255 13.7665 58.8379 -6.3533 103.889 2.48388C148.94 11.3211 145.301 29.5461 124.788 72.8171Z" fill="#2C7575"/>
+                                </svg>
                             </div>
-                            <div class="flex">
-                                <div class="flex justify-center align-center">
-                                    <svg class="" width="42" height="42" viewBox="0 0 53 61" fill="none">
-                                        <path d="M0 25.7344C0 17.8354 6.3529 11.4375 14.1964 11.4375H15.1429C17.2368 11.4375 18.9286 13.1412 18.9286 15.25C18.9286 17.3588 17.2368 19.0625 15.1429 19.0625H14.1964C10.5408 19.0625 7.57143 22.0529 7.57143 25.7344V26.6875H15.1429C19.319 26.6875 22.7143 30.1068 22.7143 34.3125V41.9375C22.7143 46.1432 19.319 49.5625 15.1429 49.5625H7.57143C3.39531 49.5625 0 46.1432 0 41.9375V38.125V34.3125V25.7344ZM30.2857 25.7344C30.2857 17.8354 36.6386 11.4375 44.4821 11.4375H45.4286C47.5225 11.4375 49.2143 13.1412 49.2143 15.25C49.2143 17.3588 47.5225 19.0625 45.4286 19.0625H44.4821C40.8266 19.0625 37.8571 22.0529 37.8571 25.7344V26.6875H45.4286C49.6047 26.6875 53 30.1068 53 34.3125V41.9375C53 46.1432 49.6047 49.5625 45.4286 49.5625H37.8571C33.681 49.5625 30.2857 46.1432 30.2857 41.9375V38.125V34.3125V25.7344Z" fill="#2C7575"/>
-                                    </svg>
-                                </div>
-                                <div class="aside flex flex-col justify-center p-4 mt-[1vh] w-[87%] gap-2">
-                                    <div>
-                                    <h3 class="font-semibold text-xl text-colors-darkest text-left">
-                                        {testimonial.treatment}
-                                    </h3>
-                                    </div>
-                                    <p class="font-medium text-colors-black w-[40vw] text-left">
-                                        {testimonial.description}
-                                    </p>
-                                </div>
-                                <div class="flex justify-center mt-[18%]">
-                                    <svg width="42" height="42" viewBox="0 0 51 58" fill="none">
-                                        <path d="M51 33.5312C51 41.0418 44.8868 47.125 37.3393 47.125H36.4286C34.4136 47.125 32.7857 45.5051 32.7857 43.5C32.7857 41.4949 34.4136 39.875 36.4286 39.875H37.3393C40.8569 39.875 43.7143 37.0316 43.7143 33.5312V32.625H36.4286C32.41 32.625 29.1429 29.3738 29.1429 25.375V18.125C29.1429 14.1262 32.41 10.875 36.4286 10.875H43.7143C47.7328 10.875 51 14.1262 51 18.125V21.75V25.375V33.5312ZM21.8571 33.5312C21.8571 41.0418 15.744 47.125 8.19643 47.125H7.28571C5.27076 47.125 3.64286 45.5051 3.64286 43.5C3.64286 41.4949 5.27076 39.875 7.28571 39.875H8.19643C11.7141 39.875 14.5714 37.0316 14.5714 33.5312V32.625H7.28571C3.26719 32.625 0 29.3738 0 25.375V18.125C0 14.1262 3.26719 10.875 7.28571 10.875H14.5714C18.59 10.875 21.8571 14.1262 21.8571 18.125V21.75V25.375V33.5312Z" fill="#2C7575"/>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="font-extrabold text-colors-darkest mt-[30px] mb-[50px] text-left text-xl">
-                                <h3>{ testimonial.name}</h3>
-                            </div>
+                        </aside>
+                        <div class="container-quotes-top flex justify-start mb-[-1vh]">
+                            <svg class="" width="42" height="42" viewBox="0 0 53 61" fill="none">
+                                <path d="M0 25.7344C0 17.8354 6.3529 11.4375 14.1964 11.4375H15.1429C17.2368 11.4375 18.9286 13.1412 18.9286 15.25C18.9286 17.3588 17.2368 19.0625 15.1429 19.0625H14.1964C10.5408 19.0625 7.57143 22.0529 7.57143 25.7344V26.6875H15.1429C19.319 26.6875 22.7143 30.1068 22.7143 34.3125V41.9375C22.7143 46.1432 19.319 49.5625 15.1429 49.5625H7.57143C3.39531 49.5625 0 46.1432 0 41.9375V38.125V34.3125V25.7344ZM30.2857 25.7344C30.2857 17.8354 36.6386 11.4375 44.4821 11.4375H45.4286C47.5225 11.4375 49.2143 13.1412 49.2143 15.25C49.2143 17.3588 47.5225 19.0625 45.4286 19.0625H44.4821C40.8266 19.0625 37.8571 22.0529 37.8571 25.7344V26.6875H45.4286C49.6047 26.6875 53 30.1068 53 34.3125V41.9375C53 46.1432 49.6047 49.5625 45.4286 49.5625H37.8571C33.681 49.5625 30.2857 46.1432 30.2857 41.9375V38.125V34.3125V25.7344Z" fill="#2C7575"/>
+                            </svg>
                         </div>
-                    </li>
-                ))}
-                </ul>
-            </div>
-        </div>
-        <div class="w-full justify-end -z-20 ml-[-40%] mt-[-30%] hidden sm:flex">
-            <svg xmlns="http://www.w3.org/2000/svg" width="full" height="368" viewBox="0 0 721 368" fill="none">
-                <path d="M720.151 424.5C553.5 424.5 133.8 424.5 25.0001 424.5C-83.8 424.5 -67.4863 243.244 -63.9999 134.5C-53.4999 -193 221.5 177.5 304 210C480 279.333 720.151 315.7 720.151 424.5Z" fill="#D7F0ED"/>
-            </svg>
-        </div>
-    </div>
+                        <aside class="container-description aside flex flex-col justify-center p-4 ml-[1vh] w-[87%] gap-2">
+                            <div>
+                                <h3 class="text-treatment font-semibold text-colors-darkest text-xl text-left">
+                                    {testimonial.treatment}
+                                </h3>
+                            </div>
+                            <div class="container-description-testimonial flex flex-col justify-center w-[42vw]">
+                                <p class="text-description-testimonial font-medium text-colors-black w-[36vw] text-left">
+                                    {testimonial.description}
+                                </p>
+                            </div>
+                        </aside>
+                        <div class="container-quotes-button flex justify-end mr-[10vh] mt-[-2vh]">
+                            <svg width="42" height="42" viewBox="0 0 51 58" fill="none">
+                                <path d="M51 33.5312C51 41.0418 44.8868 47.125 37.3393 47.125H36.4286C34.4136 47.125 32.7857 45.5051 32.7857 43.5C32.7857 41.4949 34.4136 39.875 36.4286 39.875H37.3393C40.8569 39.875 43.7143 37.0316 43.7143 33.5312V32.625H36.4286C32.41 32.625 29.1429 29.3738 29.1429 25.375V18.125C29.1429 14.1262 32.41 10.875 36.4286 10.875H43.7143C47.7328 10.875 51 14.1262 51 18.125V21.75V25.375V33.5312ZM21.8571 33.5312C21.8571 41.0418 15.744 47.125 8.19643 47.125H7.28571C5.27076 47.125 3.64286 45.5051 3.64286 43.5C3.64286 41.4949 5.27076 39.875 7.28571 39.875H8.19643C11.7141 39.875 14.5714 37.0316 14.5714 33.5312V32.625H7.28571C3.26719 32.625 0 29.3738 0 25.375V18.125C0 14.1262 3.26719 10.875 7.28571 10.875H14.5714C18.59 10.875 21.8571 14.1262 21.8571 18.125V21.75V25.375V33.5312Z" fill="#2C7575"/>
+                            </svg>
+                        </div>
+                        <div class="text-name font-extrabold text-colors-darkest text-xl text-left mt-[6vh] mb-[2vh]">
+                            <h3>
+                                {testimonial.name}
+                            </h3>
+                        </div>
+                    </div>
+                </li>
+            ))}
+        </ul>
+    </section>
+
+    <!-- Background Circle -->
+    <aside class="background-circle w-[100%] hidden sm:flex absolute justify-center mt-[38.8vh] mr-[55%] z-10" aria-hidden="true">        
+        <svg xmlns="http://www.w3.org/2000/svg" width="721" height="368" viewBox="0 0 721 368" fill="none">
+            <path d="M720.151 424.5C553.5 424.5 133.8 424.5 25.0001 424.5C-83.8 424.5 -67.4863 243.244 -63.9999 134.5C-53.4999 -193 221.5 177.5 304 210C480 279.333 720.151 315.7 720.151 424.5Z" fill="#D7F0ED"/>
+        </svg>
+    </aside>
+
+    <!-- Background Circle Mobile -->
+    <aside class="background-circle-mobile flex sm:hidden mt-[-55vh] bottom-0 ml-[-25%] z-10" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="291" height="448" viewBox="0 0 291 448" fill="none">
+            <path d="M215 225C215 321.649 465 496.5 57.5 488C-43.0357 485.903 -135 321.649 -135 225C-135 128.35 -69.5 -99.5005 40 49.9997C124.597 165.5 215 128.35 215 225Z" fill="#D7F0ED"/>
+        </svg>
+    </aside>
 </section>
 
 <style>
-@media (min-width: 320px) and (max-width: 639px) {
-    section {
-        width: 100%;
-        height: 100vh;
-    }
-    
-    .site {
+    @media (min-width: 320px) and (max-width: 639px) {
+        section {
+            width: 100%;
+            height: auto;
+        }
+        .container-title {
+            margin-top: 20px;
+        }
 
-    }
-}
+        -container-testimonials {
+            margin-top: -15vh;
+        }
 
-    /* .animate-carouselScroll {
-        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-    } */
+        .carousel-container {
+            margin-top: 20px;
+        }
+
+        .text-title {
+            font-size: 1.4rem;
+            line-height: 2rem;
+        }
+
+        .carrousel-item {
+            width: 100%;
+        }
+
+        .image-testimonial {
+            width: 32vw;
+            height: 32vw;
+            margin-top: 1.4vh;
+        }
+
+        .thumbnail svg {
+            width: 38vw;
+            height: 38vw;
+            margin-left: -11.3vw;
+        }
+
+        .container-description {
+            width: 100vw;
+        }
+
+        .text-treatment { 
+            font-size: 1.3rem;
+        }
+
+        .container-description-testimonial {
+            width: 40vw;
+            
+        }
+
+        .text-description-testimonial {
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            width: 70vw;
+        }
+
+        .container-quotes-top > svg {
+            width: 7vw;
+            height: 7vh;
+        }
+
+        .container-quotes-button > svg {
+            width: 7vw;
+            height: 7vh;
+        }
+
+        .text-name {
+            margin-bottom: 6vh;
+        }
+    }
 </style>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -126,25 +207,24 @@ const carouselItems = [...testimonials, ...testimonials];
         let currentIndex = 0;
 
         function updateCarouselPosition() {
-            // Desplazamiento suave hasta el final de la lista duplicada
             if (currentIndex >= totalItems) {
                 if (carousel) {
-                    carousel.classList.add("opacity-0"); // Añade la clase para la transición de opacidad
-                    carousel.classList.remove("animate-carouselScroll"); // Pausa la animación
-                    carousel.style.transition = 'none'; // Desactiva la transición temporalmente
+                    carousel.classList.add("opacity-0");
+                    carousel.classList.remove("animate-carouselScroll");
+                    carousel.style.transition = 'none';
                 }
-                currentIndex = 0; // Reinicia el índice
+                currentIndex = 0;
                 setTimeout(() => {
                     if (carousel) {
                         carousel.style.transform = `translateX(0%)`;
-                        carousel.classList.remove("opacity-0"); // Quita la clase para la transición de opacidad
+                        carousel.classList.remove("opacity-0");
                         setTimeout(() => {
-                            carousel.style.transition = 'transform 10s ease-in-out, opacity 1s ease-in-out'; // Reactiva la transición
-                            carousel.classList.add("animate-carouselScroll"); // Reactiva la animación suavizada
+                            carousel.style.transition = 'transform 10s ease-in-out, opacity 1s ease-in-out';
+                            carousel.classList.add("animate-carouselScroll");
                             showNextTestimonial();
-                        }, 2); // Pausa pequeña antes de reactivar la animación
+                        }, 2);
                     }
-                }, 300); // Pausa para permitir que la opacidad se desvanezca
+                }, 300);
             } else {
                 if (carousel) {
                     carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -157,7 +237,6 @@ const carouselItems = [...testimonials, ...testimonials];
             updateCarouselPosition();
         }
 
-        // Avanza cada 6 segundos
         setInterval(showNextTestimonial, 6000);
     });
 </script>
