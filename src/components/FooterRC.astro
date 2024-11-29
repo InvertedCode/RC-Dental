@@ -1,10 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import Logo from '../../public/assets/nav_icons/logo.png';
+import { getLangFromUrl } from "../i18n"
 
 const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || "573122376546"; //numero por defecto o el de entorno
 const whatsappMesaage = "Hola, me gustaría reservar una cita";
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMesaage)}`;
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <footer class="w-full h-[6vh] bg-colors-dark">
@@ -13,11 +21,11 @@ const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
 
         <!-- Contenedor logo RC Dental -->
         <div class="flex items-center gap-2">
-            <a href="/" class="cursor-pointer">
+            <a href={`${languages}/`} class="cursor-pointer">
                 <Image src={Logo} alt="Logo" class="logo w-[100%] h-[2vw] mr-2" />
             </a>
-            <a href="/" class="cursor-pointer text-colors-lightest text-sm">
-                <p>RC DENTAL CONSULTORIO ODONTOLÓGICO</p>
+            <a href={`${languages}/`} class="cursor-pointer text-colors-lightest text-sm">
+                <p>{title}</p>
             </a>
         </div>
     

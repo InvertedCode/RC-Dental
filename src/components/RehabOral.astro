@@ -5,17 +5,35 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
     <!-- Contenedor título y botones 10% -->
     <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/ortoinvisible" />
+      <ButtonBack pathBack={`${languages}/invisibleortho`} buttonText={i18n.BUTTON_BACK} />
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Rehabilitación Oral
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/implantes" />
+      <ButtonNext pathNext={`${languages}/implants`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
@@ -26,50 +44,45 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Función y Estética Restauradas:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              La rehabilitación oral restaura la función y la estética dental
-              mediante la reconstrucción de dientes dañados o perdidos con
-              implantes, coronas, puentes, prótesis y carillas.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tratamientos Personalizados:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Ofrecemos planes a medida, combinando técnicas avanzadas y
-              materiales de alta calidad para asegurar resultados duraderos y
-              naturales.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Recupera tu Sonrisa y Confianza:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Nuestro objetivo es devolver la funcionalidad y la confianza a tu
-              sonrisa con soluciones integrales adaptadas a tus necesidades.
+              {text3}
             </p>
           </article>
 
           <div>
-            <ButtonBackServices />
+            <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
           </div>
         </div>
 
         <!-- Contenedor del boton para ver el video -->
         <div class="flex h-[40%] items-end">
-          <ButtonVideo />
+          <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
         </div>
 
         <!-- Contenedor imagen de rehabilitacion oral -->

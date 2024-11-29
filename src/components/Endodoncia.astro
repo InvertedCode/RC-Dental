@@ -5,6 +5,26 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -12,11 +32,11 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 
     <!-- Contenedor título y botones 10% -->
     <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/implantes" />
+      <ButtonBack pathBack={`${languages}/implants`} buttonText={i18n.BUTTON_BACK} />
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Endodoncia
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/odontogeneral" />
+      <ButtonNext pathNext={`${languages}/generaldentistry`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
 
@@ -30,62 +50,56 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Salvando tus Dientes Naturales:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              La endodoncia trata enfermedades del nervio dental. El tratamiento
-              principal, la terapia de conducto, elimina la pulpa dañada, limpia
-              el conducto y lo sella con un material biocompatible.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tratamientos Eficientes y Sin Dolor:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Utilizamos técnicas avanzadas y equipos modernos para realizar
-              endodoncias de manera eficiente y sin dolor, con el objetivo de
-              salvar los dientes y aliviar el dolor dental.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Preserva la Función y Estética:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              La endodoncia no solo mantiene la funcionalidad del diente, sino
-              también su estructura y apariencia, evitando la extracción.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Confía en Nosotros:
+              {subtitle4}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Te ayudamos a conservar tus dientes naturales y mantener tu salud
-              dental.
+            {text4}
             </p>
           </article>
 
           <div>
-            <ButtonBackServices />
+            <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
           </div>
         </div>
 
         <!-- Contenedor del boton para ver el video -->
         <div class="flex h-[40%] items-end">
-          <ButtonVideo />
+          <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
         </div>
 
         <!-- Contenedor imagen de endodoncia -->

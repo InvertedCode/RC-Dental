@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getLangFromUrl } from "../i18n"
 
 import Logo from '../../public/assets/nav_icons/logo.png';
 import PhoneIcon from "./BannerIcons/PhoneIcon.astro";
@@ -7,6 +8,20 @@ import LocationIcon from "./BannerIcons/LocationIcon.astro";
 import ClockIcon from "./BannerIcons/ClockIcon.astro";
 import Hamburger from "../../public/assets/nav_icons/hamburger.svg";
 import Cross from "../../public/assets/nav_icons/cross.svg";
+import FlagUSA from "../../public/assets/flags_icons/united-states-svgrepo-com.svg";
+import FlagColombia from "../../public/assets/flags_icons/colombia-svgrepo-com.svg";
+
+interface Props {
+  title: string;
+  nav1: string;
+  nav2: string;
+  nav3: string;
+  nav4: string;
+}
+
+const { title, nav1, nav2, nav3, nav4 } = Astro.props;
+
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <link
@@ -36,13 +51,24 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
 
         <!-- Main Navigation -->
         <div class="flex justify-between bg-colors-dark text-colors-light h-[60%] px-3">
+
             <!-- Logo and Title -->
             <div class="flex items-center gap-2">
-                <a href="/" class="cursor-pointer">
+                <a href={`${languages}/`} class="cursor-pointer">
                     <Image src={Logo} alt="Logo" class="w-24 h-8 md:w-24" loading="eager" />
                 </a>
-                <a href="/" class="cursor-pointer font-semibold text-sm">
-                    RC DENTAL CONSULTORIO ODONTOLÓGICO
+                <a href={`${languages}/`} class="cursor-pointer font-semibold text-sm">
+                    {title}
+                </a>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center gap-2">
+                <a href="/en">
+                <Image src={FlagUSA} alt="Cambiar a Inglés" class="w-8 h-8" />
+                </a>
+                <a href="/">
+                <Image src={FlagColombia} alt="Cambiar a Español" class="w-8 h-8" />
                 </a>
             </div>
 
@@ -54,66 +80,99 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
 
             <!-- Links for Desktop and Mobile -->
             <ul class="hidden md:flex items-center gap-8 text-base font-semibold mr-[8%]" id="links-container">
-                <li><a href="/about" class="hover:text-colors-lighter">Sobre Nosotros</a></li>
-                <li><a href="/services" class="hover:text-colors-lighter">Servicios</a></li>
-                <li><a href="/testimonials" class="hover:text-colors-lighter">Testimonios</a></li>
-                <li><a href="/contact" class="hover:text-colors-lighter">Contactos</a></li>
+                <li><a href={`${languages}/about`} class="hover:text-colors-lighter nav-link">{nav1}</a></li>
+                <li><a href={`${languages}/services`} class="hover:text-colors-lighter nav-link">{nav2}</a></li>
+                <li><a href={`${languages}/testimonials`} class="hover:text-colors-lighter nav-link">{nav3}</a></li>
+                <li><a href={`${languages}/contact`} class="hover:text-colors-lighter nav-link">{nav4}</a></li>
             </ul>
         </div>
 
         <!-- Links for Mobile View (Hidden initially) -->
         <div class="flex flex-col items-center bg-colors-dark text-white md:hidden opacity-0 transition-opacity duration-500" id="mobile-menu">
-            <a href="/about" class="py-2">Sobre Nosotros</a>
-            <a href="/services" class="py-2">Servicios</a>
-            <a href="/testimonials" class="py-2">Testimonios</a>
-            <a href="/contact" class="py-2">Contactos</a>
+            <a href={`${languages}/about`} class="py-2 nav-link">{nav1}</a>
+            <a href={`${languages}/services`} class="py-2 nav-link">{nav2}</a>
+            <a href={`${languages}/testimonials`} class="py-2 nav-link">{nav3}</a>
+            <a href={`${languages}/contact`} class="py-2 nav-link">{nav4}</a>
         </div>
     </nav>
 </header>
 
 <script>
     function initializeMenu() {
-        const hamburgerButton = document.getElementById('hamburger_button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger');
-        const crossIcon = document.getElementById('cross');
-
-        function toggleMenu() {
-            const isOpen = hamburgerButton?.hasAttribute('open');
-
-            if (isOpen) {
-                crossIcon?.classList.add('hidden');
-                hamburgerIcon?.classList.remove('hidden');
-                
-                mobileMenu?.classList.replace('opacity-100', 'opacity-0');
-                setTimeout(() => {
-                    mobileMenu?.classList.add('hidden');
-                }, 500);
-                
-                hamburgerButton?.removeAttribute('open');
-            } else {
-                hamburgerIcon?.classList.add('hidden');
-                crossIcon?.classList.remove('hidden');
-
-                mobileMenu?.classList.remove('hidden');
-                mobileMenu?.classList.replace('opacity-0', 'opacity-100');
-
-                hamburgerButton?.setAttribute('open', '');
-            }
+      const hamburgerButton = document.getElementById("hamburger_button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const hamburgerIcon = document.getElementById("hamburger");
+      const crossIcon = document.getElementById("cross");
+  
+      function toggleMenu() {
+        const isOpen = hamburgerButton?.hasAttribute("open");
+  
+        if (isOpen) {
+          crossIcon?.classList.add("hidden");
+          hamburgerIcon?.classList.remove("hidden");
+  
+          mobileMenu?.classList.replace("opacity-100", "opacity-0");
+          setTimeout(() => {
+            mobileMenu?.classList.add("hidden");
+          }, 500);
+  
+          hamburgerButton?.removeAttribute("open");
+        } else {
+          hamburgerIcon?.classList.add("hidden");
+          crossIcon?.classList.remove("hidden");
+  
+          mobileMenu?.classList.remove("hidden");
+          mobileMenu?.classList.replace("opacity-0", "opacity-100");
+  
+          hamburgerButton?.setAttribute("open", "");
         }
-
-        hamburgerButton?.addEventListener('click', toggleMenu);
-
-        // Close mobile menu when a link is clicked
-        mobileMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (hamburgerButton?.hasAttribute('open')) {
-                    toggleMenu();
-                }
-            });
+      }
+  
+      hamburgerButton?.addEventListener("click", toggleMenu);
+  
+      // Close mobile menu when a link is clicked
+      mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (hamburgerButton?.hasAttribute("open")) {
+            toggleMenu();
+          }
         });
+      });
     }
-
-    document.addEventListener('DOMContentLoaded', initializeMenu);
-    window.addEventListener('popstate', initializeMenu);
-</script>
+  
+    function initializeLanguageSwitcher() {
+      const switchToEn = document.getElementById("switch-to-en");
+      const switchToEs = document.getElementById("switch-to-es");
+  
+      switchToEn?.addEventListener("click", () => {
+        //localStorage.setItem("locale", "en");
+        const currentPath = window.location.pathname;
+        window.location.href = `/en${currentPath}`;
+      });
+  
+      console.log(switchToEs);
+      if (!switchToEs) {
+        console.log("Switch to ES exists");
+      }else{
+        switchToEs.addEventListener("click", () => {
+          try {
+          console.log("Pasa a español");
+          window.location.href = window.location.pathname.replace("/en", "");
+          }
+          catch (error) {
+            console.error(error);
+          }
+        });
+      }
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      initializeMenu();
+      initializeLanguageSwitcher();
+    });
+  
+    window.addEventListener("popstate", () => {
+      initializeMenu();
+      initializeLanguageSwitcher();
+    });
+  </script>

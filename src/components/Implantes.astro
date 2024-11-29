@@ -5,6 +5,26 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -12,11 +32,11 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 
     <!-- Contenedor título y botones 10% -->
     <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/rehaboral" />
+      <ButtonBack pathBack={`${languages}/oralrehab`} buttonText={i18n.BUTTON_BACK} />
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Implantes
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/endodoncia" />
+      <ButtonNext pathNext={`${languages}/endodontics`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     
@@ -30,63 +50,56 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Solución Permanente para Dientes Perdidos:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Los implantes dentales reemplazan dientes perdidos mediante
-              pequeños postes de titanio que actúan como raíces artificiales,
-              sobre los que se fijan coronas, puentes o prótesis.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tecnología Avanzada y Resultados Duraderos:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Utilizamos tecnología avanzada y materiales de alta calidad para
-              asegurar una integración ósea exitosa y una función similar a la
-              de los dientes naturales.
+            {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Mejora Funcional y Estética:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Los implantes no solo mejoran la apariencia de la sonrisa, sino
-              que también restauran la capacidad de masticar y hablar,
-              previniendo la pérdida ósea.
+            {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Transforma tu Sonrisa:
+              {subtitle4}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Descubre cómo los implantes dentales pueden mejorar tu calidad de
-              vida.
+            {text4}
             </p>
           </article>
 
           <div>
-            <ButtonBackServices />
+            <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
           </div>
         </div>
 
         <!-- Contenedor del boton para ver el video -->
         <div class="flex h-[40%] items-end">
-          <ButtonVideo />
+          <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
         </div>
 
         <!-- Contenedor imagen de implantes -->

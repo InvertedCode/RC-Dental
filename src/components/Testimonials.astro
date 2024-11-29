@@ -32,6 +32,11 @@ const testimonials = [
 ];
 
 const carouselItems = [...testimonials, ...testimonials];
+
+interface Props {
+    title: string;
+}
+const { title } = Astro.props;
 ---
 
 <section class="w-[100%] h-[100vh] flex flex-col bg-colors-light justify-center items-center">
@@ -45,7 +50,7 @@ const carouselItems = [...testimonials, ...testimonials];
             <!-- Titulo -->
             <div class="container-title text-center mt-[-36vh]">
                 <h1 class="text-colors-darkest font-bold text-4xl w-[70%] mx-auto">
-                    Testimonios de nuestros pacientes...
+                    {title}
                 </h1>
             </div>
             <!-- Carousel -->

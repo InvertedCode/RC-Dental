@@ -6,6 +6,26 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -13,11 +33,11 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 
     <!-- Contenedor título y botones 10% -->
     <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/endodoncia" />
+      <ButtonBack pathBack={`${languages}/endodontics`} buttonText={i18n.BUTTON_BACK} />
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Odontología General
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/blanqueamiento" />
+      <ButtonNext pathNext={`${languages}/whitening`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
@@ -30,62 +50,56 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Cuidado Integral de tu Salud Bucal:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Nos encargamos de la prevención, diagnóstico y tratamiento de
-              diversas condiciones dentales, incluyendo limpiezas, resinas,
-              extracciones y tratamientos de encías.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Prevención y Diagnóstico Avanzado:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Con revisiones periódicas y tecnología moderna, garantizamos
-              diagnósticos precisos y tratamientos efectivos para mantener una
-              sonrisa saludable.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Atención Personalizada y de Calidad:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Nuestro enfoque es ofrecer atención personalizada, promoviendo
-              hábitos saludables y cuidados duraderos.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Confía en Nosotros:
+              {subtitle4}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Te ayudamos a mantener tu salud bucal y prevenir futuros
-              problemas.
+              {text4}
             </p>
           </article>
 
           <div>
-            <ButtonBackServices />
+            <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
           </div>
         </div>
 
         <!-- Contenedor del boton para ver el video -->
         <div class="flex h-[40%] items-end">
-          <ButtonVideo />
+          <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
         </div>
 
         <!-- Contenedor imagen de odontologia general -->

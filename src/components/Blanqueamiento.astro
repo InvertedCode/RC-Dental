@@ -4,17 +4,34 @@ import ImageBlanqueamiento from "../../public/assets/BlanqueamientoImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n"
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3 } = Astro.props;
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
     <!-- Contenedor título y botones 10% -->
     <div class="relative flex items-center mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/odontogeneral" />
+      <ButtonBack pathBack={`${languages}/generaldentistry`} buttonText={i18n.BUTTON_BACK} />
       <h1
         class="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold text-colors-darkest"
       >
-        Blanqueamiento
+      {title}
       </h1>
     </div>
 
@@ -26,50 +43,45 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Blanqueamiento Dental:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              El blanqueamiento dental aclara el color de los dientes,
-              eliminando manchas y decoloraciones, ya sea en consultorio o en
-              casa bajo supervisión profesional.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Opciones Seguras y Efectivas:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Ofrecemos tratamientos personalizados utilizando geles
-              blanqueadores con peróxido de hidrógeno o carbamida, que eliminan
-              las manchas al penetrar el esmalte.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Resultados Visibles y Seguros:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Obtén una sonrisa más brillante y rejuvenecida de forma segura y
-              controlada, mejorando tu confianza y estética dental.
+              {text3}
             </p>
           </article>
 
           <div>
-            <ButtonBackServices />
+            <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
           </div>
         </div>
 
         <!-- Contenedor del boton para ver el video -->
         <div class="flex h-[40%] items-end">
-          <ButtonVideo />
+          <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
         </div>
 
         <!-- Contenedor imagen de balnqueamiento -->

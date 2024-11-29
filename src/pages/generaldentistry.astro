@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OdontoGeneral from '../components/OdontoGeneral.astro';
+
+import { getI18N } from "../i18n";
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+---
+
+<Layout title={i18n.SERVICE_GENERAL_DENTISTRY}>
+    <OdontoGeneral title={i18n.SERVICE_GENERAL_DENTISTRY} subtitle1={i18n.GENERAL_DENTISTRY_SUBTITLE_1} text1={i18n.GENERAL_DENTISTRY_TEXT_1} subtitle2={i18n.GENERAL_DENTISTRY_SUBTITLE_2} text2={i18n.GENERAL_DENTISTRY_TEXT_2} subtitle3={i18n.GENERAL_DENTISTRY_SUBTITLE_3} text3={i18n.GENERAL_DENTISTRY_TEXT_3} subtitle4={i18n.GENERAL_DENTISTRY_SUBTITLE_4} text4={i18n.GENERAL_DENTISTRY_TEXT_4} />
+</Layout>
