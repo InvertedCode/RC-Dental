@@ -5,20 +5,23 @@ interface Props {
 	href: string;
 	img: string;
 	alt: string;
+    ariaLabel?: string;
+    loading?: "eager" | "lazy";
 }
 
-const { href, title, img, alt,  } = Astro.props;
+const { href, title, img, alt, ariaLabel, loading = "lazy" } = Astro.props;
 ---
-
-<div class="w-[66vw] h-[15vh] bg-colors-lightest rounded-2xl shadow-[4px_6px_4px_rgba(0,0,0,0.10)] border border-colors-dark border-l-[1.8vw]">
-    <a href={href} class="no-underline cursor-pointer">
-        <div class="flex flex-row justify-between items-center gap-2">
-            <a href={href} class="no-underline w-[50%] ml-4 cursor-pointer">
-                <h1 class="text-colors-darkest font-extrabold text-base cursor-pointer">{title}</h1>
-            </a>
-            <div class="p-4">
-                <img src={img} alt={alt} class="w-[16vw] h-[10vh] cursor-pointer">
+<a href={href}>
+    <div class="w-[66vw] h-[15vh] bg-colors-lightest rounded-2xl shadow-[4px_6px_4px_rgba(0,0,0,0.10)] border border-colors-dark border-l-[1.8vw]">
+        <a href={href} class="no-underline cursor-pointer" aria-label={ariaLabel}>
+            <div class="flex flex-row justify-between items-center gap-2">
+                <a href={href} class="no-underline w-[50%] ml-4 cursor-pointer" aria-label={ariaLabel}>
+                    <h1 class="text-colors-darkest font-extrabold text-base cursor-pointer">{title}</h1>
+                </a>
+                <div class="p-4">
+                    <img src={img} loading={loading} alt={alt} class="w-[16vw] h-[10vh] cursor-pointer">
+                </div>
             </div>
-        </div>
-    </a>
-</div>
+        </a>
+    </div>
+</a>

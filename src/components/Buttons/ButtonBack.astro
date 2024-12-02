@@ -12,3 +12,36 @@ const { pathBack } = Astro.props;
           Volver
     </button>
 </a>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #D7F0ED;
+    color: #0D9488;
+  }
+  button:focus {
+    outline: none;
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+
+    a {
+      margin: 0;
+      gap: -1vh;
+    }
+    button {
+      font-size: 0.8rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+    }
+
+
+  }
+</style>

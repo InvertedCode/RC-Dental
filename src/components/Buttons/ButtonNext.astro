@@ -11,3 +11,34 @@ const { pathNext } = Astro.props;
         Siguiente<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#D7F0ED" d="m14 18l-1.4-1.45L16.15 13H4v-2h12.15L12.6 7.45L14 6l6 6z"/></svg>
     </button>
 </a>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #D7F0ED;
+    color: #0D9488;
+  }
+  button:focus {
+    outline: none;
+  }
+
+  @media (min-width: 320px) and (max-width: 639px) {
+
+    a {
+      margin: 0;
+      gap: -1vh;
+    }
+    button {
+      font-size: 0.8rem;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+    }
+  }
+</style>
