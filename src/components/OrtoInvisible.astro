@@ -5,14 +5,34 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
     <!-- Contenedor botones -->
     <div class="container-buttons flex justify-between py-5 px-10 z-10">
-      <ButtonBack pathBack="../ortodoncia"/>
-      <ButtonNext pathNext="../rehaboral" />
+      <ButtonBack pathBack={`${languages}/orthodontics`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${languages}/oralrehab`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     <!-- Elipses decorativas -->
@@ -44,7 +64,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
     <!-- Contenedor titulo -->
     <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Ortodoncia Invisible
+        {title}
       </h1>
     </div>
 
@@ -56,61 +76,55 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Corrección Dental Discreta:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              La ortodoncia invisible utiliza alineadores transparentes y
-              removibles para alinear los dientes de manera efectiva sin afectar
-              la apariencia de tu sonrisa.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Diseño Personalizado y Comodidad:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Cada alineador se ajusta a medida y se cambia regularmente para
-              mover gradualmente los dientes a su posición ideal.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Ventajas Clave:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Los alineadores permiten una mayor higiene dental al poder
-              retirarse para comer y cepillarse, siendo una alternativa estética
-              y cómoda a los brackets.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Ideal para Adultos y Adolescentes:
+              {subtitle4}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Perfecto para quienes buscan una solución moderna y discreta para
-              lograr una sonrisa alineada y saludable.
+              {text4}
             </p>
           </article>
           
           <!-- Contenedor del botones de navegación -->
           <div class="container-buttons-navigate w-[100%] flex flex-row gap-3 mt-[10vh] justify-between">
             <div>
-              <ButtonBackServices />
+              <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
             </div>
               
             <!-- Contenedor del boton para ver el video -->
             <div class="flex h-[40%] items-end">
-              <ButtonVideo />
+              <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
             </div>
           </div>
         </div>

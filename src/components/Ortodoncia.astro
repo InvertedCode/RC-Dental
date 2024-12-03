@@ -4,6 +4,26 @@ import ImageOrtodoncia from "../../public/assets/OrtodonciaImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -11,8 +31,8 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 
     <!-- Contenedor botones -->
     <div class="container-buttons flex justify-between py-5 px-10 z-10">
-      <ButtonBack pathBack="../services" />
-      <ButtonNext pathNext="../ortoinvisible" />
+      <ButtonBack pathBack={`${languages}/services`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${languages}/invisibleortho`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     <!-- Elipses decorativas -->
@@ -50,7 +70,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
     <!-- Contenedor titulo -->
     <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Ortodoncia
+        {title}
       </h1>
     </div>
 
@@ -63,43 +83,37 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tu Sonrisa Perfecta:
+              {subtitle1}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Corregimos irregularidades dentales y faciales, mejorando la
-              estética y salud bucal mediante brackets y alineadores
-              transparentes.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Beneficios Clave:
+              {subtitle2}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Una sonrisa alineada facilita la higiene dental, previene caries,
-              mejora la mordida y reduce el desgaste dental.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tratamientos a Medida:
+              {subtitle3}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Ofrecemos opciones como brackets tradicionales, cerámicos,
-              linguales, y alineadores como Invisalign, con tecnología avanzada
-              y resultados duraderos.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Transforma tu Sonrisa:
+              {subtitle4}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Conoce nuestros tratamientos de ortodoncia y empieza hoy el camino
-              hacia una sonrisa saludable y atractiva.
+              {text4}
             </p>
           </article>
         </div>
@@ -163,7 +177,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
 
       <!-- Contenedor del boton para ver el video -->
       <div class="container-view-video flex h-[40%] mt-[-5vh] w-[100%] items-center justify-center">
-        <ButtonVideo />
+        <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
       </div>
     </div>
   </article>

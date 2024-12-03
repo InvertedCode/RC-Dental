@@ -1,3 +1,12 @@
+---
+interface Props {
+  title: string;
+  phone: string;
+}
+
+const { title, phone } = Astro.props;
+---
+
 <section class="w-full h-[82vh] flex flex-col">
     <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
 
@@ -34,7 +43,7 @@
 
         <!-- Contenedor titulo 10% -->
         <div class="container-title pt-3 flex items-center justify-center mt-5">
-            <h1 class="text-3xl font-bold text-colors-darkest text-center">Sedes y Contactos</h1>
+            <h1 class="text-3xl font-bold text-colors-darkest text-center">{title}</h1>
         </div>
 
         <!-- Contenedor de sedes google maps 90% -->
@@ -56,7 +65,7 @@
                         <div class="flex flex-col text-lg text-pretty font-normal text-colors-almost-black mt-8">
                             <span>Calle 49 b #64b-54 oficina 202 Ed. San Pablo</span>
                             <span>Suramericana Medellín</span>
-                            <span>Tel: +57 3122376546</span>
+                            <span>{phone}: +57 3122376546</span>
                             <span>Email: rcdentalmedellin@gmail.com</span>
                         </div>
                     </div>
@@ -77,7 +86,7 @@
                         </iframe>
                         <div class="flex flex-col text-lg text-pretty font-normal text-colors-almost-black mt-8">
                             <span>Ed. Parque médico, consultorio 501</span>
-                            <span>Tel: +57 3218502134</span>
+                            <span>{phone}: +57 3218502134</span>
                             <span>Email: jcrortodoncia@hotmail.com</span>
                         </div>
                     </div>
