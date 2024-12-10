@@ -1,8 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Service from '../components/Services.astro';
+
+import { getI18N } from "../i18n";
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
 ---
 
-<Layout title='Servicios'>
-    <Service />
+<Layout title={i18n.SERVICES_TITLE_1}>
+    <Service title2={i18n.SERVICES_TITLE_2} subtitle={i18n.SERVICES_SUBTITLE} service1={i18n.SERVICE_ORTHODONTICS} service2={i18n.SERVICE_INVISIBLE_ORTHODONTICS} service3={i18n.SERVICE_ORAL_REHABILITATION} service4={i18n.SERVICE_IMPLANTS} service5={i18n.SERVICE_ENDODONTICS} service6={i18n.SERVICE_GENERAL_DENTISTRY} service7={i18n.SERVICE_DENTAL_WHITENING}/>
 </Layout>

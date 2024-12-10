@@ -4,17 +4,51 @@ import ImageBlanqueamiento from "../../public/assets/BlanqueamientoImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n"
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3 } = Astro.props;
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
+    
+    <!-- Contenedor boton -->
+    <div class="container-button flex justify-between py-5 px-10 z-10">
+      <ButtonBack pathBack={`${languages}/generaldentistry`} buttonText={i18n.BUTTON_BACK} />
+    </div>
+
+    <!-- Elipses decorativas -->
+    <div class="container-elipses absolute flex sm:hidden -z-10 mt-[12vh]">
+      <svg width="58" height="136" viewBox="0 0 58 136" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="-10.0817" cy="67.9191" r="67.3688" transform="rotate(27.61 -10.0817 67.9191)" fill="url(#paint0_linear_136_166)"/>
+        <defs>
+        <linearGradient id="paint0_linear_136_166" x1="-10.0817" y1="0.550331" x2="-10.0817" y2="135.288" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        </defs>
+      </svg>        
+    </div>
+    
     <!-- Contenedor título y botones 10% -->
-    <div class="relative flex items-center mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/odontogeneral" />
-      <h1
-        class="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold text-colors-darkest"
-      >
-        Blanqueamiento
+    <div class="container-title relative flex items-center mt-3 mb-5 px-10 h-[10%]">
+      <h1 class="absolute left-1/2 transform -translate-x-1/2 w-[65%] text-3xl font-bold text-colors-darkest">
+        {title}
       </h1>
     </div>
 
@@ -23,57 +57,55 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       <!-- Contenedor texto, botones e imagen de servicio -->
       <div class="flex justify-between items-center">
         <!-- Contenedor descripcion servicio -->
-        <div class="prose flex flex-col justify-between gap-3 pl-14">
+        <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Blanqueamiento Dental:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              El blanqueamiento dental aclara el color de los dientes,
-              eliminando manchas y decoloraciones, ya sea en consultorio o en
-              casa bajo supervisión profesional.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Opciones Seguras y Efectivas:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Ofrecemos tratamientos personalizados utilizando geles
-              blanqueadores con peróxido de hidrógeno o carbamida, que eliminan
-              las manchas al penetrar el esmalte.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Resultados Visibles y Seguros:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Obtén una sonrisa más brillante y rejuvenecida de forma segura y
-              controlada, mejorando tu confianza y estética dental.
+              {text3}
             </p>
           </article>
 
-          <div>
-            <ButtonBackServices />
+          <!-- Contenedor del botones de navegación -->
+          <div class="container-buttons-navigate w-[100%] flex flex-row gap-3 mt-[10vh] justify-between">
+            <div>
+              <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
+            </div>
+              
+            <!-- Contenedor del boton para ver el video -->
+            <div class="flex h-[40%] items-end">
+              <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
+            </div>
           </div>
         </div>
 
-        <!-- Contenedor del boton para ver el video -->
-        <div class="flex h-[40%] items-end">
-          <ButtonVideo />
-        </div>
-
         <!-- Contenedor imagen de balnqueamiento -->
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden hidden sm:flex">
           <Image
             src={ImageBlanqueamiento}
             alt="Ilustración del Servicio de Blanqueamiento"
@@ -83,7 +115,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       </div>
 
       <!-- SVG en la parte inferior (decorativo) -->
-      <div class="flex items-end -z-10">
+      <div class="items-end -z-10 hidden sm:flex">
         <svg
             width="1000"
             height="1000"
@@ -95,19 +127,85 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
             <circle cx="542" cy="542" r="542" fill="#D7F0ED"></circle>
         </svg>
       </div>
-
-      <div class="-z-10">
-        <svg
-        width="272"
-        height="272"
-        viewBox="0 0 272 272"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="absolute bottom-[-15vh] left-[-5vw]"
-    >
-        <circle cx="136" cy="136" r="136" fill="#D7F0ED"></circle>
     </svg>
       </div>
     </div>
   </article>
+
+  <!-- SVG en la parte inferior (decorativo) -->
+  <div class="container-elipses absolute -z-10 flex sm:hidden mt-[62vh] ml-[20vw]">
+    <svg xmlns="http://www.w3.org/2000/svg" width="220" height="164" viewBox="0 0 220 164" fill="none">
+      <circle cx="123.639" cy="81.8454" r="60.6454" transform="rotate(27.61 123.639 81.8454)" fill="url(#paint0_linear_798_15)"/>
+      <circle cx="35.4169" cy="106.148" r="25.4302" transform="rotate(35 35.4169 106.148)" fill="url(#paint1_linear_798_15)"/>
+      <circle cx="56.1534" cy="116.802" r="7.22575" transform="rotate(35 56.1534 116.802)" fill="url(#paint2_linear_798_15)"/>
+      <circle cx="199.388" cy="99.9799" r="12.285" transform="rotate(27.61 199.388 99.9799)" fill="url(#paint3_linear_798_15)"/>
+      <circle cx="193.851" cy="77.4491" r="7.80256" transform="rotate(27.61 193.851 77.4491)" fill="url(#paint4_linear_798_15)"/>
+      <circle cx="211.592" cy="82.3065" r="5.82714" transform="rotate(27.61 211.592 82.3065)" fill="url(#paint5_linear_798_15)"/>
+      <defs>
+        <linearGradient id="paint0_linear_798_15" x1="123.639" y1="21.2" x2="123.639" y2="142.491" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_798_15" x1="35.4169" y1="80.7176" x2="35.4169" y2="131.578" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_798_15" x1="56.1534" y1="109.576" x2="56.1534" y2="124.028" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_798_15" x1="199.388" y1="87.6949" x2="199.388" y2="112.265" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint4_linear_798_15" x1="193.851" y1="69.6465" x2="193.851" y2="85.2516" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint5_linear_798_15" x1="211.592" y1="76.4794" x2="211.592" y2="88.1337" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 640px) {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-button {
+      width: 100%;
+      display: flex;
+      padding: 2vh;
+    }
+
+    .container-information {
+      width: 100%;
+    }
+
+    .container-dates {
+      padding: 4vh 6vh 0 6vh;
+      margin: 0 0 2rem 0;
+    }
+    .container-title {
+      width: 100%;
+      margin: 4vh 0 0 0;
+      padding: 0;
+    }
+
+    .container-buttons-navigate {
+      margin: 0 0 0 0;
+    }
+  }
+</style>

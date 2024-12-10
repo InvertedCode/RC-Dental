@@ -5,17 +5,66 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
-    <!-- Contenedor título y botones 10% -->
-    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/ortoinvisible" />
+
+    <!-- Contenedor botones -->
+    <div class="container-buttons flex justify-between py-5 px-10 z-10">
+      <ButtonBack pathBack={`${languages}/invisibleortho`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${languages}/implants`} buttonText={i18n.BUTTON_NEXT} />
+    </div>
+
+    <!-- Elipses decorativas -->
+    <div class="container-elipses absolute flex sm:hidden -z-10 mt-[8vh] ml-[84%]">
+      <svg width="70" height="282" viewBox="0 0 70 282" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="92.5" cy="92.5" r="92.5" transform="rotate(-90 92.5 92.5)" fill="url(#paint0_linear_791_9)"/>
+        <circle cx="70" cy="206" r="45" transform="rotate(-90 70 206)" fill="url(#paint1_linear_791_9)"/>
+        <circle cx="68" cy="257" r="25" transform="rotate(-90 68 257)" fill="url(#paint2_linear_791_9)"/>
+        <defs>
+        <linearGradient id="paint0_linear_791_9" x1="92.5" y1="0" x2="92.5" y2="185" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_791_9" x1="70" y1="161" x2="70" y2="251" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_791_9" x1="68" y1="232" x2="68" y2="282" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        </defs>
+        </svg>        
+    </div>
+
+    <!-- Contenedor titulo -->
+    <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Rehabilitación Oral
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/implantes" />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
@@ -23,57 +72,56 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       <!-- Contenedor texto, botones e imagen de servicio -->
       <div class="flex justify-between items-center">
         <!-- Contenedor descripcion servicio -->
-        <div class="prose flex flex-col justify-between gap-3 pl-14">
+        <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Función y Estética Restauradas:
+              {subtitle1}
             </h3>
             <p
-              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+              class="text-base text-pretty m-0 text-colors-almost-black mb-4"
             >
-              La rehabilitación oral restaura la función y la estética dental
-              mediante la reconstrucción de dientes dañados o perdidos con
-              implantes, coronas, puentes, prótesis y carillas.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tratamientos Personalizados:
+              {subtitle2}
             </h3>
             <p
-              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+              class="text-base text-pretty m-0 text-colors-almost-black mb-4"
             >
-              Ofrecemos planes a medida, combinando técnicas avanzadas y
-              materiales de alta calidad para asegurar resultados duraderos y
-              naturales.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Recupera tu Sonrisa y Confianza:
+              {subtitle3}
             </h3>
             <p
-              class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
+              class="text-base text-pretty m-0 text-colors-almost-black mb-4"
             >
-              Nuestro objetivo es devolver la funcionalidad y la confianza a tu
-              sonrisa con soluciones integrales adaptadas a tus necesidades.
+              {text3}
             </p>
-          </article>
+        </article>
 
-          <div>
-            <ButtonBackServices />
+          <!-- Contenedor del botones de navegación -->
+          <div class="container-buttons-navigate w-[100%] flex flex-row gap-3 mt-[10vh] justify-between">
+            <div>
+              <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
+            </div>
+              
+            <!-- Contenedor del boton para ver el video -->
+            <div class="flex h-[40%] items-end">
+              <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
+            </div>
           </div>
         </div>
 
-        <!-- Contenedor del boton para ver el video -->
-        <div class="flex h-[40%] items-end">
-          <ButtonVideo />
-        </div>
 
         <!-- Contenedor imagen de rehabilitacion oral -->
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden hidden sm:flex">
           <Image
             src={ImageRehabOral}
             alt="Ilustración del Servicio de Rehabilitación Oral"
@@ -83,7 +131,7 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       </div>
 
       <!-- SVG en la parte inferior (decorativo) -->
-      <div class="flex items-end -z-10">
+      <div class="hidden sm:flex items-end -z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1358"
@@ -97,6 +145,59 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
             fill="#D7F0ED"></path>
         </svg>
       </div>
+
+      <!-- Elipses decorativas -->
+      <div class="container-elipses absolute flex sm:hidden -z-10 mt-[63vh]">
+        <svg width="412" height="174" viewBox="0 0 412 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="114" cy="34" r="34" fill="url(#paint0_linear_792_10)"/>
+          <circle cx="206" cy="244" r="238" fill="url(#paint1_linear_792_10)"/>
+          <defs>
+          <linearGradient id="paint0_linear_792_10" x1="114" y1="0" x2="114" y2="68" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_792_10" x1="206" y1="6" x2="206" y2="482" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          </defs>
+        </svg>          
+      </div>
     </div>
   </article>
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 640px) {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-buttons {
+      width: 100%;
+      display: flex;
+      padding: 2vh;
+    }
+
+    .container-information {
+      width: 100%;
+    }
+
+    .container-dates {
+      padding: 4vh 6vh 0 6vh;
+      margin: 0 0 2rem 0;
+    }
+    .container-title {
+      width: 100%;
+      margin: 4vh 0 0 0;
+      padding: 0;
+    }
+
+    .container-buttons-navigate {
+      margin: 0;
+    }
+  }
+</style>

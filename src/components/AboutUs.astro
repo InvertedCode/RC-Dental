@@ -1,37 +1,80 @@
 ---
 import { Image } from "astro:assets";
 import ImageReception from "../../public/assets/recepcion_rc.png";
+
+interface Props {
+  title: string;
+  text1: string;
+  text2: string;
+}
+
+const { title, text1, text2 } = Astro.props;
 ---
 
 <section class="w-full h-screen flex flex-col">
   <div class="flex flex-col h-[100%] overflow-hidden relative">
+
+    <!-- Contenedor de decorativo mobile -->
+    <div class="w-full flex sm:hidden container-ellipse-left mt-[-3vh] ml-[83%] -z-10">
+      <svg width="74" height="127" viewBox="0 0 74 127" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="52.5" cy="52.5" r="52.5" transform="rotate(180 52.5 52.5)" fill="url(#paint0_linear_0_1)"/>
+        <circle cx="49" cy="115" r="5" transform="rotate(180 49 115)" fill="url(#paint1_linear_0_1)"/>
+        <circle cx="59" cy="123" r="4" transform="rotate(180 59 123)" fill="url(#paint2_linear_0_1)"/>
+        <circle cx="61" cy="114" r="4" transform="rotate(180 61 114)" fill="url(#paint3_linear_0_1)"/>
+        <defs>
+        <linearGradient id="paint0_linear_0_1" x1="52.5" y1="0" x2="52.5" y2="105" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#AEE1DB"/>
+        <stop offset="0.5" stop-color="#7DCAC4"/>
+        <stop offset="1" stop-color="#53AEAA"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_0_1" x1="49" y1="110" x2="49" y2="120" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#AEE1DB"/>
+        <stop offset="0.5" stop-color="#7DCAC4"/>
+        <stop offset="1" stop-color="#53AEAA"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_0_1" x1="59" y1="119" x2="59" y2="127" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#AEE1DB"/>
+        <stop offset="0.5" stop-color="#7DCAC4"/>
+        <stop offset="1" stop-color="#53AEAA"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_0_1" x1="61" y1="110" x2="61" y2="118" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#AEE1DB"/>
+        <stop offset="0.5" stop-color="#7DCAC4"/>
+        <stop offset="1" stop-color="#53AEAA"/>
+        </linearGradient>
+        </defs>
+      </svg>        
+    </div>
+
     <!-- Contenedor titulo 10% -->
-    <div class="mt-5 mb-6">
+    <div class="container-title mt-5 mb-5">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Sobre nosotros
+        {title}
       </h1>
+    </div>
+
+    <!-- Contenedor de la imagen mobile -->
+    <div class="mt-[4%] justify-center align-center flex sm:hidden mb-8">
+      <Image
+        src={ImageReception}
+        alt="Recepcion de RC Dental"
+        class="rounded-2xl w-[86%] h-[25vh]"
+      />
     </div>
 
     <!-- Contenedor del texto e imagen de recepcion -->
     <div class="flex flex-col justify-around items-center">
-      <div class="w-[40%] text-center">
-        <p class="text-lg font-normal text-colors-almost-black mb-8">
-          Con más de 12 años de trayectoria, en RC Dental nos dedicamos
-          apasionadamente al cuidado integral de la salud bucal. Especializados
-          en ortodoncia y odontología general, hemos establecido un sólido
-          compromiso con la excelencia y la atención personalizada.
+      <div class="container-description w-[40%]">
+        <p class="description text-lg font-normal text-colors-almost-black mb-8">
+          {text1}
         </p>
         <p class="text-lg font-normal text-colors-almost-black">
-          En Rc dental, nos enorgullece crear sonrisas radiantes y funcionales
-          que no solo transforman la estética, sino que también mejoran la
-          calidad de vida. Confía en nosotros para cuidar de tu sonrisa con
-          dedicación, experiencia y un compromiso inquebrantable con tu
-          bienestar dental.
+          {text2}
         </p>
       </div>
 
       <!-- Contenedor de la imagen de la recepción -->
-      <div class="mt-[4%]">
+      <div class="mt-[4%] hidden sm:flex">
         <Image
           src={ImageReception}
           alt="Recepcion de RC Dental"
@@ -41,7 +84,7 @@ import ImageReception from "../../public/assets/recepcion_rc.png";
     </div>
 
     <!-- Circulos izquierda -->
-    <div class="w-full flex container-ellipse-left mt-[-14%] ml-[83%] -z-10">
+    <div class="w-full hidden sm:flex container-ellipse-left mt-[-14%] ml-[83%] -z-10">
       <svg width="266" height="314" viewBox="0 0 266 314" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="207" cy="271" r="207" fill="url(#paint0_linear_126_330)"/>
         <circle cx="217.5" cy="35.5" r="14.5" fill="url(#paint1_linear_126_330)"/>
@@ -73,7 +116,7 @@ import ImageReception from "../../public/assets/recepcion_rc.png";
     </div>
 
     <!-- Circulos derecha -->
-    <div class="w-full flex container-ellipse-right -z-10 mt-[-40%]">
+    <div class="w-full hidden sm:flex container-ellipse-right -z-10 mt-[-40%]">
       <svg width="200" height="430" viewBox="0 0 249 480" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="42" cy="207" r="207" fill="url(#paint0_linear_126_325)"/>
         <circle cx="60.7738" cy="432.852" r="14.5" transform="rotate(158.173 60.7738 432.852)" fill="url(#paint1_linear_126_325)"/>
@@ -102,5 +145,43 @@ import ImageReception from "../../public/assets/recepcion_rc.png";
         </linearGradient>
         </defs>
         </svg>
-  </div>
+    </div>
+
+    <!-- Contenedor de la ellipse -->
+    <div class="w-100% -z-10 flex sm:hidden mt-[-28vh] ml-[-10vw]">
+      <svg width="219" height="296" viewBox="0 0 219 296" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="33" cy="186" r="186" fill="url(#paint0_linear_136_473)"/>
+        <defs>
+        <linearGradient id="paint0_linear_136_473" x1="33" y1="0" x2="33" y2="372" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#53AEAA" stop-opacity="0.2"/>
+        <stop offset="0.5" stop-color="#53AEAA" stop-opacity="0.6"/>
+        <stop offset="1" stop-color="#399390"/>
+        </linearGradient>
+        </defs>
+        </svg>            
+    </div>
+
+
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 640px)  {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-title {
+      margin: -8vh 0 6vh 0;
+    }
+
+    .container-description {
+      width: 76%;
+      margin: 4vh 0 3vh 0;
+    }
+
+    .description {
+      text-align: start;
+    }
+  }
+</style>

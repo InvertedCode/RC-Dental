@@ -5,17 +5,67 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
-    <!-- Contenedor título y botones 10% -->
-    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/ortodoncia" />
+    <!-- Contenedor botones -->
+    <div class="container-buttons flex justify-between py-5 px-10 z-10">
+      <ButtonBack pathBack={`${languages}/orthodontics`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${languages}/oralrehab`} buttonText={i18n.BUTTON_NEXT} />
+    </div>
+
+    <!-- Elipses decorativas -->
+    <div class="container-elipses absolute flex sm:hidden mt-[7vh] -z-10">
+      <svg width="84" height="225" viewBox="0 0 84 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="-5.5" cy="89.5" r="89.5" transform="rotate(90 -5.5 89.5)" fill="url(#paint0_linear_787_5)"/>
+        <circle cx="-3" cy="194" r="31" transform="rotate(90 -3 194)" fill="url(#paint1_linear_787_5)"/>
+        <circle cx="25.5" cy="174.5" r="10.5" transform="rotate(90 25.5 174.5)" fill="url(#paint2_linear_787_5)"/>
+        <defs>
+        <linearGradient id="paint0_linear_787_5" x1="-5.5" y1="0" x2="-5.5" y2="179" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_787_5" x1="-3" y1="163" x2="-3" y2="225" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_787_5" x1="25.5" y1="164" x2="25.5" y2="185" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        </defs>
+        </svg>        
+    </div>
+
+    <!-- Contenedor titulo -->
+    <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Ortodoncia Invisible
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/rehaboral" />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
@@ -23,67 +73,64 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       <!-- Contenedor texto, botones e imagen de servicio -->
       <div class="flex justify-between items-center">
         <!-- Contenedor descripcion servicio -->
-        <div class="prose flex flex-col justify-between gap-3 pl-14">
+        <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Corrección Dental Discreta:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              La ortodoncia invisible utiliza alineadores transparentes y
-              removibles para alinear los dientes de manera efectiva sin afectar
-              la apariencia de tu sonrisa.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Diseño Personalizado y Comodidad:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Cada alineador se ajusta a medida y se cambia regularmente para
-              mover gradualmente los dientes a su posición ideal.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Ventajas Clave:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty font-normal text-colors-almost-black mb-4"
             >
-              Los alineadores permiten una mayor higiene dental al poder
-              retirarse para comer y cepillarse, siendo una alternativa estética
-              y cómoda a los brackets.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Ideal para Adultos y Adolescentes:
+              {subtitle4}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Perfecto para quienes buscan una solución moderna y discreta para
-              lograr una sonrisa alineada y saludable.
+              {text4}
             </p>
           </article>
-
-          <div>
-            <ButtonBackServices />
+          
+          <!-- Contenedor del botones de navegación -->
+          <div class="container-buttons-navigate w-[100%] flex flex-row gap-3 mt-[10vh] justify-between">
+            <div>
+              <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
+            </div>
+              
+            <!-- Contenedor del boton para ver el video -->
+            <div class="flex h-[40%] items-end">
+              <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
+            </div>
           </div>
         </div>
 
-        <!-- Contenedor del boton para ver el video -->
-        <div class="flex h-[40%] items-end">
-          <ButtonVideo />
-        </div>
-
         <!-- Contenedor imagen de ortodoncia invisible -->
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden hidden sm:flex">
           <Image
             src={ImageOrtoInvisible}
             alt="Ilustración del servicio Ortodoncia invisible"
@@ -93,10 +140,10 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       </div>
 
       <!-- SVG en la parte inferior (decorativo) -->
-      <div class="flex items-end -z-10">
+      <div class="hidden items-end -z-10 sm:flex">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="2560"
+          width="1440"
           height="345"
           viewBox="0 0 1440 345"
           fill="none"
@@ -109,4 +156,72 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       </div>
     </div>
   </article>
+
+  <!-- SVG en la parte inferior (decorativo) -->
+  <div class="w-[100%] absolute flex ml-[50vw] mt-[94vh] -z-10 sm:hidden">
+    <svg width="199" height="137" viewBox="0 0 199 137" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="162.5" cy="146.5" r="146.5" fill="url(#paint0_linear_788_6)"/>
+      <circle cx="13.5" cy="120.5" r="13.5" fill="url(#paint1_linear_788_6)"/>
+      <circle cx="16" cy="99" r="6" fill="url(#paint2_linear_788_6)"/>
+      <circle cx="21.5" cy="89.5" r="3.5" fill="url(#paint3_linear_788_6)"/>
+      <defs>
+      <linearGradient id="paint0_linear_788_6" x1="162.5" y1="0" x2="162.5" y2="293" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#399390" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#265F5F"/>
+      </linearGradient>
+      <linearGradient id="paint1_linear_788_6" x1="13.5" y1="107" x2="13.5" y2="134" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#399390" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#265F5F"/>
+      </linearGradient>
+      <linearGradient id="paint2_linear_788_6" x1="16" y1="93" x2="16" y2="105" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#399390" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#265F5F"/>
+      </linearGradient>
+      <linearGradient id="paint3_linear_788_6" x1="21.5" y1="86" x2="21.5" y2="93" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#399390" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+      <stop offset="1" stop-color="#265F5F"/>
+      </linearGradient>
+      </defs>
+      </svg>
+      
+  </div>
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 640px) {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-buttons {
+      width: 100%;
+      display: flex;
+      padding: 2vh ;
+    }
+
+    .container-information {
+      width: 100%;
+    }
+
+    .container-dates {
+      width: 100%;
+      padding: 4vh 6vh 0 6vh;
+      margin: 0 0 2rem 0;
+    }
+
+    .container-title {
+      width: 100%;
+      margin: 3vh 0 0 0;
+      padding: 0;
+    }
+
+    .container-buttons-navigate {
+      margin: 0;
+    }
+  }
+</style>
