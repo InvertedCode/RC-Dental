@@ -1,36 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import ImageOne from "../../public/assets/Image-1.jpg";
-import ImageTwo from "../../public/assets/Image-2.png";
-import ImageThree from "../../public/assets/Image-3.png";
+import { getTestimonials } from "../scripts/getTestimonials";
 
-const testimonials = [
-{
-        Image: ImageOne,
-        name: 'Daniel Malik',
-        alt: 'testimonio 1',
-        treatment: 'Ortodoncia:',
-        description:
-            'Después de mucho tiempo evitando sonreír, decidí hacerme un tratamiento de ortodoncia y fue la mejor decisión. El equipo fue profesional y atento en cada consulta, y ahora tengo una sonrisa que me llena de confianza. ¡Recomiendo este lugar al 100%!',
-    },
-    {
-        Image: ImageTwo,
-        name: 'Carla García',
-        alt: 'testimonio 2',
-        treatment: 'Implante Dental:',
-        description:
-            'Siempre tuve problemas con mis dientes y finalmente decidí optar por un implante dental. Todo el proceso fue impecable, sin complicaciones y con un resultado que superó mis expectativas. Ahora puedo comer y sonreír sin incomodidad. ¡Gracias por devolverme la tranquilidad!',
-    },
-    {
-        Image: ImageThree,
-        name: 'Gabriel Espinoza',
-        alt: 'testimonio 3',
-        treatment: 'Blanqueamiento Dental:',
-        description:
-            'Tuve una experiencia fantástica con el blanqueamiento dental. El personal fue muy cuidadoso y me explicó cada paso del procedimiento. Quedé impresionado con los resultados; ¡mi sonrisa nunca había sido tan brillante! Definitivamente los recomiendo.',
-    }
-]
-
+const testimonials = await getTestimonials();
 const carrouselItems = [...testimonials, ...testimonials];
 ---
 
@@ -44,11 +16,11 @@ const carrouselItems = [...testimonials, ...testimonials];
     </aside>
 
     <!-- Background Circle Mobile -->
-     <aside class="background-circle-mobile flex sm:hidden absolute mt-[18%] right-0 z-10" aria-hidden="true">
+    <aside class="background-circle-mobile flex sm:hidden absolute mt-[18%] right-0 z-10" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="329" height="299" viewBox="0 0 349 319" fill="none">
             <path d="M469.5 196.5C469.5 264.155 414.655 319 347 319C279.345 319 0 208.655 0 141C0 73.3454 242 7.03274 313 1.00003C389.5 -5.5 469.5 128.845 469.5 196.5Z" fill="#D7F0ED"/>
-          </svg>
-     </aside>
+        </svg>
+    </aside>
 
     <!-- Title -->
     <header class="container-title text-center relative mt-[-18%] z-10">
@@ -66,8 +38,8 @@ const carrouselItems = [...testimonials, ...testimonials];
                         <aside class="thumbnail flex justify-center mt-2">
                             <Image
                                 class="image-testimonial object-cover w-[8vw] h-[16vh] rounded-full"
-                                src={testimonial.Image}
-                                alt={testimonial.alt}
+                                src={testimonial.photoUrl || '/public/assets/user.svg'}
+                                alt={testimonial.name}
                                 loading="lazy"
                             />
                             <div class="absolute w-[8vw] h-[16vh] mt-[-1vh] mr-[1vh] -z-[1]">
@@ -84,7 +56,7 @@ const carrouselItems = [...testimonials, ...testimonials];
                         <aside class="container-description aside flex flex-col justify-center p-4 ml-[1vh] w-[87%] gap-2">
                             <div>
                                 <h3 class="text-treatment font-semibold text-colors-darkest text-xl text-left">
-                                    {testimonial.treatment}
+                                    {testimonial.date}
                                 </h3>
                             </div>
                             <div class="container-description-testimonial flex flex-col justify-center w-[42vw]">
