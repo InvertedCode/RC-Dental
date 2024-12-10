@@ -1,6 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import ImageReception from "../../public/assets/recepcion_rc.png";
+
+interface Props {
+  title: string;
+  text1: string;
+  text2: string;
+}
+
+const { title, text1, text2 } = Astro.props;
 ---
 
 <section class="w-full h-screen flex flex-col">
@@ -41,7 +49,7 @@ import ImageReception from "../../public/assets/recepcion_rc.png";
     <!-- Contenedor titulo 10% -->
     <div class="container-title mt-5 mb-5">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Sobre nosotros
+        {title}
       </h1>
     </div>
 
@@ -56,19 +64,12 @@ import ImageReception from "../../public/assets/recepcion_rc.png";
 
     <!-- Contenedor del texto e imagen de recepcion -->
     <div class="flex flex-col justify-around items-center">
-      <div class="container-description w-[40%] text-center">
+      <div class="container-description w-[40%]">
         <p class="description text-lg font-normal text-colors-almost-black mb-8">
-          Con más de 12 años de trayectoria, en RC Dental nos dedicamos
-          apasionadamente al cuidado integral de la salud bucal. Especializados
-          en ortodoncia y odontología general, hemos establecido un sólido
-          compromiso con la excelencia y la atención personalizada.
+          {text1}
         </p>
         <p class="text-lg font-normal text-colors-almost-black">
-          En Rc dental, nos enorgullece crear sonrisas radiantes y funcionales
-          que no solo transforman la estética, sino que también mejoran la
-          calidad de vida. Confía en nosotros para cuidar de tu sonrisa con
-          dedicación, experiencia y un compromiso inquebrantable con tu
-          bienestar dental.
+          {text2}
         </p>
       </div>
 

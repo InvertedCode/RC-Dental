@@ -4,6 +4,10 @@ import { getTestimonials } from "../scripts/getTestimonials";
 
 const testimonials = await getTestimonials();
 const carrouselItems = [...testimonials, ...testimonials];
+interface Props {
+    title: string;
+}
+const { title } = Astro.props;
 ---
 
 <section class="testimonial-section w-full h-[88vh] bg-colors-light flex flex-col items-center">
@@ -25,7 +29,7 @@ const carrouselItems = [...testimonials, ...testimonials];
     <!-- Title -->
     <header class="container-title text-center relative mt-[-18%] z-10">
         <h1 class="text-title text-colors-darkest font-bold text-4xl p-3 flex justify-center">
-            Testimonios de nuestros pacientes...
+            {title}
         </h1>
     </header>
 
@@ -89,7 +93,7 @@ const carrouselItems = [...testimonials, ...testimonials];
     </aside>
 
     <!-- Background Circle Mobile -->
-    <aside class="background-circle-mobile flex sm:hidden mt-[-55vh] bottom-0 ml-[-25%] z-10" aria-hidden="true">
+    <aside class="background-circle-mobile flex sm:hidden mt-[-55vh] bottom-0 ml-[-25%] -z-10" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" width="291" height="448" viewBox="0 0 291 448" fill="none">
             <path d="M215 225C215 321.649 465 496.5 57.5 488C-43.0357 485.903 -135 321.649 -135 225C-135 128.35 -69.5 -99.5005 40 49.9997C124.597 165.5 215 128.35 215 225Z" fill="#D7F0ED"/>
         </svg>

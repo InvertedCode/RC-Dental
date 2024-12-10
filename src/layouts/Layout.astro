@@ -1,12 +1,16 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Header from "../components/Header.astro";
+import { getI18N } from "../i18n";
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale });
 ---
 
 <!doctype html>
@@ -22,7 +26,7 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   <body class="min-h-screen overflow-x-hidden">
-    <Header />
+    <Header title={i18n.HEADER_TITLE} nav1={i18n.HEADER_NAV_1} nav2={i18n.HEADER_NAV_2} nav3={i18n.HEADER_NAV_3} nav4={i18n.HEADER_NAV_4} />
     <main class="pt-[12vh]">
       <slot />
     </main>

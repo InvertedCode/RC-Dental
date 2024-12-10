@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getLangFromUrl } from "../i18n"
 
 import Logo from '../../public/assets/nav_icons/logo.png';
 import PhoneIcon from "./BannerIcons/PhoneIcon.astro";
@@ -7,6 +8,20 @@ import LocationIcon from "./BannerIcons/LocationIcon.astro";
 import ClockIcon from "./BannerIcons/ClockIcon.astro";
 import Hamburger from "../../public/assets/nav_icons/hamburger.svg";
 import Cross from "../../public/assets/nav_icons/cross.svg";
+import FlagUSA from "../../public/assets/flags_icons/united-states-svgrepo-com.svg";
+import FlagColombia from "../../public/assets/flags_icons/colombia-svgrepo-com.svg";
+
+interface Props {
+  title: string;
+  nav1: string;
+  nav2: string;
+  nav3: string;
+  nav4: string;
+}
+
+const { title, nav1, nav2, nav3, nav4 } = Astro.props;
+
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <header class="fixed w-full h-[12vh] z-50">
@@ -29,11 +44,11 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
     <nav class="bg-colors-dark flex items-center justify-between px-4 h-[60%]">
         <!-- Logo and Title -->
         <div class="flex items-center w-full sm:w-[50%] text-colors-light gap-2 sm:gap-4 px-2 sm:px-3">
-            <a href="/" class="cursor-pointer">
+            <a href={`${languages}/`} class="cursor-pointer">
                 <Image src={Logo} alt="Logo" class="w-[4rem] h-6 sm:w-[8rem] sm:h-8 md:w-[6.5rem]" loading="eager" />
             </a>
-            <a href="/" class="cursor-pointer font-semibold text-xs sm:text-sm text-colors-lightest">
-                RC DENTAL CONSULTORIO ODONTOLÓGICO
+            <a href={`${languages}/`} class="cursor-pointer font-semibold text-xs sm:text-sm text-colors-lightest">
+              {title}
             </a>
         </div>
         
@@ -45,23 +60,87 @@ import Cross from "../../public/assets/nav_icons/cross.svg";
             <Image src={Hamburger} alt="Hamburger Menu" class="w-6 h-6 peer-checked:hidden" />
             <Image src={Cross} alt="Cross Menu" class="w-6 h-6 hidden peer-checked:block" />
         </label>
+
+        <!-- Language Switcher -->
+        <div class="hidden sm:flex items-center gap-2 ">
+          <a href="/en">
+          <Image src={FlagUSA} alt="Cambiar a Inglés" class="w-12 h-12" />
+          </a>
+          <a href="/">
+          <Image src={FlagColombia} alt="Cambiar a Español" class="w-12 h-12" />
+          </a>
+        </div>
             
         <!-- Desktop Menu -->
         <div class="hidden sm:flex sm:items-center sm:justify-end sm:w-full mr-[4vw]">
             <div class="flex space-x-4">
-                <a href="/about" class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">Sobre Nosotros</a>
-                <a href="/services" class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">Servicios</a>
-                <a href="/testimonials" class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">Testimonios</a>
-                <a href="/contact" class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">Contacto</a>
+                <a href={`${languages}/about`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav1}</a>
+                <a href={`${languages}/services`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav2}</a>
+                <a href={`${languages}/testimonials`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav3}</a>
+                <a href={`${languages}/contact`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav4}</a>
             </div>
         </div>
 
         <!-- Mobile Menu -->
         <div class="absolute top-full left-0 right-0 bg-colors-dark text-colors-lightest hidden peer-checked:flex flex-col items-center space-y-2 py-3 px-4 shadow-lg transition-all duration-300">
-            <a href="/about" class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">Sobre Nosotros</a>
-            <a href="/services" class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">Servicios</a>
-            <a href="/testimonials" class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">Testimonios</a>
-            <a href="/contact" class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">Contacto</a>
+            <a href={`${languages}/about`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav1}</a>
+            <a href={`${languages}/services`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav2}</a>
+            <a href={`${languages}/testimonials`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav3}</a>
+            <a href={`${languages}/contact`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav4}</a>
+
+            <div class="flex sm:hidden items-center gap-2 ">
+              <a href="/en">
+              <Image src={FlagUSA} alt="Cambiar a Inglés" class="w-8 h-8" />
+              </a>
+              <a href="/">
+              <Image src={FlagColombia} alt="Cambiar a Español" class="w-8 h-8" />
+              </a>
+            </div>
         </div>
     </nav>
 </header>
+
+<style>
+  /* CSS for showing/hiding the mobile menu */
+#menu-toggle:checked ~ #mobile-menu {
+    display: block;
+    opacity: 100;
+}
+
+  /* CSS for showing/hiding the icons */
+#menu-toggle:checked ~ label .peer-checked\:block {
+    display: block;
+}
+
+#menu-toggle:checked ~ label .peer-checked\:hidden {
+    display: none;
+}  
+</style>
+
+<script>
+    function initializeLanguageSwitcher() {
+        const switchToEn = document.getElementById("switch-to-en");
+        const switchToEs = document.getElementById("switch-to-es");
+
+        switchToEn?.addEventListener("click", () => {
+            const currentPath = window.location.pathname;
+            window.location.href = `/en${currentPath}`;
+        });
+
+        switchToEs?.addEventListener("click", () => {
+            try {
+                window.location.href = window.location.pathname.replace("/en", "");
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeLanguageSwitcher();
+    });
+
+    window.addEventListener("popstate", () => {
+        initializeLanguageSwitcher();
+    });
+</script>

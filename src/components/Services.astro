@@ -1,6 +1,24 @@
 ---
 import Card from "./Card.astro"
 import CardMobile from "./CardMobile.astro"
+
+import { getLangFromUrl } from "../i18n"
+
+interface Props {
+    title2: string;
+    subtitle: string;
+    service1: string;
+    service2: string;
+    service3: string;
+    service4: string;
+    service5: string;
+    service6: string;
+    service7: string;
+}
+
+const { title2, subtitle, service1, service2, service3, service4, service5, service6, service7 } = Astro.props;
+
+const languages = getLangFromUrl(Astro.url);
 ---
 
 <section class="services-section w-full h-[110vh] flex flex-col relative">
@@ -21,10 +39,10 @@ import CardMobile from "./CardMobile.astro"
   <!-- Títulos -->
   <header class="text-content w-full flex flex-col text-center gap-4 mt-[6vh]">
     <h1 class="text-colors-darkest text-center font-bold text-4xl mx-auto mb-[-2vh]">
-      Conoce nuestros servicios
+      {title2}
     </h1>
     <p class="text-colors-darkest font-normal text-lg w-[80%] mx-auto">
-      Selecciona uno para más información
+      {subtitle}
     </p>
   </header>
 
@@ -32,8 +50,8 @@ import CardMobile from "./CardMobile.astro"
   <section class="cards-container hidden sm:flex justify-center mt-[4vh]">
     <div class="grid gap-x-12 gap-y-8 grid-cols-2">
       <Card 
-        href="/ortodoncia"
-        title="Ortodoncia"
+        href={`${languages}/orthodontics`}
+        title={service1}
         img="../../assets/service_icons/ortodoncia.svg"
         alt="Ortodoncia"
         icon="../../assets/service_icons/eye.svg"
@@ -41,8 +59,8 @@ import CardMobile from "./CardMobile.astro"
       />
 
       <Card 
-        href="/ortoinvisible"
-        title="Ortodoncia invisible"
+        href={`${languages}/invisibleortho`}
+        title={service2}
         img="../../assets/service_icons/ortodoncia_invisible.png"
         alt="Ortodoncia invisible"
         icon="../../assets/service_icons/eye.svg"
@@ -50,8 +68,8 @@ import CardMobile from "./CardMobile.astro"
       />
 
       <Card
-        href="/rehaboral"
-        title="Rehabilitación oral"
+        href={`${languages}/oralrehab`}
+        title={service3}
         img="../../assets/service_icons/rehabilitacion_oral.svg"
         alt="Rehabilitación oral"
         icon="../../assets/service_icons/eye.svg"
@@ -59,8 +77,8 @@ import CardMobile from "./CardMobile.astro"
       />
 
       <Card
-        href="/implantes"
-        title="Implantes"
+        href={`${languages}/implants`}
+        title={service4}
         img="../../assets/service_icons/implante.svg"
         alt="Implantes"
         icon="../../assets/service_icons/eye.svg"
@@ -69,8 +87,8 @@ import CardMobile from "./CardMobile.astro"
 
       <div class="col-span-4 flex justify-center gap-12">
         <Card
-          href="/endodoncia"
-          title="Endodoncia"
+          href={`${languages}/endodontics`}
+          title={service5}
           img="../../assets/service_icons/endodoncia.png"
           alt="Protesis"
           icon="../../assets/service_icons/eye.svg"
@@ -78,8 +96,8 @@ import CardMobile from "./CardMobile.astro"
         />
 
         <Card
-          href="/odontogeneral"
-          title="Odontología general"
+          href={`${languages}/generaldentistry`}
+          title={service6}
           img="../../assets/service_icons/odontologia_general.svg"
           alt="Odontología general"
           icon="../../assets/service_icons/eye.svg"
@@ -87,8 +105,8 @@ import CardMobile from "./CardMobile.astro"
         />
 
         <Card
-          href="/blanqueamiento"
-          title="Blanqueamiento"
+          href={`${languages}/whitening`}
+          title={service7}
           img="../../assets/service_icons/blanqueamiento_dental.png"
           alt="Blanqueamiento dental"
           icon="../../assets/service_icons/eye.svg"
@@ -110,56 +128,56 @@ import CardMobile from "./CardMobile.astro"
   <div class="bg-colors-lightest rounded-2xl shadow-[4px_6px_4px_rgba(0,0,0,0.10)] border border-colors-dark p-5 max-h-[78vh] overflow-y-auto custom-scrollbar border-r-[3.6vw]">
       <div class="grid gap-x-8 gap-y-4 grid-cols-1 ml-2">
           <CardMobile 
-              href="/ortodoncia"
-              title="Ortodoncia"
+              href={`${languages}/orthodontics`}
+              title={service1}
               img="../../assets/service_icons/ortodoncia.svg"
               alt="Ortodoncia"
               aria-label="Ortodoncia"
           />
 
           <CardMobile
-              href="/ortoinvisible"
-              title="Ortodoncia invisible"
+              href={`${languages}/invisibleortho`}
+              title={service2}
               img="../../assets/service_icons/ortodoncia_invisible.png"
               alt="Ortodoncia invisible"
               aria-label="Ortodoncia invisible"
           />
 
           <CardMobile
-              href="/rehaboral"
-              title="Rehabilitación oral"
+              href={`${languages}/oralrehab`}
+              title={service3}
               img="../../assets/service_icons/rehabilitacion_oral.svg"
               alt="Rehabilitación oral"
               aria-label="Rehabilitación oral"
           />
 
           <CardMobile
-              href="/implantes"
-              title="Implantes"
+              href={`${languages}/implants`}
+              title={service4}
               img="../../assets/service_icons/implante.svg"
               alt="Implantes"
               aria-label="Implantes"
           />
 
           <CardMobile
-              href="/endodoncia"
-              title="Endodoncia"
+              href={`${languages}/endodontics`}
+              title={service5}
               img="../../assets/service_icons/endodoncia.png"
               alt="Protesis"
               aria-label="Endodoncia"
           />
 
           <CardMobile
-              href="/odontogeneral"
-              title="Odontología general"
+              href={`${languages}/generaldentistry`}
+              title={service6}
               img="../../assets/service_icons/odontologia_general.svg"
               alt="Odontología general"
               aria-label="Odontología general" 
           />
 
           <CardMobile 
-              href="/blanqueamiento"
-              title="Blanqueamiento"              
+              href={`${languages}/whitening`}
+              title={service7}              
               img="../../assets/service_icons/blanqueamiento_dental.png"
               alt="Blanqueamiento dental"
               aria-label="Blanqueamiento dental"           
