@@ -1,0 +1,104 @@
+---
+import Card from "./Card.astro"
+---
+
+<section class="w-full h-[-120vh] flex flex-col">
+    <div class="w-full hidden sm:flex justify-end -z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13vw" height="10vw" viewBox="0 0 173 171" fill="none">
+            <circle cx="125" cy="46" r="125" transform="rotate(180 125 46)" fill="url(#paint0_linear_157_55)"/>
+            <defs>
+            <linearGradient id="paint0_linear_157_55" x1="125" y1="-79" x2="125" y2="171" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7DCAC4"/>
+            <stop offset="0.5" stop-color="#399390"/>
+            <stop offset="1" stop-color="#2C7575"/>
+            </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="w-full flex flex-col gap-12 justify-center">
+        <div class="text-center mt-[-14vh]">
+            <h1 class="text-colors-darkest font-bold text-4xl w-[80%] mx-auto">
+                Conoce nuestros servicios
+            </h1>
+            <p class="text-colors-darkest font-normal text-lg w-[80%] mx-auto">
+                Seleciona uno para más información
+            </p>
+        </div>
+
+        <div class="hidden sm:flex justify-center">
+            <div class="grid gap-x-8 gap-y-4 grid-cols-4">
+                <Card 
+                    href="/ortodoncia"
+                    title="Ortodoncia"
+                    img="../../assets/service_icons/ortodoncia.svg"
+                    alt="Ortodoncia"
+                    icon="../../assets/service_icons/eye.svg"
+                />
+
+                <Card 
+                    href="/ortoinvisible"
+                    title="Ortodoncia invisible"
+                    img="../../assets/service_icons/ortodoncia_invisible.png"
+                    alt="Ortodoncia invisible"
+                    icon="../../assets/service_icons/eye.svg"
+                />
+
+                <Card
+                    href="/rehaboral"
+                    title="Rehabilitación oral"
+                    img="../../assets/service_icons/rehabilitacion_oral.svg"
+                    alt="Rehabilitacion oral"
+                    icon="../../assets/service_icons/eye.svg"
+                />
+
+                <Card
+                    href="/implantes"
+                    title="Implantes"
+                    img="../../assets/service_icons/implante.svg"
+                    alt="Implantes"
+                    icon="../../assets/service_icons/eye.svg"
+                />
+
+                <div class="col-span-4 flex justify-center gap-8">
+                    <Card
+                        href="/endodoncia"
+                        title="Endodoncia"
+                        img="../../assets/service_icons/endodoncia.png"
+                        alt="Protesis"
+                        icon="../../assets/service_icons/eye.svg"
+                    />
+
+                    <Card
+                        href="/odontogeneral"
+                        title="Odontología general"
+                        img="../../assets/service_icons/odontologia_general.svg"
+                        alt="Blanqueamiento dental"
+                        icon="../../assets/service_icons/eye.svg"
+                    />
+
+                    <Card
+                        href="/blanqueamiento"
+                        title="Blanqueamiento"
+                        img="../../assets/service_icons/blanqueamiento_dental.png"
+                        alt="Blanqueamiento dental"
+                        icon="../../assets/service_icons/eye.svg"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full flex mt-[-14vh] -z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14vw" height="14vw" viewBox="0 0 176 137" fill="none">
+            <circle cx="51" cy="125" r="125" fill="url(#paint0_linear_157_54)"/>
+            <defs>
+            <linearGradient id="paint0_linear_157_54" x1="51" y1="0" x2="51" y2="250" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7DCAC4"/>
+            <stop offset="0.5" stop-color="#399390"/>
+            <stop offset="1" stop-color="#2C7575"/>
+            </linearGradient>
+            </defs>
+        </svg>
+    </div>
+</section>
