@@ -3,12 +3,13 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "clean": "rimraf dist",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && powershell -Command \"New-Item -Path .\\dist\\.nojekyll -ItemType File\"",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.2.0",
+    "rimraf": "^6.0.1"
   }
 }

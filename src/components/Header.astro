@@ -44,10 +44,10 @@ const languages = getLangFromUrl(Astro.url);
     <nav class="bg-colors-dark flex items-center justify-between px-4 h-[60%]">
         <!-- Logo and Title -->
         <div class="flex items-center w-full sm:w-[50%] text-colors-light gap-2 sm:gap-4 px-2 sm:px-3">
-            <a href={`${languages}/`} class="cursor-pointer">
+            <a href={`${languages}/RC-Dental/`} class="cursor-pointer">
                 <Image src={Logo} alt="Logo" class="w-[4rem] h-6 sm:w-[8rem] sm:h-8 md:w-[6.5rem]" loading="eager" />
             </a>
-            <a href={`${languages}/`} class="cursor-pointer font-semibold text-xs sm:text-sm text-colors-lightest">
+            <a href={`${languages}/RC-Dental/`} class="cursor-pointer font-semibold text-xs sm:text-sm text-colors-lightest">
               {title}
             </a>
         </div>
@@ -74,19 +74,19 @@ const languages = getLangFromUrl(Astro.url);
         <!-- Desktop Menu -->
         <div class="hidden sm:flex sm:items-center sm:justify-end sm:w-full mr-[4vw]">
             <div class="flex space-x-4">
-                <a href={`${languages}/about`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav1}</a>
-                <a href={`${languages}/services`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav2}</a>
-                <a href={`${languages}/testimonials`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav3}</a>
-                <a href={`${languages}/contact`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav4}</a>
+                <a href={`${languages}/RC-Dental/about`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav1}</a>
+                <a href={`${languages}/RC-Dental/services`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav2}</a>
+                <a href={`${languages}/RC-Dental/testimonials`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav3}</a>
+                <a href={`${languages}/RC-Dental/contact`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav4}</a>
             </div>
         </div>
 
         <!-- Mobile Menu -->
         <div class="absolute top-full left-0 right-0 bg-colors-dark text-colors-lightest hidden peer-checked:flex flex-col items-center space-y-2 py-3 px-4 shadow-lg transition-all duration-300">
-            <a href={`${languages}/about`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav1}</a>
-            <a href={`${languages}/services`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav2}</a>
-            <a href={`${languages}/testimonials`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav3}</a>
-            <a href={`${languages}/contact`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav4}</a>
+            <a href={`${languages}/RC-Dental//about`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav1}</a>
+            <a href={`${languages}/RC-Dental//services`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav2}</a>
+            <a href={`${languages}/RC-Dental//testimonials`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav3}</a>
+            <a href={`${languages}/RC-Dental//contact`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav4}</a>
 
             <div class="flex sm:hidden items-center gap-2 ">
               <a href="/en">

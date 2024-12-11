@@ -17,10 +17,10 @@
 
 @font-face {
     font-family: "Nunito";
-    src: url("/fonts/nunito.woff") format("woff"),
-        url("/fonts/nunito.ttf") format("truetype"),
-        url("fonts/nunito-italic.woff") format("woff"),
-        url("fonts/nunito-italic.ttf") format("truetype");
+    src: url("/RC-Dental/fonts/nunito.woff") format("woff"),
+        url("/RC-Dental/fonts/nunito.ttf") format("truetype"),
+        url("/RC-Dental/fonts/nunito-italic.woff") format("woff"),
+        url("/RC-Dental/fonts/nunito-italic.ttf") format("truetype");
     font-display: swap;
 }
 
