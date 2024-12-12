@@ -21,6 +21,8 @@ const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3 } = Astro.pr
 const { currentLocale } = Astro;
 const i18n = await getI18N({ currentLocale })
 const languages = getLangFromUrl(Astro.url);
+
+const base = '/RC-Dental';
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -28,7 +30,7 @@ const languages = getLangFromUrl(Astro.url);
     
     <!-- Contenedor boton -->
     <div class="container-button flex justify-between py-5 px-10 z-10">
-      <ButtonBack pathBack={`${languages}/generaldentistry`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonBack pathBack={`${base}${languages}/generaldentistry`} buttonText={i18n.BUTTON_BACK} />
     </div>
 
     <!-- Elipses decorativas -->

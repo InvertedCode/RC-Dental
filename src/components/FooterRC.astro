@@ -13,6 +13,7 @@ interface Props {
 
 const { title } = Astro.props;
 const languages = getLangFromUrl(Astro.url);
+const base = '/RC-Dental';
 ---
 
 <footer class="w-full h-[6vh] bg-colors-dark">
@@ -21,10 +22,10 @@ const languages = getLangFromUrl(Astro.url);
 
         <!-- Contenedor logo RC Dental -->
         <div class="flex items-center gap-2">
-            <a href={`${languages}/`} class="cursor-pointer" aria-label="Enlace a la página principal">
+            <a href={`${base}${languages}/`} class="cursor-pointer" aria-label="Enlace a la página principal">
                 <Image src={Logo} alt="Logo" class="logo w-[100%] h-[2vw] mr-2" />
             </a>
-            <a href={`${languages}/`} class="cursor-pointer text-colors-lightest text-sm" aria-label="Enlace a la página principal">
+            <a href={`${base}${languages}/`} class="cursor-pointer text-colors-lightest text-sm" aria-label="Enlace a la página principal">
                 <p>{title}</p>
             </a>
         </div>

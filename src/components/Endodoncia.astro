@@ -25,6 +25,8 @@ interface Props {
 
 const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
 const languages = getLangFromUrl(Astro.url);
+
+const base = '/RC-Dental';
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
@@ -32,8 +34,8 @@ const languages = getLangFromUrl(Astro.url);
 
     <!-- Contenedor botones -->
     <div class="container-buttons flex justify-between py-5 px-10 z-10">
-      <ButtonBack pathBack={`${languages}/implants`} buttonText={i18n.BUTTON_BACK} />
-      <ButtonNext pathNext={`${languages}/generaldentistry`} buttonText={i18n.BUTTON_NEXT} />
+      <ButtonBack pathBack={`${base}${languages}/implants`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${base}${languages}/generaldentistry`} buttonText={i18n.BUTTON_NEXT} />
     </div>
 
     <!-- Contenedor titulo -->

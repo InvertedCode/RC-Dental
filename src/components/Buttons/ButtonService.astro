@@ -4,9 +4,11 @@ interface Props {
 }
 
 const { buttonText } = Astro.props;
+
+const base = '/RC-Dental';
 ---
 
-<a href="/services" class="no-underline">
+<a href=`${base}/services` class="no-underline">
     <button class="flex gap-2 rounded-lg bg-colors-medium-dark text-colors-lighter text-sm px-2 py-2 shadow-[4px_6px_4px_rgba(0,0,0,0.25)]">
         {buttonText}
     </button>

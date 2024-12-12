@@ -19,6 +19,8 @@ interface Props {
 const { title2, subtitle, service1, service2, service3, service4, service5, service6, service7 } = Astro.props;
 
 const languages = getLangFromUrl(Astro.url);
+
+const base = '/RC-Dental';
 ---
 
 <section class="services-section w-full h-[110vh] flex flex-col relative">
@@ -50,7 +52,7 @@ const languages = getLangFromUrl(Astro.url);
   <section class="cards-container hidden sm:flex justify-center mt-[4vh]">
     <div class="grid gap-x-12 gap-y-8 grid-cols-2">
       <Card 
-        href={`${languages}/orthodontics`}
+        href={`${base}${languages}/orthodontics`}
         title={service1}
         img="/RC-Dental/assets/service_icons/ortodoncia.svg"
         alt="Ortodoncia"
@@ -59,7 +61,7 @@ const languages = getLangFromUrl(Astro.url);
       />
 
       <Card 
-        href={`${languages}/invisibleortho`}
+        href={`${base}${languages}invisibleortho`}
         title={service2}
         img="/RC-Dental/assets/service_icons/ortodoncia_invisible.png"
         alt="Ortodoncia invisible"
@@ -68,7 +70,7 @@ const languages = getLangFromUrl(Astro.url);
       />
 
       <Card
-        href={`${languages}/oralrehab`}
+        href={`${base}${languages}/oralrehab`}
         title={service3}
         img="/RC-Dental/assets/service_icons/rehabilitacion_oral.svg"
         alt="Rehabilitación oral"
@@ -77,7 +79,7 @@ const languages = getLangFromUrl(Astro.url);
       />
 
       <Card
-        href={`${languages}/implants`}
+        href={`${base}${languages}/implants`}
         title={service4}
         img="/RC-Dental/assets/service_icons/implante.svg"
         alt="Implantes"
@@ -87,7 +89,7 @@ const languages = getLangFromUrl(Astro.url);
 
       <div class="col-span-4 flex justify-center gap-12">
         <Card
-          href={`${languages}/endodontics`}
+          href={`${base}${languages}/endodontics`}
           title={service5}
           img="/RC-Dental/assets/service_icons/endodoncia.png"
           alt="Protesis"
@@ -96,7 +98,7 @@ const languages = getLangFromUrl(Astro.url);
         />
 
         <Card
-          href={`${languages}/generaldentistry`}
+          href={`${base}${languages}/generaldentistry`}
           title={service6}
           img="/RC-Dental/assets/service_icons/odontologia_general.svg"
           alt="Odontología general"
@@ -105,7 +107,7 @@ const languages = getLangFromUrl(Astro.url);
         />
 
         <Card
-          href={`${languages}/whitening`}
+          href={`${base}${languages}/whitening`}
           title={service7}
           img="/RC-Dental/assets/service_icons/blanqueamiento_dental.png"
           alt="Blanqueamiento dental"
@@ -128,7 +130,7 @@ const languages = getLangFromUrl(Astro.url);
   <div class="bg-colors-lightest rounded-2xl shadow-[4px_6px_4px_rgba(0,0,0,0.10)] border border-colors-dark p-5 max-h-[78vh] overflow-y-auto custom-scrollbar border-r-[3.6vw]">
       <div class="grid gap-x-8 gap-y-4 grid-cols-1 ml-2">
           <CardMobile 
-              href={`${languages}/orthodontics`}
+              href={`${base}${languages}/orthodontics`}
               title={service1}
               img="/RC-Dental/assets/service_icons/ortodoncia.svg"
               alt="Ortodoncia"
@@ -136,7 +138,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile
-              href={`${languages}/invisibleortho`}
+              href={`${base}${languages}/invisibleortho`}
               title={service2}
               img="/RC-Dental/assets/service_icons/ortodoncia_invisible.png"
               alt="Ortodoncia invisible"
@@ -144,7 +146,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile
-              href={`${languages}/oralrehab`}
+              href={`${base}${languages}/oralrehab`}
               title={service3}
               img="/RC-Dental/assets/service_icons/rehabilitacion_oral.svg"
               alt="Rehabilitación oral"
@@ -152,7 +154,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile
-              href={`${languages}/implants`}
+              href={`${base}${languages}/implants`}
               title={service4}
               img="/RC-Dental/assets/service_icons/implante.svg"
               alt="Implantes"
@@ -160,7 +162,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile
-              href={`${languages}/endodontics`}
+              href={`${base}${languages}/endodontics`}
               title={service5}
               img="/RC-Dental/assets/service_icons/endodoncia.png"
               alt="Protesis"
@@ -168,7 +170,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile
-              href={`${languages}/generaldentistry`}
+              href={`${base}${languages}/generaldentistry`}
               title={service6}
               img="/RC-Dental/assets/service_icons/odontologia_general.svg"
               alt="Odontología general"
@@ -176,7 +178,7 @@ const languages = getLangFromUrl(Astro.url);
           />
 
           <CardMobile 
-              href={`${languages}/whitening`}
+              href={`${base}${languages}/whitening`}
               title={service7}              
               img="/RC-Dental/assets/service_icons/blanqueamiento_dental.png"
               alt="Blanqueamiento dental"
