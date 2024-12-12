@@ -6,7 +6,8 @@
     "clean": "rimraf dist",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build:css": "tailwindcss -i ./src/styles/_globals.css -o ./dist/_astro/styles.css",
+    "build": "astro check && astro build && npm run build:css",
     "preview": "astro preview",
     "astro": "astro"
   },
