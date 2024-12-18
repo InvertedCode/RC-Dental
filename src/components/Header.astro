@@ -1,120 +1,148 @@
 ---
 import { Image } from "astro:assets";
 
+import { getLangFromUrl } from "../i18n"
+
 import Logo from '../../public/assets/nav_icons/logo.png';
 import PhoneIcon from "./BannerIcons/PhoneIcon.astro";
 import LocationIcon from "./BannerIcons/LocationIcon.astro";
 import ClockIcon from "./BannerIcons/ClockIcon.astro";
 import Hamburger from "../../public/assets/nav_icons/hamburger.svg";
 import Cross from "../../public/assets/nav_icons/cross.svg";
+import FlagUSA from "../../public/assets/flags_icons/united-states-svgrepo-com.svg";
+import FlagColombia from "../../public/assets/flags_icons/colombia-svgrepo-com.svg";
+
+interface Props {
+  title: string;
+  nav1: string;
+  nav2: string;
+  nav3: string;
+  nav4: string;
+}
+
+const { title, nav1, nav2, nav3, nav4 } = Astro.props;
+const base = '/RC-Dental';
+
+const languages = getLangFromUrl(Astro.url);
 ---
 
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-/>
-
 <header class="fixed w-full h-[12vh] z-50">
-    <nav class="flex flex-col h-[100%]">
-        <!-- Top Bar with Contact Info -->
-        <div class="flex justify-end bg-colors-medium text-colors-lightest items-center h-[40%]">
-            <div class="flex items-center animate-scroll md:animate-scrollMobile w-max gap-10 whitespace-nowrap">
-                <p class="flex items-center text-sm font-semibold gap-2">
-                    <PhoneIcon /> +57 312 2376546
-                </p>
-                <p class="inline-flex items-center text-sm font-semibold gap-2">
-                    <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
-                </p>
-                <p class="inline-flex items-center text-sm font-semibold gap-2">
-                    <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 1pm
-                </p>
+    <!-- Top Bar with Contact Info -->
+    <div class="flex justify-end bg-colors-medium text-colors-lightest items-center h-[40%]">
+        <div class="flex items-center animate-scroll md:animate-scrollMobile w-max gap-10 whitespace-nowrap">
+            <p class="flex items-center text-sm font-semibold gap-2">
+                <PhoneIcon /> +57 312 2376546
+            </p>
+            <p class="inline-flex items-center text-sm font-semibold gap-2">
+                <LocationIcon /> Laureles - Suramericana / Medellín - Colombia
+            </p>
+            <p class="inline-flex items-center text-sm font-semibold gap-2">
+                <ClockIcon /> Lun - Vie 8am - 5pm / Sab 8am - 12pm
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="bg-colors-dark flex items-center justify-between px-4 h-[60%]">
+        <!-- Logo and Title -->
+        <div class="flex items-center w-full sm:w-[50%] text-colors-light gap-2 sm:gap-4 px-2 sm:px-3">
+            <a href={`${base}${languages}`} class="cursor-pointer">
+                <Image src={Logo} alt="Logo" class="w-[4rem] h-6 sm:w-[8rem] sm:h-8 md:w-[6.5rem]" loading="eager" />
+            </a>
+            <a href={`${base}${languages}`} class="cursor-pointer font-semibold text-xs sm:text-sm text-colors-lightest">
+                {title}
+            </a>
+        </div>
+        
+        <!-- Checkbox hidden for Mobile Menu -->
+        <input type="checkbox" id="menu-toggle" class="hidden peer" />
+
+        <!-- Custom Menu Icon -->
+        <label for="menu-toggle" class="sm:hidden flex items-center cursor-pointer">
+            <Image src={Hamburger} alt="Hamburger Menu" class="w-6 h-6 peer-checked:hidden" />
+            <Image src={Cross} alt="Cross Menu" class="w-6 h-6 hidden peer-checked:block" />
+        </label>
+
+        <!-- Language Switcher -->
+        <div class="hidden sm:flex items-center gap-2 ">
+            <a href=`${base}/en`>
+                <Image src={FlagUSA} alt="Cambiar a Inglés" class="w-12 h-12" />
+            </a>
+            <a href=`${base}`>
+                <Image src={FlagColombia} alt="Cambiar a Español" class="w-12 h-12" />
+            </a>
+        </div>
+            
+        <!-- Desktop Menu -->
+        <div class="hidden sm:flex sm:items-center sm:justify-end sm:w-full mr-[4vw]">
+            <div class="flex space-x-4">
+                <a href={`${base}${languages}/about`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav1}</a>
+                <a href={`${base}${languages}/services`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav2}</a>
+                <a href={`${base}${languages}/testimonials`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav3}</a>
+                <a href={`${base}${languages}/contact`} class="rounded-md px-3 py-2 text-lg font-medium text-colors-lightest hover:bg-colors-almost-black hover:text-white">{nav4}</a>
             </div>
         </div>
 
-        <!-- Main Navigation -->
-        <div class="flex justify-between bg-colors-dark text-colors-light h-[60%] px-3">
-            <!-- Logo and Title -->
-            <div class="flex items-center gap-2">
-                <a href="/" class="cursor-pointer">
-                    <Image src={Logo} alt="Logo" class="w-24 h-8 md:w-24" loading="eager" />
+        <!-- Mobile Menu -->
+        <div class="absolute top-full left-0 right-0 bg-colors-dark text-colors-lightest hidden peer-checked:flex flex-col items-center space-y-2 py-3 px-4 shadow-lg transition-all duration-300">
+            <a href={`${base}${languages}/about`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav1}</a>
+            <a href={`${base}${languages}/services`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav2}</a>
+            <a href={`${base}${languages}/testimonials`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav3}</a>
+            <a href={`${base}${languages}/contact`} class="block px-3 py-2 text-base font-medium hover:bg-colors-almost-black hover:text-white hover:rounded-md">{nav4}</a>
+
+            <div class="flex sm:hidden items-center gap-2 ">
+                <a href={`${base}/en`}>
+                    <Image src={FlagUSA} alt="Cambiar a Inglés" class="w-8 h-8" />
                 </a>
-                <a href="/" class="cursor-pointer font-semibold text-sm">
-                    RC DENTAL CONSULTORIO ODONTOLÓGICO
+                <a href={`${base}`}>
+                    <Image src={FlagColombia} alt="Cambiar a Español" class="w-8 h-8" />
                 </a>
             </div>
-
-            <!-- Hamburger Icon for Mobile -->
-            <button class="block md:hidden" id="hamburger_button">
-                <Image src={Hamburger} alt="Menu" class="w-8 h-8" id="hamburger" loading="eager" />
-                <Image src={Cross} alt="Close" class="w-8 h-8 hidden" id="cross" loading="eager" />
-            </button>
-
-            <!-- Links for Desktop and Mobile -->
-            <ul class="hidden md:flex items-center gap-8 text-base font-semibold" id="links-container">
-                <li><a href="/about" class="hover:text-colors-lighter">Sobre Nosotros</a></li>
-                <li><a href="/services" class="hover:text-colors-lighter">Servicios</a></li>
-                <li><a href="/testimonials" class="hover:text-colors-lighter">Testimonios</a></li>
-                <li><a href="/contact" class="hover:text-colors-lighter">Contactos</a></li>
-            </ul>
-        </div>
-
-        <!-- Links for Mobile View (Hidden initially) -->
-        <div class="flex flex-col items-center bg-colors-dark text-white md:hidden opacity-0 transition-opacity duration-500" id="mobile-menu">
-            <a href="/about" class="py-2">Sobre Nosotros</a>
-            <a href="/services" class="py-2">Servicios</a>
-            <a href="/testimonials" class="py-2">Testimonios</a>
-            <a href="/contact" class="py-2">Contactos</a>
         </div>
     </nav>
 </header>
 
+<style>
+  /* CSS for showing/hiding the mobile menu */
+#menu-toggle:checked ~ #mobile-menu {
+    display: block;
+    opacity: 100;
+}
+
+  /* CSS for showing/hiding the icons */
+#menu-toggle:checked ~ label .peer-checked\:block {
+    display: block;
+}
+
+#menu-toggle:checked ~ label .peer-checked\:hidden {
+    display: none;
+}  
+</style>
+
 <script>
-    function initializeMenu() {
-        const hamburgerButton = document.getElementById('hamburger_button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const hamburgerIcon = document.getElementById('hamburger');
-        const crossIcon = document.getElementById('cross');
+    function initializeLanguageSwitcher() {
+        const switchToEn = document.getElementById("switch-to-en");
+        const switchToEs = document.getElementById("switch-to-es");
 
-        function toggleMenu() {
-            const isOpen = hamburgerButton?.hasAttribute('open');
+        switchToEn?.addEventListener("click", () => {
+            const currentPath = window.location.pathname;
+            window.location.href = `/en${currentPath}`;
+        });
 
-            if (isOpen) {
-                crossIcon?.classList.add('hidden');
-                hamburgerIcon?.classList.remove('hidden');
-                
-                mobileMenu?.classList.replace('opacity-100', 'opacity-0');
-                setTimeout(() => {
-                    mobileMenu?.classList.add('hidden');
-                }, 500);
-                
-                hamburgerButton?.removeAttribute('open');
-            } else {
-                hamburgerIcon?.classList.add('hidden');
-                crossIcon?.classList.remove('hidden');
-
-                mobileMenu?.classList.remove('hidden');
-                mobileMenu?.classList.replace('opacity-0', 'opacity-100');
-
-                hamburgerButton?.setAttribute('open', '');
+        switchToEs?.addEventListener("click", () => {
+            try {
+                window.location.href = window.location.pathname.replace("/en", "");
+            } catch (error) {
+                console.error(error);
             }
-        }
-
-        hamburgerButton?.addEventListener('click', toggleMenu);
-
-        // Close mobile menu when a link is clicked
-        mobileMenu?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (hamburgerButton?.hasAttribute('open')) {
-                    toggleMenu();
-                }
-            });
         });
     }
 
-    document.addEventListener('DOMContentLoaded', initializeMenu);
-    window.addEventListener('popstate', initializeMenu);
-</script>
+    document.addEventListener("DOMContentLoaded", () => {
+        initializeLanguageSwitcher();
+    });
 
+    window.addEventListener("popstate", () => {
+        initializeLanguageSwitcher();
+    });
+</script>

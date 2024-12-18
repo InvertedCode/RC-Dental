@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RehabOral from '../../components/RehabOral.astro';
+
+import { getI18N } from "../../i18n";
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+---
+
+<Layout title={i18n.SERVICE_ORAL_REHABILITATION}>
+    <RehabOral title={i18n.SERVICE_ORAL_REHABILITATION} subtitle1={i18n.ORAL_REHABILITATION_SUBTITLE_1} text1={i18n.ORAL_REHABILITATION_TEXT_1} subtitle2={i18n.ORAL_REHABILITATION_SUBTITLE_2} text2={i18n.ORAL_REHABILITATION_TEXT_2} subtitle3={i18n.ORAL_REHABILITATION_SUBTITLE_3} text3={i18n.ORAL_REHABILITATION_TEXT_3} />
+</Layout>

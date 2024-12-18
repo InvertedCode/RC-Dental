@@ -4,54 +4,302 @@ import ArrowDown from "./Arrows/ArrowDown.astro";
 import ButtonReserve from "./Buttons/ButtonReserve.astro";
 import ImageDoctor from "../../public/assets/doctors.png";
 import ImageSede from "../../public/assets/logo_sedes.png";
+import { getI18N } from "../i18n";
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+
+interface Props {
+  title1: string;
+  title2: string;
+  title3: string;
+  slogan: string;
+  dr_description: string;
+}
+
+const { title1, title2, title3, slogan, dr_description } = Astro.props;
 ---
 
-<section class="w-full h-[100vh] flex flex-col items-center">
-    <div class="relative flex flex-col top-[220px] left-[-400px]">
-		<h1 class="text-colors-black font-bold text-[45px] leading-[60px] w-[439px] mb-[75px]">
-			Una Excelente <span class="text-colors-dark">Experiencia</span> Odontológica
+<section class="w-full h-screen flex-col items-center hidden sm:flex">
+    <!-- Contenedor principal de la descripcion -->
+	<article class="container-description flex flex-col transform translate-y-[40%] translate-x-[-6%]">
+    	<h1 class="title text-colors-black font-bold text-5xl leading-tight w-[60%] mb-20">
+			{title1} <span class="text-colors-dark">{title2} </span> {title3}
 		</h1>
 		
-		<!-- Contenedor del slogan -->
-		<div class="text-[16px] text-colors-black font-bold w-[232px] text-center ml-6">
-			<p>La sonrisa de tus sueños está a un clic de distancia</p>
-			<div class="flex justify-center mt-3">
+		<div class="container-slogan text-[16px] text-colors-black font-bold w-[25%] ml-10">
+			<p class="text-slogan">{slogan}</p>
+			<div class="container-arrow flex justify-center mt-3">
 				<ArrowDown />
 			</div>
 		</div>
-				<!-- Contenedor del botón de reserva -->
-		<div class="mt-4 ml-[18px]">
-			<ButtonReserve />
+	
+		<div class="container-reserve mt-[3%] ml-[4%]">
+			<ButtonReserve buttonText={i18n.BUTTON_BOOK_APPOINTMENT}/>
 		</div>
-	</div>
+	</article>
 
-	<!-- Contenedor de la elipse degradada -->
-	<div class="mt-[-180px] ml-[845px]">
+	<!-- Elemento decorativo: ellipse -->
+	<figure class="container-ellipse mt-[-18%] ml-[58%]">
 		<div class="w-[420px] h-[420px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"></div>
-	</div>
+	</figure>
 
 	<!-- Imagen del doctor -->
-	<div>
-		<div>
-			<Image src={ImageDoctor} alt="Doctor" class="w-[350px] h-[470px] mt-[-490px] ml-[845px]" loading="eager" />
-		</div>
-	</div>
+	<figure class="container-image-doctor mt-[-34%] ml-[67%]">
+		<Image src={ImageDoctor} alt="Doctor" class="w-[72%] h-auto" loading="eager"/>
+	</figure>
 
-	<!-- Contenedor de la descripción del doctor -->
-	<div class="flex justify-end items-center gap-2 rounded-[15px] mt-[-80px] ml-[500px] p-0 pr-4 bg-colors-light shadow-[4px_6px_4px_rgba(0,0,0,0.25)]">
-		<div class="w-[50px] h-[50px] m-3 flex items-center">
-			<Image src={ImageSede} alt="Sede" class="w-[50px] h-[50px] object-cover" loading="eager"/>
+	<!-- Información de las cedes y doctor -->
+	<aside class="container-info-doctor flex justify-center items-center rounded-2xl mt-[-3%] ml-[40%] p-0 pr-4 bg-colors-light shadow-md">
+		<figure class="container-image-cede w-[20%] h-[10%] m-3 flex items-center">
+			<Image src={ImageSede} alt="Cede" class="object-fit-contain" loading="eager" />
+		</figure>
+		<div class="flex flex-col text-colors-darkest font-extrabold z-20">
+			<p>Dr. Juan Carlos Ramirez</p>
+            <p>{dr_description}</p>
 		</div>
-		<div class="flex items-end flex-col text-colors-darkest font-extrabold">
-			<p>DR. Juan Carlos Ramirez</p>
-            <p>Sede: Manizales</p>
-		</div>
-	</div>
+	</aside>
 
-	<!-- SVG en la parte inferior (decorativo) -->
-	<div class="flex justify-center mt-[-340px] -z-10 w-full">
-		<svg xmlns="http://www.w3.org/2000/svg" width="full" height="438" viewBox="0 0 1440 455" fill="none">
-            <path d="M1607 285.99C1607 653.5 961.5 571.5 573 571.5C143.093 571.5 -134 640 -134 248.454C-134 -270.417 198.793 184.465 628.7 184.465C1058.61 184.465 1607 -9.50006 1607 285.99Z" fill="#D7F0ED"/>
-        </svg>
-	</div>
+	<!-- SVG descorativo -->
+	<aside class="justify-center mt-[-20%] -z-10 w-full hidden sm:flex">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="438" viewBox="0 0 1440 455" fill="none">
+			<path d="M1607 285.99C1607 653.5 961.5 571.5 573 571.5C143.093 571.5 -134 640 -134 248.454C-134 -270.417 198.793 184.465 628.7 184.465C1058.61 184.465 1607 -9.50006 1607 285.99Z" fill="#D7F0ED"/>
+		</svg>
+	</aside>
+
+	<!-- SVG descorativo mobile -->
+	<aside class="container-ellipse-mobile -z-10 w-full flex sm:hidden">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="310" viewBox="0 0 383 282" fill="none">
+			<path d="M474 217.5C474 306.142 396.389 289 302.5 289C208.612 289 -1.49922 350 0.000170217 250C1.49956 150 298.112 0.5 392 0.5C485.889 0.5 474 128.858 474 217.5Z" fill="#D7F0ED"/>
+		</svg>
+	</aside>
 </section>
+
+<!-- Section mobile -->
+<section class="w-full h-screen flex-col items-center flex sm:hidden relative">
+	<!-- Elemento decorativo: ellipse -->
+	<figure class="container-ellipse mt-4 mb-0">
+		<div class="w-[420px] h-[420px] rounded-full bg-gradient-to-b from-colors-medium via-colors-medium-dark to-colors-dark"></div>
+	</figure>
+
+	<!-- Imagen del doctor -->
+	<figure class="container-image-doctor mt-[-58%]">
+		<Image src={ImageDoctor} alt="Doctor" class="w-[70%] h-auto" loading="eager"/>
+	</figure>
+
+	<!-- Información de las cedes y doctor -->
+	<aside class="container-info-doctor flex justify-center items-center rounded-2xl mt-[-3%] ml-[40%] p-0 pr-4 bg-colors-light shadow-md z-20">
+		<figure class="container-image-cede w-[25%] h-[10%] m-3 flex items-center">
+			<Image src={ImageSede} alt="Cede" class="object-fit-contain" loading="eager" />
+		</figure>
+		<div class="flex flex-col text-colors-darkest font-extrabold">
+			<p>Dr. Juan Carlos Ramirez</p>
+            <p>{dr_description}</p>
+		</div>
+	</aside>
+	
+	<article class="container-description flex flex-col">
+		<h1 class="title text-colors-black font-bold text-5xl leading-tight w-[60%] mb-20">
+			{title1} <span class="text-colors-dark">{title2} </span> {title3}
+		</h1>
+
+		<div class="container-slogan text-[16px] text-colors-black font-bold w-[25%] ml-10">
+			<p class="text-slogan">{slogan}</p>
+			<div class="container-arrow flex justify-center mt-3">
+				<ArrowDown />
+			</div>
+		</div>
+
+		<div class="container-reserve mt-[3%] ml-[-42%]">
+			<ButtonReserve buttonText={i18n.BUTTON_BOOK_APPOINTMENT}/>
+		</div>
+	</article>
+
+	<!-- SVG descorativo mobile -->
+	<aside class="container-ellipse-mobile -z-10 w-full flex sm:hidden">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="310" viewBox="0 0 383 282" fill="none">
+			<path d="M474 217.5C474 306.142 396.389 289 302.5 289C208.612 289 -1.49922 350 0.000170217 250C1.49956 150 298.112 0.5 392 0.5C485.889 0.5 474 128.858 474 217.5Z" fill="#D7F0ED"/>
+		</svg>
+	</aside>
+</section>
+
+<style>
+/* Media query para pantallas entre 320px y 639px */
+@media (min-width: 320px) and (max-width: 639px) {
+	section {
+		width: 100%;
+		height: auto;
+	}
+	.container-description {
+		display: flex;
+		align-items: center;
+		margin: 10% 20% 0 0;
+		width: 100%;
+		transform: translate(0, 0);
+	}
+	.title {
+		font-size: 2rem;
+		margin-bottom: 4rem;
+	}
+	.container-slogan {
+		width: 50%;
+		margin-left: 52%;
+	}
+	.container-reserve {
+		width: auto;
+		margin: 5% 0 0 50%;
+		padding: 0;
+	}
+	.container-ellipse {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 10vh 0 0 0;
+	}
+	.container-ellipse > div {
+		width: 12rem;
+		height: 12rem;
+		margin: 0;
+	}
+	.container-image-doctor {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+	}
+	.container-image-doctor > img {
+		width: 10rem;
+		height: 14rem;
+	}
+	.container-info-doctor {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: -12% 28% 0 0;
+		width: 48%;
+	}
+	.container-image-cede {
+		width: 40%;
+	}
+	.container-image-cede > img {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.container-info-doctor > div > p {
+		font-size: 0.678rem;
+		line-height: normal;
+		width: 100%;
+		margin: 0 2rem 0 0;
+	}
+	.container-ellipse-mobile {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: -30vh 0 0 0;
+		width: 100%;
+		z-index: -10;
+	}
+}
+
+/* Media query para pantallas entre 640px y 844px */
+@media (min-width: 640px) and (max-width: 844px) {
+    section {
+        height: 120vh;
+    }
+
+    .container-description {
+        align-items: center;
+        transform: translateY(72vh) translateX(0);
+    }
+
+    .title {
+        font-size: 1.875rem;
+        line-height: 2.5rem;
+        width: 80%;
+        margin-bottom: 1.875rem;
+    }
+
+    .container-slogan {
+        text-align: start;
+        margin: 0 0 0 40%;
+    }
+
+    .text-slogan {
+        font-size: 0.875rem;
+        line-height: normal;
+        width: 80%;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .container-arrow {
+        margin: 0 0 0 -1.8rem;
+    }
+
+    .container-reserve {
+        width: 50%;
+        margin: 1.5rem 0 0 2.5rem;
+    }
+
+    .container-ellipse {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: -20vh 0 0 0;
+        width: 100%;
+    }
+
+    .container-ellipse > div {
+        width: 15.25rem;
+        height: 15.25rem;
+        margin: 0;
+    }
+
+    .container-image-doctor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -42vh;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .container-image-doctor > img {
+        width: 12.5rem;
+        height: 17rem;
+    }
+
+    .container-info-doctor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: -10% 20% 0 0;
+        width: 48%;
+        padding: 0;
+    }
+
+    .container-image-cede {
+        width: 20%;
+    }
+
+    .container-image-cede > img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .container-info-doctor > div > p {
+        font-size: 0.575rem;
+        line-height: normal;
+        width: 70%;
+    }
+
+    .container-ellipse-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30vh 0 0 0;
+        width: 100%;
+    }
+}
+
+</style>

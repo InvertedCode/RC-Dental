@@ -2,9 +2,13 @@
 import Layout from "../layouts/Layout.astro";
 import ContactUs from "../components/ContactUs.astro";
 import FooterRC from "../components/FooterRC.astro";
+
+import { getI18N } from "../i18n";
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
 ---
 
-<Layout title="Contact us">
-    <ContactUs/>
-    <FooterRC/>
+<Layout title={i18n.CONTACT_TITLE_1}>
+    <ContactUs title={i18n.CONTACT_TITLE_2} phone={i18n.CONTACT_PHONE}/>
+    <FooterRC title={i18n.HEADER_TITLE}/>
 </Layout>

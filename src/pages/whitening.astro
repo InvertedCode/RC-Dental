@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlanqueamientoRC from '../components/Blanqueamiento.astro';
+import { getI18N } from "../i18n";
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+---
+
+<Layout title={i18n.SERVICE_DENTAL_WHITENING}>
+    <BlanqueamientoRC title={i18n.SERVICE_DENTAL_WHITENING} subtitle1={i18n.WHITENING_SUBTITLE_1} text1={i18n.WHITENING_TEXT_1} subtitle2={i18n.WHITENING_SUBTITLE_2} text2={i18n.WHITENING_TEXT_2} subtitle3={i18n.WHITENING_SUBTITLE_3} text3={i18n.WHITENING_TEXT_3} />
+</Layout>

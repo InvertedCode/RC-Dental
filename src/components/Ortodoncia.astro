@@ -3,105 +3,219 @@ import { Image } from "astro:assets";
 import ImageOrtodoncia from "../../public/assets/OrtodonciaImg.png";
 import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
-import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
+
+const base = '/RC-Dental';
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
-    <!-- Contenedor título y botones 10% -->
-    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/services" />
+
+    <!-- Contenedor botones -->
+    <div class="container-buttons flex justify-between py-5 px-10 z-10">
+      <ButtonBack pathBack={`${base}${languages}/services`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${base}${languages}/invisibleortho`} buttonText={i18n.BUTTON_NEXT} />
+    </div>
+
+    <!-- Elipses decorativas -->
+    <div class="container-elipses absolute flex sm:hidden -z-10 mt-[-10vh] ml-[35vw]">
+      <svg xmlns="http://www.w3.org/2000/svg" width="139" height="136" viewBox="0 0 139 136" fill="none">
+        <circle cx="69.5" cy="56.5" r="69.5" transform="rotate(180 69.5 56.5)" fill="url(#paint0_linear_778_3)"/>
+        <circle cx="28.5" cy="125.5" r="5.5" transform="rotate(180 28.5 125.5)" fill="url(#paint1_linear_778_3)"/>
+        <circle cx="39" cy="128" r="3" transform="rotate(180 39 128)" fill="url(#paint2_linear_778_3)"/>
+        <circle cx="33.5" cy="133.5" r="2.5" transform="rotate(180 33.5 133.5)" fill="url(#paint3_linear_778_3)"/>
+        <defs>
+          <linearGradient id="paint0_linear_778_3" x1="69.5" y1="-13" x2="69.5" y2="126" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#399390" stop-opacity="0.05"/>
+            <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+            <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_778_3" x1="28.5" y1="120" x2="28.5" y2="131" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#399390" stop-opacity="0.05"/>
+            <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+            <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear_778_3" x1="39" y1="125" x2="39" y2="131" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#399390" stop-opacity="0.05"/>
+            <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+            <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint3_linear_778_3" x1="33.5" y1="131" x2="33.5" y2="136" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#399390" stop-opacity="0.05"/>
+            <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+            <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- Contenedor titulo -->
+    <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Ortodoncia
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/ortoinvisible" />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
-    <div class="flex flex-col h-[90%]">
+    <div class="container-information flex flex-col h-[90%]">
       <!-- Contenedor texto, botones e imagen de servicio -->
       <div class="flex justify-between items-center">
+
         <!-- Contenedor descripcion servicio -->
-        <div class="prose flex flex-col justify-between gap-3 pl-14">
+        <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tu Sonrisa Perfecta:
+              {subtitle1}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Corregimos irregularidades dentales y faciales, mejorando la
-              estética y salud bucal mediante brackets y alineadores
-              transparentes.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Beneficios Clave:
+              {subtitle2}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Una sonrisa alineada facilita la higiene dental, previene caries,
-              mejora la mordida y reduce el desgaste dental.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Tratamientos a Medida:
+              {subtitle3}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Ofrecemos opciones como brackets tradicionales, cerámicos,
-              linguales, y alineadores como Invisalign, con tecnología avanzada
-              y resultados duraderos.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Transforma tu Sonrisa:
+              {subtitle4}
             </h3>
             <p class="text-sm text-pretty font-normal text-colors-almost-black">
-              Conoce nuestros tratamientos de ortodoncia y empieza hoy el camino
-              hacia una sonrisa saludable y atractiva.
+              {text4}
             </p>
           </article>
-
-          <div>
-            <ButtonBackServices />
-          </div>
         </div>
-
-        <!-- Contenedor del boton para ver el video -->
-        <div class="flex h-[40%] items-end">
-          <ButtonVideo />
-        </div>
-
+        
         <!-- Contenedor imagen de ortodoncia -->
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden hidden sm:flex">
           <Image
-            src={ImageOrtodoncia}
-            alt="Ilustración del servicio Ortodoncia"
-            class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
+          src={ImageOrtodoncia}
+          alt="Ilustración del servicio Ortodoncia"
+          class="rounded-full w-[100%] h-[32vw] transform translate-x-[10%]"
           />
         </div>
       </div>
-
+      
       <!-- SVG en la parte inferior (decorativo) -->
-      <div class="flex items-end -z-10">
+      <div class="items-end -z-10 hidden sm:flex">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="full"
-          height="610"
-          fill="none"
-          class="absolute bottom-[-12vh] right-[-32vw]"
-          ><path
-            fill="#D7F0ED"
-            d="M1309 370.364c0 251.263-103.07 215.815-598.569 215.815-552.751 0-901.084 126.674-598.568-215.815 82.857-93.807 228.568-7.484 598.568-215.815C996.931-6.767 1309-167.088 1309 370.364Z"
-          ></path></svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="full"
+        height="610"
+        fill="none"
+        class="absolute bottom-[-12vh] right-[-32vw]"
+        ><path
+        fill="#D7F0ED"
+        d="M1309 370.364c0 251.263-103.07 215.815-598.569 215.815-552.751 0-901.084 126.674-598.568-215.815 82.857-93.807 228.568-7.484 598.568-215.815C996.931-6.767 1309-167.088 1309 370.364Z"
+        ></path></svg
         >
       </div>
 
-    </div>
+      <!-- Elipses decorativas -->
+      <div class="container-elipses absolute w-[100%] flex sm:hidden -z-10 mt-[64vh]">
+        <svg width="224" height="154" viewBox="0 0 224 154" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55.5" cy="146.5" r="146.5" fill="url(#paint0_linear_781_4)"/>
+          <circle cx="213" cy="106" r="11" fill="url(#paint1_linear_781_4)"/>
+          <circle cx="208.5" cy="125.5" r="4.5" fill="url(#paint2_linear_781_4)"/>
+          <circle cx="198.5" cy="95.5" r="2.5" fill="url(#paint3_linear_781_4)"/>
+          <defs>
+          <linearGradient id="paint0_linear_781_4" x1="55.5" y1="0" x2="55.5" y2="293" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_781_4" x1="213" y1="95" x2="213" y2="117" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear_781_4" x1="208.5" y1="121" x2="208.5" y2="130" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint3_linear_781_4" x1="198.5" y1="93" x2="198.5" y2="98" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          </defs>
+        </svg>          
+      </div>
 
+      <!-- Contenedor del boton para ver el video -->
+      <div class="container-view-video flex h-[40%] mt-[-5vh] w-[100%] items-center justify-center">
+        <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
+      </div>
+    </div>
   </article>
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 639px) {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-buttons {
+      width: 100%;
+      display: flex;
+      padding: 2vh ;
+    }
+
+    .container-information {
+      width: 100%;
+    }
+
+    .container-dates {
+      width: 100%;
+      padding: 4vh 6vh 0 6vh;
+      margin: 0 0 2rem 0;
+    }
+
+    .container-title {
+      width: 100%;
+      margin: 3vh 0 0 0 ;
+      padding: 0;
+    }
+
+    .container-view-video {
+      margin: -4vh 0 4vh 0;
+    }
+  }
+</style>

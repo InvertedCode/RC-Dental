@@ -6,18 +6,75 @@ import ButtonBack from "./Buttons/ButtonBack.astro";
 import ButtonNext from "./Buttons/ButtonNext.astro";
 import ButtonBackServices from "./Buttons/ButtonService.astro";
 import ButtonVideo from "./Buttons/ButtonVideo.astro";
+import { getI18N } from "../i18n";
+import { getLangFromUrl } from "../i18n";
+
+interface Props {
+  title: string;
+  subtitle1: string;
+  text1: string;
+  subtitle2: string;
+  text2: string;
+  subtitle3: string;
+  text3: string;
+  subtitle4: string;
+  text4: string;
+}
+
+const { title, subtitle1, text1, subtitle2, text2, subtitle3, text3, subtitle4, text4 } = Astro.props;
+
+const { currentLocale } = Astro;
+const i18n = await getI18N({ currentLocale })
+const languages = getLangFromUrl(Astro.url);
+
+const base = '/RC-Dental';
 ---
 
 <section class="w-full h-[88vh] flex flex-col">
   <article class="flex flex-col w-[100vw] h-[100%] overflow-hidden relative">
+    <!-- Contenedor botones -->
+    <div class="container-buttons flex justify-between py-5 px-10 z-10">
+      <ButtonBack pathBack={`${base}${languages}/endodontics`} buttonText={i18n.BUTTON_BACK} />
+      <ButtonNext pathNext={`${base}${languages}/whitening`} buttonText={i18n.BUTTON_NEXT} />
+    </div>
 
-    <!-- Contenedor título y botones 10% -->
-    <div class="flex justify-between mt-3 mb-5 px-10 h-[10%]">
-      <ButtonBack pathBack="http://localhost:4321/endodoncia" />
+    <div class="container-elipses absolute flex sm:hidden ml-[76vw] mt-[18vh] -z-10">
+      <svg width="101" height="185" viewBox="0 0 101 185" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="92.0269" cy="92.0277" r="67.3688" transform="rotate(-150 92.0269 92.0277)" fill="url(#paint0_linear_802_19)"/>
+        <circle cx="58.3218" cy="33.3228" r="11.9487" transform="rotate(-150 58.3218 33.3228)" fill="url(#paint1_linear_802_19)"/>
+        <circle cx="70.8723" cy="27.355" r="7.22717" transform="rotate(-150 70.8723 27.355)" fill="url(#paint2_linear_802_19)"/>
+        <circle cx="65.0814" cy="16.0821" r="4.45195" transform="rotate(-150 65.0814 16.0821)" fill="url(#paint3_linear_802_19)"/>
+        <defs>
+        <linearGradient id="paint0_linear_802_19" x1="92.0269" y1="24.6589" x2="92.0269" y2="159.396" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint1_linear_802_19" x1="58.3218" y1="21.374" x2="58.3218" y2="45.2715" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint2_linear_802_19" x1="70.8723" y1="20.1279" x2="70.8723" y2="34.5822" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        <linearGradient id="paint3_linear_802_19" x1="65.0814" y1="11.6301" x2="65.0814" y2="20.534" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#399390" stop-opacity="0.05"/>
+        <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+        <stop offset="1" stop-color="#265F5F"/>
+        </linearGradient>
+        </defs>
+        </svg>
+        
+    </div>
+
+    <!-- Contenedor titulo -->
+    <div class="container-title flex justify-center mb-5 px-10 h-[10%] mt-[-5vh]">
       <h1 class="text-3xl font-bold text-colors-darkest text-center">
-        Odontología General
+        {title}
       </h1>
-      <ButtonNext pathNext="http://localhost:4321/blanqueamiento" />
     </div>
 
     <!-- Contenedor texto, botones, imagen de servicio e imagen decorativa 90% -->
@@ -27,69 +84,66 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
       <div class="flex justify-between items-center">
         
         <!-- Contenedor descripcion servicio -->
-        <div class="prose flex flex-col justify-between gap-3 pl-14">
+        <div class="container-dates prose flex flex-col justify-between gap-3 pl-14">
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Cuidado Integral de tu Salud Bucal:
+              {subtitle1}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Nos encargamos de la prevención, diagnóstico y tratamiento de
-              diversas condiciones dentales, incluyendo limpiezas, resinas,
-              extracciones y tratamientos de encías.
+              {text1}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Prevención y Diagnóstico Avanzado:
+              {subtitle2}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Con revisiones periódicas y tecnología moderna, garantizamos
-              diagnósticos precisos y tratamientos efectivos para mantener una
-              sonrisa saludable.
+              {text2}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Atención Personalizada y de Calidad:
+              {subtitle3}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Nuestro enfoque es ofrecer atención personalizada, promoviendo
-              hábitos saludables y cuidados duraderos.
+              {text3}
             </p>
           </article>
 
           <article>
             <h3 class="text-lg font-bold m-0 text-colors-darkest">
-              Confía en Nosotros:
+              {subtitle4}
             </h3>
             <p
               class="text-sm text-pretty m-0 font-normal text-colors-almost-black mb-4"
             >
-              Te ayudamos a mantener tu salud bucal y prevenir futuros
-              problemas.
+              {text4}
             </p>
           </article>
 
-          <div>
-            <ButtonBackServices />
+          <!-- Contenedor del botones de navegación -->
+          <div class="container-buttons-navigate w-[100%] flex flex-row gap-3 mt-[10vh] justify-between">
+            <div>
+              <ButtonBackServices buttonText={i18n.BUTTON_BACKSERVICES} />
+            </div>
+              
+            <!-- Contenedor del boton para ver el video -->
+            <div class="flex h-[40%] items-end">
+              <ButtonVideo buttonText={i18n.BUTTON_WATCH_VIDEO} />
+            </div>
           </div>
         </div>
 
-        <!-- Contenedor del boton para ver el video -->
-        <div class="flex h-[40%] items-end">
-          <ButtonVideo />
-        </div>
-
         <!-- Contenedor imagen de odontologia general -->
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden hidden sm:flex">
           <div class="z-1">
             <Image
               src={ImageOdontologia}
@@ -97,7 +151,8 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
               class="rounded-full w-[100%] h-[17vw] transform translate-x-[10%]"
             />
           </div>
-          <div class="">
+
+          <div class="relative overflow-hidden hidden sm:flex">
             <Image
               src={ImageOdontologia2}
               alt="Ilustración del Servicio de Odontología general"
@@ -107,8 +162,34 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
         </div>
       </div>
 
+      <!-- Elipses decorativas -->
+      <div class="container-elipses absolute flex sm:hidden -z-10 mt-[24vh] mr-[28vw]">
+        <svg width="113" height="273" viewBox="0 0 113 273" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20.9741" cy="180.972" r="67.3688" transform="rotate(60 20.9741 180.972)" fill="url(#paint0_linear_802_18)"/>
+          <circle cx="11.3592" cy="100.36" r="49.3108" transform="rotate(60 11.3592 100.36)" fill="url(#paint1_linear_802_18)"/>
+          <circle cx="0.480485" cy="37.4808" r="27.4379" transform="rotate(60 0.480485 37.4808)" fill="url(#paint2_linear_802_18)"/>
+          <defs>
+          <linearGradient id="paint0_linear_802_18" x1="20.9741" y1="113.603" x2="20.9741" y2="248.341" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint1_linear_802_18" x1="11.3592" y1="51.049" x2="11.3592" y2="149.671" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          <linearGradient id="paint2_linear_802_18" x1="0.480484" y1="10.043" x2="0.480484" y2="64.9187" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#399390" stop-opacity="0.05"/>
+          <stop offset="0.5" stop-color="#2C7575" stop-opacity="0.65"/>
+          <stop offset="1" stop-color="#265F5F"/>
+          </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
       <!-- SVG en la parte inferior (decorativo) -->
-      <div class="flex items-end -z-10">
+      <div class="hidden sm:flex items-end -z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1440"
@@ -125,3 +206,36 @@ import ButtonVideo from "./Buttons/ButtonVideo.astro";
     </div>
   </article>
 </section>
+
+<style>
+  @media (min-width: 320px) and (max-width: 640px) {
+    section {
+      width: 100%;
+      height: auto;
+    }
+
+    .container-buttons {
+      width: 100%;
+      display: flex;
+      padding: 2vh;
+    }
+
+    .container-information {
+      width: 100%;
+    }
+
+    .container-dates {
+      padding: 4vh 6vh 0 6vh;
+      margin: 0 0 2rem 0;
+    }
+    .container-title {
+      width: 100%;
+      margin: 4vh 0 0 0;
+      padding: 0;
+    }
+
+    .container-buttons-navigate {
+      margin: 0;
+    }
+  }
+</style>
